@@ -1,0 +1,47 @@
+<ServiceDirectory>
+    <Repository className="pl.mol.molnet.z3950.server.MolNetSearchable"
+                code="MolNet" 
+                serviceName="MolNet Repository">
+        <Preferences>
+            <Preference name="molnetUrlDomain">mol.com.pl:8080</Preference>
+        </Preferences>
+        <RecordArchetypes>
+            <Archetype name="F">xml:oai_dc:F</Archetype>
+            <Archetype name="f">xml:oai_dc:f</Archetype>
+            <Archetype name="B">xml:oai_dc:B</Archetype>
+            <Archetype name="b">xml:oai_dc:b</Archetype>
+        </RecordArchetypes>
+        <Collections>
+            <Collection code="default/library" name="Default" localId="default/library" profile="molnet_profile" />
+        </Collections>
+    </Repository>
+
+    <CollectionPosting code="default/library" name="Default" value="Default"/>
+
+    <!-- Application profiles may be used to indicate what type of query
+    are acceptable to a given collection instance. For example,
+    an OAI resource of learning objects might be made available as a
+    z39.50 database using the lom profile at one repository, and the
+    bath profile at another. Not specifying a profile for a collection
+    instance means that queries will be sent to that collection 
+    with no checking as to suitability. -->
+    <ApplicationProfiles>
+        <ClasspathProfile resource="/config/profiles/molnet_profile.xml"/>
+    </ApplicationProfiles>
+
+    <Crosswalks>
+        <!-- Defacto crosswalk from bib-1 concepts -->
+        <ClasspathCrosswalk resource="/config/crosswalks/QueryModel/bib-1.xml"/> 
+    </Crosswalks>
+
+    <RecordConversion>
+        <converter type="DOM-XSL-DOM" classname="org.jzkit.search.util.RecordConversion.StandardXSLTTransformer"/>
+    
+        <mapping fromSpec="usmarc" 
+                 toSpec="f" 
+                 type="DOM-XSL-DOM" 
+                 resource="/config/crosswalks/RecordModel/identity.xsl"/>
+
+    </RecordConversion>
+
+</ServiceDirectory>
