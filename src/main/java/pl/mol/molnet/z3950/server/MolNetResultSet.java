@@ -101,7 +101,6 @@ public class MolNetResultSet extends AbstractIRResultSet implements IRResultSet 
         try {
             records = httpDataProvider.getList(httpQueryParams, starting_fragment - 1, count);
         } catch (Exception ex) {
-            this.num_hits = 0;
             //throw new IRResultSetException("Search failed");
             return result;
         }

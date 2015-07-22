@@ -123,7 +123,7 @@ public class HttpDataProvider {
         con.setRequestMethod("GET");
 
         if (con.getResponseCode() == 200) {
-            List<Record> list = new ArrayList<Record>();
+            List<Record> list = new ArrayList<>();
             MarcReader reader = new MarcStreamReader(con.getInputStream(), "UTF8");
             while (reader.hasNext()) {
                 list.add(reader.next());
@@ -142,6 +142,7 @@ public class HttpDataProvider {
      * @param molnetUrlDomain
      * @param collection
      * @param params
+     * @throws java.lang.Exception
      */
     public void parseDbName(String molnetUrlDomain, String collection, HttpQueryParams params) throws Exception {
         if (molnetUrlDomain == null || collection == null) {

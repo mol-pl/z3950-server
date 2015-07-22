@@ -3,7 +3,7 @@
                 code="MolNet" 
                 serviceName="MolNet Repository">
         <Preferences>
-            <Preference name="molnetUrlDomain">mol.com.pl</Preference>
+            <Preference name="settingsBeanName">serverBaseDomain</Preference>
         </Preferences>
         <RecordArchetypes>
             <Archetype name="F">xml:oai_dc:F</Archetype>

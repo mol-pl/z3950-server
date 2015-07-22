@@ -16,24 +16,24 @@ public class MolNetSearchable implements Searchable {
 
     private Map record_archetypes = new HashMap();
     private ApplicationContext ctx;
-    private String molnetUrlDomain;
+    private String settingsBeanName;
     private HttpDataProvider httpDataProvider;
 
     public MolNetSearchable() {
         httpDataProvider = new HttpDataProvider();
     }
 
-    public MolNetSearchable(String molnetUrlDomain) {
+    public MolNetSearchable(String settingsBeanName) {
         this();
-        this.molnetUrlDomain = molnetUrlDomain;
+        this.settingsBeanName = settingsBeanName;
     }
 
-    public void setMolnetUrlDomain(String molnetUrlDomain) {
-        this.molnetUrlDomain = molnetUrlDomain;
+    public void setSettingsBeanName(String settingsBeanName) {
+        this.settingsBeanName = settingsBeanName;
     }
 
-    public String getMolnetUrlDomain() {
-        return molnetUrlDomain;
+    public String getSettingsBeanName() {
+        return settingsBeanName;
     }
 
     @Override
@@ -52,6 +52,7 @@ public class MolNetSearchable implements Searchable {
 
     @Override
     public IRResultSet evaluate(IRQuery q, Object user_info, Observer[] observers) {
+        String molnetUrlDomain = (String)ctx.getBean(this.settingsBeanName);
 
         //parsuj zapytanie
         HttpQueryParams params = new HttpQueryParams();
@@ -88,14 +89,17 @@ public class MolNetSearchable implements Searchable {
         return result;
     }
 
+    @Override
     public void setRecordArchetypes(Map record_syntax_archetypes) {
         this.record_archetypes = record_syntax_archetypes;
     }
 
+    @Override
     public Map getRecordArchetypes() {
         return record_archetypes;
     }
 
+    @Override
     public void setApplicationContext(ApplicationContext ctx) {
         this.ctx = ctx;
     }

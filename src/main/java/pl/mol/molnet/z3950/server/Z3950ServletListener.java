@@ -1,7 +1,5 @@
 package pl.mol.molnet.z3950.server;
 
-
-
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import org.jzkit.z3950.server.Z3950Listener;
@@ -23,9 +21,10 @@ public class Z3950ServletListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         try {
-            ApplicationContext app_context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
+            ApplicationContext app_context = new ClassPathXmlApplicationContext("applicationContext.xml");
             listener = (Z3950Listener) app_context.getBean("Z3950Listener", Z3950Listener.class);
             listener.start();
+            LOG.debug("Server daemon thread started");
         } catch (Exception ex) {
             LOG.error("Problem starting socket server daemon thread" + ex.getClass().getName() + ": " + ex.getMessage());
         }
@@ -35,6 +34,7 @@ public class Z3950ServletListener implements ServletContextListener {
     public void contextDestroyed(ServletContextEvent sce) {
         if (listener != null) {
             listener.shutdown(0);
+            LOG.debug("Server daemon thread stopped");
         }
     }
 }
