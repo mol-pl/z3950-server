@@ -57,8 +57,7 @@ public class MolNetResultSet extends AbstractIRResultSet implements IRResultSet 
 
 	private void prepareDummyRecord() throws Exception {
 		try {
-			String doc
-					= "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+			String doc = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 					+ "<marc:collection xmlns:marc=\"http://www.loc.gov/MARC21/slim\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd\">\n"
 					+ "<marc:record>\n"
 					+ "<marc:datafield tag=\"010\" ind1=\" \" ind2=\" \">\n"
@@ -83,12 +82,12 @@ public class MolNetResultSet extends AbstractIRResultSet implements IRResultSet 
 		}
 	}
 
-	private InformationFragment prepareDummyInformationFragment(int hit_no) {
+	private InformationFragment prepareInformationFragment(int hit_no, byte[] data) {
 		return new org.jzkit.search.util.RecordModel.InformationFragmentImpl(hit_no,
 				"REPO",
 				"COLL",
 				null,
-				dummyRecord.clone(), new ExplicitRecordFormatSpecification("iso2709", "usmarc", "F"));
+				data, new ExplicitRecordFormatSpecification("iso2709", "usmarc", "F"));
 	}
 
 	// Fragment Source methods
@@ -113,15 +112,11 @@ public class MolNetResultSet extends AbstractIRResultSet implements IRResultSet 
 
 					writer.write(records[i]);
 					//result[i] = prepareDummyInformationFragment(starting_fragment + 1);
-					result[i] = new org.jzkit.search.util.RecordModel.InformationFragmentImpl(starting_fragment + i,
-							"REPO",
-							"COLL",
-							null,
-							baos.toByteArray(), new ExplicitRecordFormatSpecification("iso2709", "usmarc", "F"));
+					result[i] = prepareInformationFragment(starting_fragment + i, baos.toByteArray());
 					writer.close();
 					baos.close();
 				} else {
-					result[i] = prepareDummyInformationFragment(starting_fragment + i);
+					result[i] = prepareInformationFragment(starting_fragment + i, dummyRecord.clone());
 				}
 			} catch (IOException ex) {
 				//throw new IRResultSetException("Parsing resultset failed");
