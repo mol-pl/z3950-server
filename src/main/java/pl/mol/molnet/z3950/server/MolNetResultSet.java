@@ -109,9 +109,7 @@ public class MolNetResultSet extends AbstractIRResultSet implements IRResultSet 
 				if (records[i] != null) {
 					ByteArrayOutputStream baos = new ByteArrayOutputStream();
 					MarcWriter writer = new MarcStreamWriter(baos, "UTF8");
-
-					writer.write(records[i]);
-					//result[i] = prepareDummyInformationFragment(starting_fragment + 1);
+					writer.write(records[i]);     
 					result[i] = prepareInformationFragment(starting_fragment + i, baos.toByteArray());
 					writer.close();
 					baos.close();
