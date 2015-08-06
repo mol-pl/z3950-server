@@ -13,7 +13,7 @@
 	<context:component-scan base-package="org.jzkit.search.util.QueryBuilder"/>
 	<context:component-scan base-package="org.jzkit.search.util.QueryFormatter"/>
 	<context:component-scan base-package="org.jzkit.search.util.RecordBuilder">
-		<context:exclude-filter type="regex" expression="pl\.mol\.molnet\.z3950\.server\.iso2709RecordFactory"/>
+		<context:exclude-filter type="regex" expression="org\.jzkit\.search\.util\.iso2709RecordFactory"/>
 	</context:component-scan>
 	
 	<bean id="org.jzkit.recordbuilder.iso2709" class="pl.mol.molnet.z3950.server.Iso2709Utf8RecordFactory"/>
@@ -61,8 +61,7 @@
 		</property>
 	</bean>
   
-	<bean id="JZKitSearchBackend" class="pl.mol.molnet.z3950.server.JZKitBackendWithVersionImpl">
-	</bean>
+	<bean id="JZKitSearchBackend" class="pl.mol.molnet.z3950.server.JZKitBackendWithVersionImpl" scope="prototype"/>
   
 	<bean id="JZKitConfig" class="pl.mol.molnet.z3950.server.XMLDynamicCollectionImpl" init-method="init">
 		<constructor-arg index="0">
@@ -105,10 +104,7 @@
 		</constructor-arg>
 	</bean>
 
-	<bean id="SearchSessionFactory" 
-		  class="org.jzkit.search.impl.SearchSessionFactoryImpl" 
-		  init-method="init">
-	</bean>
+	<bean id="SearchSessionFactory" class="org.jzkit.search.impl.SearchSessionFactoryImpl" init-method="init"/>
 
 	<!-- conversion rules -->
 	<bean id="RPNToInternalRules" class="org.jzkit.util.PropsHolder">

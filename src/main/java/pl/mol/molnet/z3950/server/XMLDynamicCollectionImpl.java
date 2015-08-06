@@ -4,26 +4,27 @@ import org.jzkit.ServiceDirectory.*;
 import org.jzkit.configuration.provider.xml.XMLImpl;
 
 /**
- * Nadpisuje pobieranie informacji o dost�pnej bazie danych.
- * Baza nie jest pobierana z pliku konfiguracyjnego, jest uzupe�niana
- * domy�ln� konfiguracj� i przekazywana do searchable.
- * Searchable pr�buje szuka� w podanej bazie, gdy oka�e si� �e bazy nie ma
- * zg�aszany jest diag unknown db.
- * 
- * @author Pawe�
+ * Nadpisuje pobieranie informacji o dostępnej bazie danych.
+ * Baza nie jest pobierana z pliku konfiguracyjnego, jest uzupełniana
+ * domyślną konfiguracją i przekazywana do searchable.
+ * Searchable próbuje szukać w podanej bazie, gdy okaże się że bazy nie ma
+ * zgłaszany jest diag unknown db.
+ *
+ * @author Paweł
  */
 public class XMLDynamicCollectionImpl extends XMLImpl {
 
-    public XMLDynamicCollectionImpl(String config_file) {
-        super(config_file);
-    }
+	public XMLDynamicCollectionImpl(String config_file) {
+		super(config_file);
+	}
 
-    @Override
-    public CollectionDescriptionDBO lookupCollectionDescription(String collection_code) {
-        CollectionDescriptionDBO coll = (CollectionDescriptionDBO) super.lookupCollectionDescription("default/library");
-        //modyfikuj domy�lne �r�d�o na aktualnie wyszukiwane
-        coll.setCode(collection_code);
-        coll.setLocalId(collection_code);
-        return coll;
-    }
+	@Override
+	public CollectionDescriptionDBO lookupCollectionDescription(String collection_code) {
+		CollectionDescriptionDBO coll = (CollectionDescriptionDBO) super.lookupCollectionDescription("default/library");
+		//modyfikuj domyślne źródło na aktualnie wyszukiwane
+		coll.setCode(collection_code);
+		coll.setLocalId(collection_code);
+		coll.getSearchServiceDescription().setCode(collection_code);
+		return coll;
+	}
 }
