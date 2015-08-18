@@ -24,7 +24,7 @@ import org.jzkit.ServiceDirectory.AttributeSetDBO;
 public class ProfileServiceTest extends TestCase {
 
   private static ApplicationContext app_context = null;
-  public static Log log = LogFactory.getLog(ProfileServiceTest.class);
+  public static Log log = LogFactory.getLog(ServiceTest.class);
     
   public static void main(String[] args) {
   }
