@@ -1,12 +1,12 @@
 ----------------------------------------------------------------
-2015-08-18 11:20:30.844 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instance a816c00e-014f-408a-031e-0000071117f8
+2015-08-18 11:23:37.452 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instance a816c00e-014f-408c-dbfe-000007114998
 on database directory C:\mol.net\src\trunk\java\z3950-server\knowledgeintegration-jzkit\jzkit_service\svctest  
 
 Database Class Loader started - derby.database.classpath=''
 ----------------------------------------------------------------
-2015-08-18 11:20:36.351 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instance ad8a418f-014f-408a-031e-0000071117f8
+2015-08-18 11:23:42.959 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.5.3.0 - (802917): instance ad8a418f-014f-408c-dbfe-000007114998
 on database directory C:\mol.net\src\trunk\java\z3950-server\knowledgeintegration-jzkit\jzkit_service\derbydb  
 
 Database Class Loader started - derby.database.classpath=''
