@@ -1,0 +1,68 @@
+<book>
+  <id>jzkit3-ref-manual</id>
+  <title>JZKit3 Reference Manual</title>
+  <chapters>
+    <chapter>
+      <id>introduction</id>
+      <title>Introduction</title>
+      <sections>
+        <section> <id>intro-preface</id><title>Preface</title> <file>pending.apt</file> </section>
+        <section> <id>intro-architecture</id><title>JZKit Architecture</title> <file>pending.apt</file> </section>
+        <section> <id>intro-deployment</id><title>Deployment Models</title> <file>pending.apt</file> </section>
+      </sections>
+    </chapter>
+    <chapter>
+      <id>build</id>
+      <title>Building from source</title>
+      <sections>
+        <section> <id>build-svn</id><title>Source Code</title> <file>pending.apt</file> </section>
+        <section> <id>build-mvn</id><title>Maven2</title> <file>pending.apt</file> </section>
+        <section> <id>build-repo</id><title>The Default Maven Repository</title> <file>pending.apt</file> </section>
+      </sections>
+    </chapter>
+    <!--
+    <chapter>
+      <id>introduction</id>
+      <title>Introduction</title>
+      <sections>
+        <section> <id>intro-preface</id><title>Preface</title> <file>intro-preface.xml</file> </section>
+        <section> <id>intro-architecture</id><title>JZKit Architecture</title> <file>intro-architecture.xml</file> </section>
+        <section> <id>intro-deployment</id><title>Deployment Models</title> <file>intro-deployment.xml</file> </section>
+      </sections>
+    </chapter>
+    <chapter>
+      <id>build</id>
+      <title>Building from source</title>
+      <sections>
+        <section> <id>build-svn</id><title>Source Code</title> <file>build-svn.xml</file> </section>
+        <section> <id>build-mvn</id><title>Maven2</title> <file>build-mvn.xml</file> </section>
+        <section> <id>build-repo</id><title>The Default Maven Repository</title> <file>build-repo.xml</file> </section>
+      </sections>
+    </chapter>
+    <chapter>
+      <id>svcif</id>
+      <title>Service Interfaces</title>
+      <sections>
+        <section> <id>jzkit-meta-search</id><title>JZKit Meta Search Interface</title> <file>pending.xml</file> </section>
+        <section> <id>embedded-service-interface</id><title>Embedded Search Interface</title> <file>pending.xml</file> </section>
+        <section> <id>iiop</id><title>RMI/IIOP Interface</title> <file>pending.xml</file> </section>
+      </sections>
+    </chapter>
+    <chapter>
+      <id>zserver</id>
+      <title>Z3950 Server</title>
+      <sections>
+        <section> <id>zserver-new-backend</id><title>Implementing a new z3950 backend</title> <file>pending.xml</file> </section>
+        <section> <id>zserver-jzkit-service</id><title>JZKit Service Backend</title> <file>pending.xml</file> </section>
+      </sections>
+    </chapter>
+    <chapter>
+      <id>svcif</id>
+      <title>Example configurations</title>
+      <sections>
+        <section> <id>eg-simple-proxy</id> <title>Static Configuration / Z3950 Proxy Server</title> <file>pending.xml</file></section>
+      </sections>
+    </chapter>
+    -->
+  </chapters>
+</book>

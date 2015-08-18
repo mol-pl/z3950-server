@@ -1,0 +1,8 @@
+Prerequisites:
+	JDK 1.5 (Actually, 1.4 but we don't promise to maintain backward compatibility)
+	Apache Maven
+
+Setting up
+	Install your maven repository
+	Make sure you have the xdoclet plugin (Needs to be done as a user with perm to the maven plugin dir)
+		maven plugin:download -DartifactId=maven-xdoclet-plugin -DgroupId=xdoclet -Dversion=1.2

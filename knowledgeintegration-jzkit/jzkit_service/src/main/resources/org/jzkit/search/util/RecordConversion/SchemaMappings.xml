@@ -1,0 +1,14 @@
+<SchemaMappings>
+
+  <!-- Convert from on DOMFragment into another using XSL -->
+  <converter type="XSL" class="com.k_int.IR.Syntaxes.Conversion.StandardXSLTTransformer"/>
+  <converter type="Extract" class="com.k_int.IR.Syntaxes.Conversion.DOMProducerTransformer"/>
+  <!-- Convert from a database entity based fragment into a DOM based fragment -->
+  <converter type="DBToDOM" class="com.k_int.util.conv.EntityToDOMTransformer"/>
+
+  <!-- From lazy loading database driven DOM tree to "F"ull XML dom tree -->
+  <mapping from="DATABASE-Person:DB" to="null:B" type="Extract" sheet="mappings/DBPersonToXMLB.xsl"/>
+  <mapping from="DATABASE-Person:DB" to="null:F" type="Extract" sheet="mappings/DBPersonToXMLF.xsl"/>
+  <mapping from="DATABASE-Person:DB" to="null:E" type="Extract" sheet="mappings/DBPersonToXMLE.xsl"/>
+
+</SchemaMappings>

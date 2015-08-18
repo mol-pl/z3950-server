@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!--
+  CHANGEGLOG:
+    II 07/08/2004 - Now uses variables instead of hard coded property names. You will find the 
+                    values for these variables in the .properties file in the same directory.
+-->
+
+<beans>
+
+  <bean id="SearchService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+    <property name="serviceUrl"><value>rmi://localhost:1199/SearchService</value></property>
+    <property name="serviceInterface"><value>org.jzkit.search.SearchSession</value></property>
+  </bean>
+		
+</beans>

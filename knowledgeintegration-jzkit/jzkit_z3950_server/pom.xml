@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <parent>
+    <groupId>org.jzkit</groupId>
+    <artifactId>jzkit_parent</artifactId>
+    <version>3.0.1-SNAPSHOT</version>
+  </parent>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifestEntries>
+              <Implementation-Version>${project.version}</Implementation-Version>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.jzkit</groupId>
+  <name>JZKit2 Z39.50 Server</name>
+  <url>http://www.k-int.com</url>
+  <artifactId>jzkit_z3950_server</artifactId>
+  <packaging>jar</packaging>
+
+  <ciManagement>
+    <system>continuum</system>
+    <url>http://developer.k-int.com:8081/continuum</url>
+    <notifiers>
+      <notifier>
+        <type>mail</type>
+        <configuration>
+          <address>ian.ibbotson@k-int.com</address>
+        </configuration>
+      </notifier>
+    </notifiers>
+  </ciManagement>
+
+  <scm>
+    <connection>scm:svn:svn://developer.k-int.com/home/svn/repositories/jzkit/jzkit3/trunk</connection>
+    <developerConnection>scm:svn:svn://developer.k-int.com/home/svn/repositories/jzkit/jzkit3/trunk</developerConnection>
+  </scm>
+
+  <!--
+  <siteAddress>developer.k-int.com</siteAddress>
+  <siteDirectory>/home/developer.k-int.com/html/jzkit2_core</siteDirectory>
+
+  <distributionSite>developer.k-int.com</distributionSite>
+  <distributionDirectory>/home/developer.k-int.com/html/maven</distributionDirectory>
+
+
+  <distributionManagement>
+    <site>
+      <id>website</id>
+      <url>file://localhost/c:/mvnbook/repository/sites/proficio/reference/${project.version}</url>
+    </site>
+  </distributionManagement>
+  -->
+
+  <dependencies>
+    <dependency><groupId>org.jzkit</groupId><artifactId>jzkit_core</artifactId></dependency>
+    <dependency><groupId>org.jzkit</groupId><artifactId>jzkit_service</artifactId></dependency>
+    <dependency><groupId>org.jzkit</groupId><artifactId>jzkit_z3950_plugin</artifactId></dependency>
+  </dependencies>
+
+</project>

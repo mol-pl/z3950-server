@@ -1,0 +1,46 @@
+<project name="JZKit">
+<bannerLeft>
+<name>JZKit2</name>
+<href>http://developer.k-int.com/projects/jzkit2</href>
+</bannerLeft>
+<bannerRight>
+<name>JZKit</name>
+<src>http://www.k-int.com/images/k-intlogo.gif</src>
+</bannerRight>
+<skin>
+<groupId>org.apache.maven.skins</groupId>
+<artifactId>maven-default-skin</artifactId>
+<version>1.0</version>
+</skin>
+
+<version position="left"/>
+<publishDate format="dd MMM yyyy" position="navigation-bottom"/>
+
+<body>
+  <links></links>
+  <head>
+    <meta name="faq" content="jzkit"/>
+  </head>
+  <menu name="About">
+    <item name="License" href="/jzkit_license.html"/>
+  </menu>
+  <menu name="Projects">
+  </menu>
+  <menu name="Downloads">
+  </menu>
+  <menu name="Documentation">
+    <item name="API Javadocs" href="apidocs/"/>
+    <item name="Reference Manual" href="refdocs/"/>
+  </menu>
+  <menu name="Development">
+  </menu>
+  <menu name="Support">
+  </menu>
+  <menu name="Events">
+  </menu>
+  <menu name="Links">
+  </menu>
+  <menu ref="modules"/>
+  <menu ref="reports"/>
+</body>
+</project>

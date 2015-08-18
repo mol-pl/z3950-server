@@ -1,0 +1,36 @@
+/****** TABS CODE ******/
+body { background:#fff;	margin:0; padding:0; color:#000; font:x-small/1.5em Georgia,Serif; voice-family: "\"}\""; voice-family:inherit; font-size:small; }
+html>body {font-size:small;}
+#header { float: left; width: 100%; background: #ccc url("../images/bg.gif") repeat-x bottom; font-size:93%; line-height:normal; }
+#header ul { margin:0; padding:10px 10px 0; list-style:none; }
+#header li { float:left; background:url("../images/left.gif") no-repeat left top; margin:0; padding:0 0 0 9px; }
+#header a, #header b { float:left; display:block; background:url("../images/right.gif") no-repeat right top; padding:5px 15px 4px 6px; text-decoration:none; font-weight:bold; color:#666; }
+/* Commented Backslash Hack
+ hides rule from IE5-Mac \*/
+#header a, #header b {float:none;}
+/* End IE5-Mac hack */
+#header a:hover { color:#222; }
+#header #current { background-image:url("images/left_on.gif"); border-width:0; }
+#header #current a, #header #current b { background-image:url("../images/right_on.gif"); color:#333; padding-bottom:5px; }
+/****** END ******/
+
+/****** STYLES/POSITIONING ******/
+p { margin-left: 10px; }
+h1 { font-size: 1.8em;  }
+.code, .help { margin: 25px; font: small-caps 12px arial; border: 1px black solid; padding: 10px; padding-left: 32px; }
+.code { background: #eee url("../images/code.gif") no-repeat top left; }
+.help { background: #eee url("../images/help.gif") no-repeat top left; }
+#main { margin: 15px; }
+#main a:link, a:visited { text-decoration: none; }
+#main a:link:hover, a:visited:hover { text-decoration: underline; }
+#topheader { background: #ccc; width: 100%; }
+#topheader #title { height: 40px; display: block; background: url("../images/logo.gif") no-repeat top left; padding-left: 80px; padding-top: 10px; font-weight: bolder; font-size: 1.2em;  }
+#topheader #version { float: right; }
+/****** END ******/
+
+/****** SEARCH TREEVIEW ******/
+.tree { display: block; }
+.tree img { margin-left: 5px; margin-right: 5px;}	
+ul.inner li.yes { list-style-image: url("../images/yes.gif"); }
+ul.inner li.no { list-style-image: url("../images/no.gif"); }
+/****** END ******/

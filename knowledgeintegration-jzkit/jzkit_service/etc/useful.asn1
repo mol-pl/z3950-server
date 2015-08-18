@@ -1,0 +1,27 @@
+AsnUseful DEFINITIONS ::=
+BEGIN
+ObjectDescriptor ::= [UNIVERSAL 7] IMPLICIT OCTET STRING
+NumericString    ::= [UNIVERSAL 18] IMPLICIT OCTET STRING
+PrintableString  ::= [UNIVERSAL 19] IMPLICIT OCTET STRING
+TeletexString    ::= [UNIVERSAL 20] IMPLICIT OCTET STRING
+T61String        ::= [UNIVERSAL 20] IMPLICIT OCTET STRING
+VideotexString   ::= [UNIVERSAL 21] IMPLICIT OCTET STRING
+IA5String        ::= [UNIVERSAL 22] IMPLICIT OCTET STRING
+GraphicString    ::= [UNIVERSAL 25] IMPLICIT OCTET STRING
+VisibleString    ::= [UNIVERSAL 26] IMPLICIT OCTET STRING
+ISO646String     ::= [UNIVERSAL 26] IMPLICIT OCTET STRING
+GeneralString    ::= [UNIVERSAL 27] IMPLICIT OCTET STRING
+UTCTime          ::= [UNIVERSAL 23] IMPLICIT OCTET STRING
+GeneralizedTime  ::= [UNIVERSAL 24] IMPLICIT OCTET STRING
+EXTERNAL         ::= [UNIVERSAL 8] IMPLICIT SEQUENCE {
+        direct-reference      OBJECT IDENTIFIER OPTIONAL,
+        indirect-reference    INTEGER OPTIONAL,
+        data-value-descriptor ObjectDescriptor OPTIONAL,
+        encoding CHOICE
+        {
+                single-ASN1-type [0] ANY,  -- should be ANY 
+                octet-aligned    [1] IMPLICIT OCTET STRING,
+                arbitrary        [2] IMPLICIT BIT STRING
+        }
+}
+END  -- of ASN-USEFUL  type definitions

@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+ <globalConfiguration>
+  <parameter name="sendMultiRefs" value="true"/>
+  <parameter name="disablePrettyXML" value="true"/>
+  <parameter name="adminPassword" value="admin"/>
+  <parameter name="attachments.Directory" value="/usr/local/apache-tomcat-5.5.12/webapps/axis/WEB-INF/attachments"/>
+  <parameter name="dotNetSoapEncFix" value="true"/>
+  <parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <parameter name="sendXMLDeclaration" value="true"/>
+  <parameter name="sendXsiTypes" value="true"/>
+  <parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <requestFlow>
+   <handler type="java:org.apache.axis.handlers.JWSHandler">
+    <parameter name="scope" value="session"/>
+   </handler>
+   <handler type="java:org.apache.axis.handlers.JWSHandler">
+    <parameter name="scope" value="request"/>
+    <parameter name="extension" value=".jwr"/>
+   </handler>
+  </requestFlow>
+ </globalConfiguration>
+
+ <handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <requestFlow name="checks">
+  <handler type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+  <handler type="java:org.apache.axis.handlers.SimpleAuthorizationHandler"/>
+ </requestFlow>
+ <handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <service name="AdminService" provider="java:MSG">
+  <parameter name="allowedMethods" value="AdminService"/>
+  <parameter name="enableRemoteAdmin" value="false"/>
+  <parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <namespace>http://xml.apache.org/axis/wsdd/</namespace>
+ </service>
+ <service name="Version" provider="java:RPC">
+  <parameter name="allowedMethods" value="getVersion"/>
+  <parameter name="className" value="org.apache.axis.Version"/>
+ </service>
+
+  <service name="search/Suppliers" provider="java:RPC" style="document" use="literal">
+    <parameter name="org.jzkit.soap.landscape" value="Suppliers"/>
+    <parameter name="org.jzkit.soap.wsauthtype" value="REQ"/> <!-- NONE,REQ,OPT -->
+    <parameter name="scope" value="application"/>
+    <parameter name="wsdlTargetNamespace" value="http://www.loc.gov/zing/srw/srw-sample-service/"/>
+    <parameter name="wsdlServiceElement" value="SRWSampleService"/>
+    <parameter name="schemaQualified" 
+               value="http://www.loc.gov/zing/srw/,http://www.loc.gov/zing/srw/diagnostic/,http://www.loc.gov/zing/cql/xcql/"/>
+    <parameter name="wsdlServicePort" value="SRW"/>
+    <parameter name="className" value="org.jzkit.srw.JZKit2ServiceSRWImpl"/>
+    <parameter name="wsdlPortType" value="SRWPort"/>
+    <parameter name="typeMappingVersion" value="1.2"/>
+    <operation name="searchRetrieveOperation" 
+               qname="SearchRetrieveOperation" 
+               returnQName="retNS:searchRetrieveResponse" 
+               xmlns:retNS="http://www.loc.gov/zing/srw/" 
+               returnType="rtns:searchRetrieveResponseType" 
+               xmlns:rtns="http://www.loc.gov/zing/srw/" 
+               soapAction="" >
+      <parameter qname="pns:searchRetrieveRequest" 
+                 xmlns:pns="http://www.loc.gov/zing/srw/" 
+                 type="tns:searchRetrieveRequestType" 
+                 xmlns:tns="http://www.loc.gov/zing/srw/"/>
+      </operation>
+      <operation name="scanOperation" 
+                 qname="ScanOperation" 
+                 returnQName="retNS:scanResponse" 
+                 xmlns:retNS="http://www.loc.gov/zing/srw/" 
+                 returnType="rtns:scanResponseType" 
+                 xmlns:rtns="http://www.loc.gov/zing/srw/" 
+                 soapAction="" >
+        <parameter qname="pns:scanRequest" 
+                   xmlns:pns="http://www.loc.gov/zing/srw/" 
+                   type="tns:scanRequestType" 
+                   xmlns:tns="http://www.loc.gov/zing/srw/"/>
+      </operation>
+      <parameter name="allowedMethods" value="searchRetrieveOperation scanOperation"/>
+  </service>
+
+  <service name="search/Products" provider="java:RPC" style="document" use="literal">
+    <parameter name="org.jzkit.soap.landscape" value="Products"/>
+    <parameter name="scope" value="application"/>
+    <parameter name="wsdlTargetNamespace" value="http://www.loc.gov/zing/srw/srw-sample-service/"/>
+    <parameter name="wsdlServiceElement" value="SRWSampleService"/>
+    <parameter name="schemaQualified"
+               value="http://www.loc.gov/zing/srw/,http://www.loc.gov/zing/srw/diagnostic/,http://www.loc.gov/zing/cql/xcql/"/>
+    <parameter name="wsdlServicePort" value="SRW"/>
+    <parameter name="className" value="org.jzkit.srw.JZKit2ServiceSRWImpl"/>
+    <parameter name="wsdlPortType" value="SRWPort"/>
+    <parameter name="typeMappingVersion" value="1.2"/>
+    <operation name="searchRetrieveOperation"
+               qname="SearchRetrieveOperation"
+               returnQName="retNS:searchRetrieveResponse"
+               xmlns:retNS="http://www.loc.gov/zing/srw/"
+               returnType="rtns:searchRetrieveResponseType"
+               xmlns:rtns="http://www.loc.gov/zing/srw/"
+               soapAction="" >
+      <parameter qname="pns:searchRetrieveRequest"
+                 xmlns:pns="http://www.loc.gov/zing/srw/"
+                 type="tns:searchRetrieveRequestType"
+                 xmlns:tns="http://www.loc.gov/zing/srw/"/>
+      </operation>
+      <operation name="scanOperation"
+                 qname="ScanOperation"
+                 returnQName="retNS:scanResponse"
+                 xmlns:retNS="http://www.loc.gov/zing/srw/"
+                 returnType="rtns:scanResponseType"
+                 xmlns:rtns="http://www.loc.gov/zing/srw/"
+                 soapAction="" >
+        <parameter qname="pns:scanRequest"
+                   xmlns:pns="http://www.loc.gov/zing/srw/"
+                   type="tns:scanRequestType"
+                   xmlns:tns="http://www.loc.gov/zing/srw/"/>
+      </operation>
+      <parameter name="allowedMethods" value="searchRetrieveOperation scanOperation"/>
+  </service>
+
+  <service name="search/Vocabs" provider="java:RPC" style="document" use="literal">
+    <parameter name="org.jzkit.soap.landscape" value="Vocabs"/>
+    <parameter name="scope" value="application"/>
+    <parameter name="wsdlTargetNamespace" value="http://www.loc.gov/zing/srw/srw-sample-service/"/>
+    <parameter name="wsdlServiceElement" value="SRWSampleService"/>
+    <parameter name="schemaQualified"
+               value="http://www.loc.gov/zing/srw/,http://www.loc.gov/zing/srw/diagnostic/,http://www.loc.gov/zing/cql/xcql/"/>
+    <parameter name="wsdlServicePort" value="SRW"/>
+    <parameter name="className" value="org.jzkit.srw.JZKit2ServiceSRWImpl"/>
+    <parameter name="wsdlPortType" value="SRWPort"/>
+    <parameter name="typeMappingVersion" value="1.2"/>
+    <operation name="searchRetrieveOperation"
+               qname="SearchRetrieveOperation"
+               returnQName="retNS:searchRetrieveResponse"
+               xmlns:retNS="http://www.loc.gov/zing/srw/"
+               returnType="rtns:searchRetrieveResponseType"
+               xmlns:rtns="http://www.loc.gov/zing/srw/"
+               soapAction="" >
+      <parameter qname="pns:searchRetrieveRequest"
+                 xmlns:pns="http://www.loc.gov/zing/srw/"
+                 type="tns:searchRetrieveRequestType"
+                 xmlns:tns="http://www.loc.gov/zing/srw/"/>
+      </operation>
+      <operation name="scanOperation"
+                 qname="ScanOperation"
+                 returnQName="retNS:scanResponse"
+                 xmlns:retNS="http://www.loc.gov/zing/srw/"
+                 returnType="rtns:scanResponseType"
+                 xmlns:rtns="http://www.loc.gov/zing/srw/"
+                 soapAction="" >
+        <parameter qname="pns:scanRequest"
+                   xmlns:pns="http://www.loc.gov/zing/srw/"
+                   type="tns:scanRequestType"
+                   xmlns:tns="http://www.loc.gov/zing/srw/"/>
+      </operation>
+      <parameter name="allowedMethods" value="searchRetrieveOperation scanOperation"/>
+  </service>
+
+  <service name="ExplainSOAP" provider="java:RPC" style="document" use="literal">
+    <parameter name="scope" value="application"/>
+    <parameter name="wsdlTargetNamespace" value="http://www.loc.gov/zing/srw/srw-sample-service/"/>
+    <parameter name="wsdlServiceElement" value="SRWSampleService"/>
+    <parameter name="schemaQualified" 
+               value="http://www.loc.gov/zing/srw/,http://www.loc.gov/zing/srw/diagnostic/,http://www.loc.gov/zing/cql/xcql/"/>
+    <parameter name="wsdlServicePort" value="ExplainSOAP"/>
+    <parameter name="className" value="org.jzkit.search.provider.zing.srw.bindings.ExplainSoapBindingImpl"/>
+    <parameter name="wsdlPortType" value="ExplainPort"/>
+    <parameter name="typeMappingVersion" value="1.2"/>
+    <operation name="explainOperation" 
+               qname="ExplainOperation" 
+               returnQName="retNS:explainResponse" 
+               xmlns:retNS="http://www.loc.gov/zing/srw/" 
+               returnType="rtns:explainResponseType" 
+               xmlns:rtns="http://www.loc.gov/zing/srw/" 
+               soapAction="" >
+      <parameter qname="pns:explainRequest" 
+                 xmlns:pns="http://www.loc.gov/zing/srw/" 
+                 type="tns:explainRequestType" 
+                 xmlns:tns="http://www.loc.gov/zing/srw/"/>
+    </operation>
+    <parameter name="allowedMethods" value="explainOperation"/>
+  </service>
+
+  <service name="CurriculumOnlineProviderServiceSoap" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="scope" value="application"/>
+      <parameter name="wsdlTargetNamespace" value="http://dfes3.parity.net"/>
+      <parameter name="wsdlServiceElement" value="CurriculumOnlineProviderService"/>
+      <parameter name="schemaUnqualified" value="http://dfes3.parity.net,http://dfes3.parity.net/encodedTypes"/>
+      <parameter name="wsdlServicePort" value="CurriculumOnlineProviderServiceSoap"/>
+      <parameter name="className" value="com.k_int.colws.provider.legacy.impl.CurriculumOnlineProviderServiceSoapImpl"/>
+      <parameter name="wsdlPortType" value="CurriculumOnlineProviderServiceSoap"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="uploadRecords" 
+                 xmlns:operNS="http://dfes3.parity.net" 
+                 qname="operNS:uploadRecords" 
+                 returnQName="return" 
+                 xmlns:rtns="http://dfes3.parity.net/encodedTypes" 
+                 returnType="rtns:ArrayOfString" 
+                 xmlns:tns2="http://www.w3.org/2001/XMLSchema" 
+                 returnItemType="tns2:string" 
+                 soapAction="uploadRecords" >
+        <parameter qname="records" type="tns:ArrayOfString" xmlns:tns="http://dfes3.parity.net/encodedTypes"/>
+      </operation>
+      <operation name="validate" 
+                 xmlns:operNS="http://dfes3.parity.net" 
+                 qname="operNS:validate" 
+                 returnQName="return" 
+                 returnType="rtns:ArrayOfString" 
+                 xmlns:rtns="http://dfes3.parity.net/encodedTypes" 
+                 returnItemType="tns2:string" 
+                 xmlns:tns2="http://www.w3.org/2001/XMLSchema" 
+                 soapAction="validate" >
+        <parameter qname="records" type="tns:ArrayOfString" xmlns:tns="http://dfes3.parity.net/encodedTypes"/>
+      </operation>
+      <operation name="requestIds" 
+                 qname="operNS:requestIds" 
+                 xmlns:operNS="http://dfes3.parity.net" 
+                 returnQName="return" 
+                 returnType="rtns:ArrayOfString" 
+                 xmlns:rtns="http://dfes3.parity.net/encodedTypes" 
+                 returnItemType="tns2:string" 
+                 xmlns:tns2="http://www.w3.org/2001/XMLSchema" 
+                 soapAction="requestIds" >
+        <parameter qname="records" type="tns:ArrayOfString" xmlns:tns="http://dfes3.parity.net/encodedTypes"/>
+      </operation>
+      <operation name="addDistributorReference" 
+                 qname="operNS:addDistributorReference" 
+                 xmlns:operNS="http://dfes3.parity.net" 
+                 returnQName="return" 
+                 returnType="rtns:ArrayOfString" 
+                 xmlns:rtns="http://dfes3.parity.net/encodedTypes" 
+                 returnItemType="tns2:string" 
+                 xmlns:tns2="http://www.w3.org/2001/XMLSchema" 
+                 soapAction="addDistributorReference" >
+        <parameter qname="records" type="tns:ArrayOfString" xmlns:tns="http://dfes3.parity.net/encodedTypes"/>
+      </operation>
+      <operation name="removeDistributorReference" 
+                 qname="operNS:removeDistributorReference" 
+                 xmlns:operNS="http://dfes3.parity.net" 
+                 returnQName="return" 
+                 returnType="rtns:ArrayOfString" 
+                 xmlns:rtns="http://dfes3.parity.net/encodedTypes" 
+                 returnItemType="tns2:string" 
+                 xmlns:tns2="http://www.w3.org/2001/XMLSchema" 
+                 soapAction="removeDistributorReference" >
+        <parameter qname="records" type="tns:ArrayOfString" xmlns:tns="http://dfes3.parity.net/encodedTypes"/>
+      </operation>
+      <operation name="retrieve" qname="operNS:retrieve" 
+                 xmlns:operNS="http://dfes3.parity.net" 
+                 returnQName="return" 
+                 returnType="rtns:ArrayOfString" 
+                 xmlns:rtns="http://dfes3.parity.net/encodedTypes" 
+                 returnItemType="tns2:string" 
+                 xmlns:tns2="http://www.w3.org/2001/XMLSchema" 
+                 soapAction="retrieve" >
+        <parameter qname="records" type="tns:ArrayOfString" xmlns:tns="http://dfes3.parity.net/encodedTypes"/>
+      </operation>
+      <operation name="evaluation" 
+                 qname="operNS:evaluation" 
+                 xmlns:operNS="http://dfes3.parity.net" 
+                 returnQName="return" 
+                 returnType="rtns:ArrayOfString" 
+                 xmlns:rtns="http://dfes3.parity.net/encodedTypes" 
+                 returnItemType="tns2:string" 
+                 xmlns:tns2="http://www.w3.org/2001/XMLSchema" 
+                 soapAction="evaluation" >
+        <parameter qname="records" type="tns:ArrayOfString" xmlns:tns="http://dfes3.parity.net/encodedTypes"/>
+      </operation>
+      <parameter name="allowedMethods" 
+                 value="evaluation uploadRecords retrieve removeDistributorReference requestIds validate addDistributorReference"/>
+
+  </service>
+
+
+  <!-- Global type mappings -->
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/cql/xcql/"
+        qname="ns:tripleType"
+        type="java:org.jzkit.search.provider.zing.cql.xcql.TripleType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/cql/xcql/"
+        qname="ns:operandType"
+        type="java:org.jzkit.search.provider.zing.cql.xcql.OperandType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/srw/"
+        qname="ns:scanResponseType"
+        type="java:org.jzkit.search.provider.zing.ScanResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/cql/xcql/"
+        qname="ns:booleanType"
+        type="java:org.jzkit.search.provider.zing.cql.xcql.BooleanType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/cql/xcql/"
+        qname="ns:prefixType"
+        type="java:org.jzkit.search.provider.zing.cql.xcql.PrefixType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/srw/diagnostic/"
+        qname="ns:diagnosticType"
+        type="java:org.jzkit.search.provider.zing.diagnostic.DiagnosticType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/srw/"
+        qname="ns:requestType"
+        type="java:org.jzkit.search.provider.zing.RequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/srw/"
+        qname="ns:recordType"
+        type="java:org.jzkit.search.provider.zing.RecordType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/srw/"
+        qname="ns:xmlFragment"
+        type="java:org.jzkit.search.provider.zing.XmlFragment"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.loc.gov/zing/cql/xcql/"
+        qname="ns:modifiersType"
+        type="java:org.jzkit.search.provider.zing.cql.xcql.ModifierType[]"
+        innerType="cmp-ns:modifier" xmlns:cmp-ns="http://www.loc.gov/zing/cql/xcql/"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/srw/"
+        qname="ns:searchRetrieveResponseType"
+        type="java:org.jzkit.search.provider.zing.SearchRetrieveResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.loc.gov/zing/srw/"
+        qname="ns:diagnosticsType"
+        type="java:org.jzkit.search.provider.zing.diagnostic.DiagnosticType[]"
+        innerType="cmp-ns:diagnostic" xmlns:cmp-ns="http://www.loc.gov/zing/srw/diagnostic/"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.loc.gov/zing/srw/"
+        qname="ns:termsType"
+        type="java:org.jzkit.search.provider.zing.TermType[]"
+        innerType="cmp-ns:term" xmlns:cmp-ns="http://www.loc.gov/zing/srw/"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/srw/"
+        qname="ns:termType"
+        type="java:org.jzkit.search.provider.zing.TermType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/srw/"
+        qname="ns:>termType>whereInList"
+        type="java:org.jzkit.search.provider.zing.TermTypeWhereInList"
+        serializer="org.apache.axis.encoding.ser.EnumSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.EnumDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/srw/"
+        qname="ns:echoedScanRequestType"
+        type="java:org.jzkit.search.provider.zing.EchoedScanRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/srw/"
+        qname="ns:responseType"
+        type="java:org.jzkit.search.provider.zing.ResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/cql/xcql/"
+        qname="ns:modifierType"
+        type="java:org.jzkit.search.provider.zing.cql.xcql.ModifierType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/srw/"
+        qname="ns:extraDataType"
+        type="java:org.jzkit.search.provider.zing.ExtraDataType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/srw/"
+        qname="ns:searchRetrieveRequestType"
+        type="java:org.jzkit.search.provider.zing.SearchRetrieveRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/srw/"
+        qname="ns:scanRequestType"
+        type="java:org.jzkit.search.provider.zing.ScanRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/srw/"
+        qname="ns:echoedSearchRetrieveRequestType"
+        type="java:org.jzkit.search.provider.zing.EchoedSearchRetrieveRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/cql/xcql/"
+        qname="ns:relationType"
+        type="java:org.jzkit.search.provider.zing.cql.xcql.RelationType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/srw/"
+        qname="ns:sortKeyType"
+        type="java:org.jzkit.search.provider.zing.SortKeyType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.loc.gov/zing/srw/"
+        qname="ns:xSortKeysType"
+        type="java:org.jzkit.search.provider.zing.SortKeyType[]"
+        innerType="cmp-ns:sortKey" xmlns:cmp-ns="http://www.loc.gov/zing/srw/"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/srw/"
+        qname="ns:explainResponseType"
+        type="java:org.jzkit.search.provider.zing.ExplainResponseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.loc.gov/zing/cql/xcql/"
+        qname="ns:prefixesType"
+        type="java:org.jzkit.search.provider.zing.cql.xcql.PrefixType[]"
+        innerType="cmp-ns:prefix" xmlns:cmp-ns="http://www.loc.gov/zing/cql/xcql/"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/srw/"
+        qname="ns:explainRequestType"
+        type="java:org.jzkit.search.provider.zing.ExplainRequestType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/srw/"
+        qname="ns:stringOrXmlFragment"
+        type="java:org.jzkit.search.provider.zing.StringOrXmlFragment"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://www.loc.gov/zing/srw/"
+        qname="ns:recordsType"
+        type="java:org.jzkit.search.provider.zing.RecordType[]"
+        innerType="cmp-ns:record" xmlns:cmp-ns="http://www.loc.gov/zing/srw/"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://www.loc.gov/zing/cql/xcql/"
+        qname="ns:searchClauseType"
+        type="java:org.jzkit.search.provider.zing.cql.xcql.SearchClauseType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+
+     <!-- Used to be http://www.w3.org/2001/XMLSchema -->
+     <arrayMapping xmlns:ns="http://dfes3.parity.net/encodedTypes"
+                   qname="ns:ArrayOfString"
+                   type="java:java.lang.String[]"
+                   innerType="cmp-ns:string" xmlns:cmp-ns="http://schemas.xmlsoap.org/soap/encoding/"
+                   encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+
+     <typeMapping xmlns:ns="http://dfes3.parity.net"
+                  qname="ns:headerIn_xsd_string"
+                  type="java:uk.gov.curriculumonline.providerws.iface.HeaderIn_xsd_string"
+                  serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+                  deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+                  encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"       /> 
+
+ <transport name="http">
+  <requestFlow>
+   <handler type="URLMapper"/>
+   <handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </requestFlow>
+  <parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+ </transport>
+
+ <transport name="local">
+  <responseFlow>
+   <handler type="LocalResponder"/>
+  </responseFlow>
+ </transport>
+
+
+
+
+
+
+</deployment>

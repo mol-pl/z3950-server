@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!--DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration//EN" "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd"-->
+
+<tiles-definitions>
+
+  <definition name="site.home.page" path="/WEB-INF/jsp/site.jsp">
+    <put name="active_content"      value="site.home.panel" />
+  </definition>
+
+  <definition name="user.home.page" path="/WEB-INF/jsp/site.jsp">
+    <put name="active_content"      value="user.home.panel" />
+  </definition>
+
+  <definition name="site.advanced_search.page" path="/WEB-INF/jsp/site.jsp">
+    <put name="active_content"      value="site.advanced_search.panel" />
+  </definition>
+
+  <definition name="site.news.page" path="/WEB-INF/jsp/site.jsp">
+    <put name="active_content"      value="site.news.panel" />
+  </definition>
+
+  <definition name="site.about.page" path="/WEB-INF/jsp/site.jsp">
+    <put name="active_content"      value="site.about.panel" />
+  </definition>
+
+  <definition name="site.login.page" path="/WEB-INF/jsp/site.jsp">
+    <put name="active_content"      value="site.login.panel" />
+  </definition>
+
+  <definition name="site.badpassword.page" path="/WEB-INF/jsp/site.jsp">
+    <put name="active_content"      value="site.badpassword.panel" />
+  </definition>
+
+  <definition name="site.register.page" path="/WEB-INF/jsp/site.jsp">
+    <put name="active_content"      value="site.register.panel" />
+  </definition>
+
+  <definition name="site.help.page" path="/WEB-INF/jsp/site.jsp">
+    <put name="active_content"      value="site.help.panel" />
+  </definition>
+
+  <definition name="site.sitemap.page" path="/WEB-INF/jsp/site.jsp">
+    <put name="active_content"      value="site.sitemap.panel" />
+  </definition>
+
+  <definition name="site.accessibility.page" path="/WEB-INF/jsp/site.jsp">
+    <put name="active_content"      value="site.accessibility.panel" />
+  </definition>
+
+  <definition name="site.contact.page" path="/WEB-INF/jsp/site.jsp">
+    <put name="active_content"      value="site.contact.panel" />
+  </definition>
+
+  <definition name="site.search_help.page" path="/WEB-INF/jsp/site.jsp">
+    <put name="active_content"      value="site.search_help.panel" />
+  </definition>
+
+  <definition name="admin.home.page" path="/WEB-INF/jsp/site.jsp">
+    <put name="active_content"      value="admin.home.panel" />
+  </definition>
+
+  <definition name="admin.addsource.page" path="/WEB-INF/jsp/site.jsp">
+    <put name="active_content"      value="admin.addsource.panel" />
+  </definition>
+
+  <definition name="admin.editsource.page" path="/WEB-INF/jsp/site.jsp">
+    <put name="active_content"      value="admin.editsource.panel" />
+  </definition>
+
+
+
+  <definition name="site.home.panel" path="/WEB-INF/jsp/home.jsp"/>
+  <definition name="site.advanced_search.panel" path="/WEB-INF/jsp/advanced_search.jsp"/>
+  <definition name="site.news.panel" path="/WEB-INF/jsp/news.jsp"/>
+  <definition name="site.about.panel" path="/WEB-INF/jsp/about.jsp"/>
+  <definition name="site.login.panel" path="/WEB-INF/jsp/login.jsp"/>
+  <definition name="site.badpassword.panel" path="/WEB-INF/jsp/badpassword.jsp"/>
+  <definition name="site.register.panel" path="/WEB-INF/jsp/register.jsp"/>
+  <definition name="site.help.panel" path="/WEB-INF/jsp/help.jsp"/>
+  <definition name="site.sitemap.panel" path="/WEB-INF/jsp/sitemap.jsp"/>
+  <definition name="site.accessibility.panel" path="/WEB-INF/jsp/accessibility.jsp"/>
+  <definition name="site.contact.panel" path="/WEB-INF/jsp/contact.jsp"/>
+  <definition name="site.search_help.panel" path="/WEB-INF/jsp/search_help.jsp"/>
+
+  <definition name="user.home.panel" path="/WEB-INF/jsp/user/home.jsp"/>
+
+  <definition name="admin.home.panel" path="/WEB-INF/jsp/admin/admin_home.jsp"/>
+  <definition name="admin.addsource.panel" path="/WEB-INF/jsp/admin/add_source.jsp"/>
+  <definition name="admin.editsource.panel" path="/WEB-INF/jsp/admin/edit_source.jsp"/>
+
+  <definition name="sru.dataset.explain.page" path="/WEB-INF/jsp/sru/dataset_explain.jsp"/>
+  <definition name="sru.dataset.searchRetrieve.page" path="/WEB-INF/jsp/sru/dataset_sr.jsp"/>
+  <definition name="sru.landscape.explain.page" path="/WEB-INF/jsp/sru/landscape_explain.jsp"/>
+  <definition name="sru.landscape.searchRetrieve.page" path="/WEB-INF/jsp/sru/landscape_sr.jsp"/>
+
+</tiles-definitions>

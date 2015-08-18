@@ -1,0 +1,6 @@
+<profile code="srw_dc" profileName="SRW DC Application Profile">
+  <Or>
+      <Regexp type="AccessPoint">cql\..*</Regexp>
+      <Regexp type="AccessPoint">dc\..*</Regexp>
+  </Or>
+</profile>

@@ -1,0 +1,645 @@
+21-May-2004 15:55:36 org.jzkit.configuration.provider.db.DbConfigurationProvider <init>
+INFO: New DbConfigurationProvider
+21-May-2004 15:55:36 org.jzkit.configuration.provider.db.DbConfigurationProvider <init>
+INFO: Starting DB Configuration Provider
+log4j:WARN No appenders could be found for logger (net.sf.hibernate.cfg.Environment).
+log4j:WARN Please initialize the log4j system properly.
+21-May-2004 15:55:40 org.jzkit.service.test.TestService main
+INFO: Using default landscape Bib
+21-May-2004 15:55:40 org.jzkit.service.test.TestService main
+INFO: Adding default landscape collection Library of Congress, Books Collection
+21-May-2004 15:55:40 org.jzkit.service.test.TestService main
+INFO: Adding default landscape collection Social Science Information Gateway
+21-May-2004 15:55:40 org.jzkit.service.test.TestService main
+INFO: Adding default landscape collection University Of Aberdeen
+21-May-2004 15:55:40 org.jzkit.service.test.TestService main
+INFO: Adding default landscape collection Simon Frazer University
+Search: [LC/BOOKS, sosig, AberdeenUni, sfu]
+Processing search......
+21-May-2004 15:55:40 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet <init>
+FINE: new SimpleAggregatingResultSet
+21-May-2004 15:55:40 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet$ResultSetThread <init>
+FINE: new ResultSetThread
+21-May-2004 15:55:40 org.jzkit.search.impl.SearchSessionImpl search
+FINE: plan: org.jzkit.search.util.QueryModel.PrefixString.PrefixString@ea48be collections:[LC/BOOKS, sosig, AberdeenUni, sfu]
+21-May-2004 15:55:40 org.jzkit.search.impl.SearchSessionImpl search
+FINE: Looking up collection LC/BOOKS
+21-May-2004 15:55:40 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet$ResultSetThread run
+FINE: Start rs loop.. target_hwm=-1, current=-1
+21-May-2004 15:55:40 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet$ResultSetThread run
+FINE: Aggregate thread sleeping
+21-May-2004 15:55:40 org.jzkit.search.impl.SearchSessionImpl search
+FINE: That collection is available via the following repositories:
+21-May-2004 15:55:40 org.jzkit.search.impl.SearchSessionImpl search
+FINE: LC/BOOKS repository is LC/LIVE
+21-May-2004 15:55:40 org.jzkit.search.impl.SearchSessionImpl search
+FINE: Lookup or Create searchable for LC/LIVE:bath
+21-May-2004 15:55:40 org.jzkit.search.impl.SearchSessionImpl search
+FINE: new searchable required
+21-May-2004 15:55:40 org.jzkit.search.provider.z3950.Z3950Origin <init>
+FINE: Z3950Origin::Z3950Origin() (1 active)
+21-May-2004 15:55:40 org.jzkit.search.impl.SearchSessionImpl search
+FINE: Got a repository :)
+21-May-2004 15:55:40 org.jzkit.search.impl.SearchSessionImpl search
+FINE: Processing profile bath
+21-May-2004 15:55:40 org.jzkit.search.util.Profile.ProfileServiceImpl makeConformant
+INFO: makeConformant to profile bath
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl visit
+FINE: Rewrite: visit instance of org.jzkit.search.util.QueryModel.Internal.InternalModelRootNode
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl visit
+FINE: Rewrite: visit instance of org.jzkit.search.util.QueryModel.Internal.InternalModelNamespaceNode
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl visit
+FINE: child default attrset will be bib-1
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl visit
+FINE: Rewrite: visit instance of org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl rewriteUntilValid
+FINE: rewriteUntilValid.... def ns = bib-1
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl rewriteUntilValid
+FINE: Node is conformant to profile.... return it
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: Adapted query : IMRoot ( Namespace [bib-1] ( null Single Term : Science attrs : {AccessPoint=1.4} annotations: {} )  ) 
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+INFO: Query for repository LC/LIVE:bath will be IMRoot ( Namespace [bib-1] ( null Single Term : Science attrs : {AccessPoint=1.4} annotations: {} )  ) 
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: Adding voyager to collection names to search at LC/LIVE:bath
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: Looking up collection sosig
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: That collection is available via the following repositories:
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: sosig repository is sosig.ac.uk
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: Lookup or Create searchable for sosig.ac.uk:bath
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: new searchable required
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin <init>
+FINE: Z3950Origin::Z3950Origin() (2 active)
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: Got a repository :)
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: Processing profile bath
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl makeConformant
+INFO: makeConformant to profile bath
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl visit
+FINE: Rewrite: visit instance of org.jzkit.search.util.QueryModel.Internal.InternalModelRootNode
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl visit
+FINE: Rewrite: visit instance of org.jzkit.search.util.QueryModel.Internal.InternalModelNamespaceNode
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl visit
+FINE: child default attrset will be bib-1
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl visit
+FINE: Rewrite: visit instance of org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl rewriteUntilValid
+FINE: rewriteUntilValid.... def ns = bib-1
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl rewriteUntilValid
+FINE: Node is conformant to profile.... return it
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: Adapted query : IMRoot ( Namespace [bib-1] ( null Single Term : Science attrs : {AccessPoint=1.4} annotations: {} )  ) 
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+INFO: Query for repository sosig.ac.uk:bath will be IMRoot ( Namespace [bib-1] ( null Single Term : Science attrs : {AccessPoint=1.4} annotations: {} )  ) 
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: Adding sosig to collection names to search at sosig.ac.uk:bath
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: Looking up collection AberdeenUni
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: That collection is available via the following repositories:
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: AberdeenUni repository is library.abdn.ac.uk
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: Lookup or Create searchable for library.abdn.ac.uk:bath
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: new searchable required
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin <init>
+FINE: Z3950Origin::Z3950Origin() (3 active)
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: Got a repository :)
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: Processing profile bath
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl makeConformant
+INFO: makeConformant to profile bath
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl visit
+FINE: Rewrite: visit instance of org.jzkit.search.util.QueryModel.Internal.InternalModelRootNode
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl visit
+FINE: Rewrite: visit instance of org.jzkit.search.util.QueryModel.Internal.InternalModelNamespaceNode
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl visit
+FINE: child default attrset will be bib-1
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl visit
+FINE: Rewrite: visit instance of org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl rewriteUntilValid
+FINE: rewriteUntilValid.... def ns = bib-1
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl rewriteUntilValid
+FINE: Node is conformant to profile.... return it
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: Adapted query : IMRoot ( Namespace [bib-1] ( null Single Term : Science attrs : {AccessPoint=1.4} annotations: {} )  ) 
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+INFO: Query for repository library.abdn.ac.uk:bath will be IMRoot ( Namespace [bib-1] ( null Single Term : Science attrs : {AccessPoint=1.4} annotations: {} )  ) 
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: Adding dynix to collection names to search at library.abdn.ac.uk:bath
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: Looking up collection sfu
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: That collection is available via the following repositories:
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: sfu repository is troy.lib.sfu.ca
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: Lookup or Create searchable for troy.lib.sfu.ca:bath
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: new searchable required
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin <init>
+FINE: Z3950Origin::Z3950Origin() (4 active)
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: Got a repository :)
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: Processing profile bath
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl makeConformant
+INFO: makeConformant to profile bath
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl visit
+FINE: Rewrite: visit instance of org.jzkit.search.util.QueryModel.Internal.InternalModelRootNode
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl visit
+FINE: Rewrite: visit instance of org.jzkit.search.util.QueryModel.Internal.InternalModelNamespaceNode
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl visit
+FINE: child default attrset will be bib-1
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl visit
+FINE: Rewrite: visit instance of org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl rewriteUntilValid
+FINE: rewriteUntilValid.... def ns = bib-1
+21-May-2004 15:55:41 org.jzkit.search.util.Profile.ProfileServiceImpl rewriteUntilValid
+FINE: Node is conformant to profile.... return it
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: Adapted query : IMRoot ( Namespace [bib-1] ( null Single Term : Science attrs : {AccessPoint=1.4} annotations: {} )  ) 
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+INFO: Query for repository troy.lib.sfu.ca:bath will be IMRoot ( Namespace [bib-1] ( null Single Term : Science attrs : {AccessPoint=1.4} annotations: {} )  ) 
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: Adding INNOPAC to collection names to search at troy.lib.sfu.ca:bath
+21-May-2004 15:55:41 org.jzkit.search.impl.SearchSessionImpl search
+FINE: HSS Task contains 4 child tasks
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin evaluate
+FINE: Z3950Origin::evaluate(...,observers)
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin evaluate
+FINE: evaluating the search task....
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin evaluateTask
+FINE: Z3950Origin::evaluateTask(...,observers)
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin evaluateTask
+FINE: Send query
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin evaluateTask
+FINE: Association is not yet active, queue the search for later
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin checkConnection
+FINE: Assoc is null.... Create new association
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin checkConnection
+FINE: Create association and message adapter
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin checkConnection
+FINE: Calling ZEndpoint.start()
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin evaluateTask
+FINE: timeout < 0.
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet addSource
+FINE: addSource 27255889
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.ReadAheadEnumeration <init>
+FINE: ReadAheadEumeration::ReadAheadEumeration(source,10,default_record_syntax:null:default_element_set_name)
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: update.....
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: Got event 1005
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: From result set 27255889
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: UPDATE: Record count, status=32, local count=-1, rs count=0
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: Result set status is idle or failure
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: After update, 0 records available
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet$ResultSetThread run
+FINE: Aggregate thread woken
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet$ResultSetThread run
+FINE: Start rs loop.. target_hwm=-1, current=-1
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet$ResultSetThread run
+FINE: Aggregate thread sleeping
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin evaluate
+FINE: Z3950Origin::evaluate(...,observers)
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin evaluate
+FINE: evaluating the search task....
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin evaluateTask
+FINE: Z3950Origin::evaluateTask(...,observers)
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin evaluateTask
+FINE: Send query
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin evaluateTask
+FINE: Association is not yet active, queue the search for later
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin checkConnection
+FINE: Assoc is null.... Create new association
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin checkConnection
+FINE: Create association and message adapter
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin checkConnection
+FINE: Calling ZEndpoint.start()
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin evaluateTask
+FINE: timeout < 0.
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet addSource
+FINE: addSource 9105104
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.ReadAheadEnumeration <init>
+FINE: ReadAheadEumeration::ReadAheadEumeration(source,10,default_record_syntax:null:default_element_set_name)
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: update.....
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: Got event 1005
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: From result set 9105104
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: UPDATE: Record count, status=32, local count=-1, rs count=0
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: Result set status is idle or failure
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: After update, 0 records available
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet$ResultSetThread run
+FINE: Aggregate thread woken
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet$ResultSetThread run
+FINE: Start rs loop.. target_hwm=-1, current=-1
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet$ResultSetThread run
+FINE: Aggregate thread sleeping
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin evaluate
+FINE: Z3950Origin::evaluate(...,observers)
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin evaluate
+FINE: evaluating the search task....
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin evaluateTask
+FINE: Z3950Origin::evaluateTask(...,observers)
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin evaluateTask
+FINE: Send query
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin evaluateTask
+FINE: Association is not yet active, queue the search for later
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin checkConnection
+FINE: Assoc is null.... Create new association
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin checkConnection
+FINE: Create association and message adapter
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin checkConnection
+FINE: Calling ZEndpoint.start()
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin evaluateTask
+FINE: timeout < 0.
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet addSource
+FINE: addSource 32598031
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.ReadAheadEnumeration <init>
+FINE: ReadAheadEumeration::ReadAheadEumeration(source,10,default_record_syntax:null:default_element_set_name)
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: update.....
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: Got event 1005
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: From result set 32598031
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: UPDATE: Record count, status=32, local count=-1, rs count=0
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: Result set status is idle or failure
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: After update, 0 records available
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet$ResultSetThread run
+FINE: Aggregate thread woken
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet$ResultSetThread run
+FINE: Start rs loop.. target_hwm=-1, current=-1
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet$ResultSetThread run
+FINE: Aggregate thread sleeping
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin evaluate
+FINE: Z3950Origin::evaluate(...,observers)
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin evaluate
+FINE: evaluating the search task....
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin evaluateTask
+FINE: Z3950Origin::evaluateTask(...,observers)
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin evaluateTask
+FINE: Send query
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin evaluateTask
+FINE: Association is not yet active, queue the search for later
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin checkConnection
+FINE: Assoc is null.... Create new association
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin checkConnection
+FINE: Create association and message adapter
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin checkConnection
+FINE: Calling ZEndpoint.start()
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin evaluateTask
+FINE: timeout < 0.
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet addSource
+FINE: addSource 17226426
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.ReadAheadEnumeration <init>
+FINE: ReadAheadEumeration::ReadAheadEumeration(source,10,default_record_syntax:null:default_element_set_name)
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: update.....
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: Got event 1005
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: From result set 17226426
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: UPDATE: Record count, status=32, local count=-1, rs count=0
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: Result set status is idle or failure
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: After update, 0 records available
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet$ResultSetThread run
+FINE: Aggregate thread woken
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet$ResultSetThread run
+FINE: Start rs loop.. target_hwm=-1, current=-1
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet$ResultSetThread run
+FINE: Aggregate thread sleeping
+
+
+
+
+
+* * * * * * * * All Done * * * * * * * * *
+
+
+
+
+
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE: Processing init response from Social Sciences Gateway Server
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE:   Incoming refid is NULL!
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE:   Implementation ID : 81
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE:   Implementation Name : GFS/YAZ / Zebra Information Server
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE:   Implementation Version : YAZ 1.9.2 / Zebra 1.3.4
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE: Target supports named result sets
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE: Target claims scan support
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE: Target claims support for concurrent operations
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE: Sending outstanding query, task=9105104
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin sendQuery
+FINE: Collections: [sosig]
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin sendQuery
+FINE: -> Sending search request with ID: 9105104:srch recsyn is xml
+21-May-2004 15:55:41 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder getDefaultConversionRules
+INFO: getDefaultConversionRules
+21-May-2004 15:55:41 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder RootNodeToZRPNStructure
+INFO: RootNodeToZRPNStructure
+21-May-2004 15:55:41 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO: Visit node type=class org.jzkit.search.util.QueryModel.Internal.InternalModelRootNode
+21-May-2004 15:55:41 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO: Processing root
+21-May-2004 15:55:41 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO: Visit node type=class org.jzkit.search.util.QueryModel.Internal.InternalModelNamespaceNode
+21-May-2004 15:55:41 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO: Processing namespace
+21-May-2004 15:55:41 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO: Visit node type=class org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode
+21-May-2004 15:55:41 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO: Processing attrplustermnode
+21-May-2004 15:55:41 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder AttrPlusTermNode2apt_type
+INFO: Convert aptn
+21-May-2004 15:55:41 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder AttrPlusTermNode2apt_type
+INFO: Lookup attribute AccessPoint
+21-May-2004 15:55:41 org.jzkit.z3950.QueryModel.PropsBasedInternalToType1ConversionRules convert
+INFO: Trying to look up null.1.4
+21-May-2004 15:55:41 org.jzkit.z3950.QueryModel.PropsBasedInternalToType1ConversionRules convert
+INFO: Returning lookup str
+21-May-2004 15:55:41 org.jzkit.z3950.QueryModel.Z3950AttrTriple <init>
+INFO: new Z3950AttrTriple(null.1.4)
+21-May-2004 15:55:41 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO:  visitNode returning org.jzkit.z3950.gen.v3.Z39_50_APDU_1995.RPNStructure_type@13d9460
+21-May-2004 15:55:41 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO:  visitNode returning org.jzkit.z3950.gen.v3.Z39_50_APDU_1995.RPNStructure_type@13d9460
+21-May-2004 15:55:41 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO:  visitNode returning org.jzkit.z3950.gen.v3.Z39_50_APDU_1995.RPNStructure_type@13d9460
+21-May-2004 15:55:41 org.jzkit.z3950.QueryModel.Type1QueryModel <init>
+INFO: Type1QueryModel::Type1QueryModel(org.jzkit.z3950.gen.v3.Z39_50_APDU_1995.RPNQuery_type@1d840cd)
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin sendQuery
+FINE: Result of transformation is of class class org.jzkit.z3950.QueryModel.Type1QueryModel = org.jzkit.z3950.QueryModel.Type1QueryModel@867fc9
+21-May-2004 15:55:41 org.jzkit.z3950.QueryModel.Type1QueryModel toASNType
+INFO: toASNType()
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin incomingSearchResponse
+FINE: Broken REFID, working around by manually setting the last Search_refid used
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin incomingSearchResponse
+FINE: Search Response - Reference ID : 9105104:srch
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin incomingSearchResponse
+FINE:   Search Result : true
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin incomingSearchResponse
+FINE:   Result Count : 278
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin incomingSearchResponse
+FINE:   Num Records Returned : 0
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin incomingSearchResponse
+FINE:   Next RS position : 1
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: update.....
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: After update, 0 records available
+21-May-2004 15:55:41 org.jzkit.search.provider.z3950.Z3950Origin incomingSearchResponse
+FINE: No sorting instructions in task. All complete!
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: update.....
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: Got event 1011
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: From result set 9105104
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: UPDATE: Record count, status=4, local count=-1, rs count=278
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: After update, 278 records available
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet$ResultSetThread run
+FINE: Aggregate thread woken
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet$ResultSetThread run
+FINE: Start rs loop.. target_hwm=-1, current=-1
+21-May-2004 15:55:41 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet$ResultSetThread run
+FINE: Aggregate thread sleeping
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE: Processing init response from Simon Fraser Uni z39.50 server
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE:   Incoming refid is NULL!
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE:   Implementation ID : Z39.50-III
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE:   Implementation Name : z39-innopac
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE:   Implementation Version : 1
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE: Target does not support named result sets
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE: Target does not support concurrent operations
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE: Sending outstanding query, task=32598031
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin sendQuery
+FINE: Collections: [INNOPAC]
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin sendQuery
+FINE: -> Sending search request with ID: 32598031:srch recsyn is usmarc
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder getDefaultConversionRules
+INFO: getDefaultConversionRules
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder RootNodeToZRPNStructure
+INFO: RootNodeToZRPNStructure
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO: Visit node type=class org.jzkit.search.util.QueryModel.Internal.InternalModelRootNode
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO: Processing root
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO: Visit node type=class org.jzkit.search.util.QueryModel.Internal.InternalModelNamespaceNode
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO: Processing namespace
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO: Visit node type=class org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO: Processing attrplustermnode
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder AttrPlusTermNode2apt_type
+INFO: Convert aptn
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder AttrPlusTermNode2apt_type
+INFO: Lookup attribute AccessPoint
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.PropsBasedInternalToType1ConversionRules convert
+INFO: Trying to look up null.1.4
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.PropsBasedInternalToType1ConversionRules convert
+INFO: Returning lookup str
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Z3950AttrTriple <init>
+INFO: new Z3950AttrTriple(null.1.4)
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO:  visitNode returning org.jzkit.z3950.gen.v3.Z39_50_APDU_1995.RPNStructure_type@17e4dee
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO:  visitNode returning org.jzkit.z3950.gen.v3.Z39_50_APDU_1995.RPNStructure_type@17e4dee
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO:  visitNode returning org.jzkit.z3950.gen.v3.Z39_50_APDU_1995.RPNStructure_type@17e4dee
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModel <init>
+INFO: Type1QueryModel::Type1QueryModel(org.jzkit.z3950.gen.v3.Z39_50_APDU_1995.RPNQuery_type@12e7c6a)
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin sendQuery
+FINE: Result of transformation is of class class org.jzkit.z3950.QueryModel.Type1QueryModel = org.jzkit.z3950.QueryModel.Type1QueryModel@ea5461
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModel toASNType
+INFO: toASNType()
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin incomingSearchResponse
+FINE: Broken REFID, working around by manually setting the last Search_refid used
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin incomingSearchResponse
+FINE: Search Response - Reference ID : 32598031:srch
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin incomingSearchResponse
+FINE:   Search Result : true
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin incomingSearchResponse
+FINE:   Result Count : 2025
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin incomingSearchResponse
+FINE:   Num Records Returned : 0
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin incomingSearchResponse
+FINE:   Next RS position : 0
+21-May-2004 15:55:42 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: update.....
+21-May-2004 15:55:42 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: After update, 278 records available
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin incomingSearchResponse
+FINE: No sorting instructions in task. All complete!
+21-May-2004 15:55:42 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: update.....
+21-May-2004 15:55:42 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: Got event 1011
+21-May-2004 15:55:42 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: From result set 32598031
+21-May-2004 15:55:42 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: UPDATE: Record count, status=4, local count=-1, rs count=2025
+21-May-2004 15:55:42 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: After update, 2303 records available
+21-May-2004 15:55:42 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet$ResultSetThread run
+FINE: Aggregate thread woken
+21-May-2004 15:55:42 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet$ResultSetThread run
+FINE: Start rs loop.. target_hwm=-1, current=-1
+21-May-2004 15:55:42 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet$ResultSetThread run
+FINE: Aggregate thread sleeping
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE: Processing init response from Aberdeen Uni
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE:   Incoming refid is NULL!
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE:   Implementation ID : null
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE:   Implementation Name : Dynix
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE:   Implementation Version : 2.0
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE: Target does not support named result sets
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE: Target does not support concurrent operations
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin incomingInitResponse
+FINE: Sending outstanding query, task=17226426
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin sendQuery
+FINE: Collections: [dynix]
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin sendQuery
+FINE: -> Sending search request with ID: 17226426:srch recsyn is usmarc
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder getDefaultConversionRules
+INFO: getDefaultConversionRules
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder RootNodeToZRPNStructure
+INFO: RootNodeToZRPNStructure
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO: Visit node type=class org.jzkit.search.util.QueryModel.Internal.InternalModelRootNode
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO: Processing root
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO: Visit node type=class org.jzkit.search.util.QueryModel.Internal.InternalModelNamespaceNode
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO: Processing namespace
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO: Visit node type=class org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO: Processing attrplustermnode
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder AttrPlusTermNode2apt_type
+INFO: Convert aptn
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder AttrPlusTermNode2apt_type
+INFO: Lookup attribute AccessPoint
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.PropsBasedInternalToType1ConversionRules convert
+INFO: Trying to look up null.1.4
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.PropsBasedInternalToType1ConversionRules convert
+INFO: Returning lookup str
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Z3950AttrTriple <init>
+INFO: new Z3950AttrTriple(null.1.4)
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO:  visitNode returning org.jzkit.z3950.gen.v3.Z39_50_APDU_1995.RPNStructure_type@1a7f9dc
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO:  visitNode returning org.jzkit.z3950.gen.v3.Z39_50_APDU_1995.RPNStructure_type@1a7f9dc
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModelBuilder visitNode
+INFO:  visitNode returning org.jzkit.z3950.gen.v3.Z39_50_APDU_1995.RPNStructure_type@1a7f9dc
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModel <init>
+INFO: Type1QueryModel::Type1QueryModel(org.jzkit.z3950.gen.v3.Z39_50_APDU_1995.RPNQuery_type@104e28b)
+21-May-2004 15:55:42 org.jzkit.search.provider.z3950.Z3950Origin sendQuery
+FINE: Result of transformation is of class class org.jzkit.z3950.QueryModel.Type1QueryModel = org.jzkit.z3950.QueryModel.Type1QueryModel@1b54362
+21-May-2004 15:55:42 org.jzkit.z3950.QueryModel.Type1QueryModel toASNType
+INFO: toASNType()
+21-May-2004 15:55:44 org.jzkit.search.provider.z3950.Z3950Origin incomingSearchResponse
+FINE: Broken REFID, working around by manually setting the last Search_refid used
+21-May-2004 15:55:44 org.jzkit.search.provider.z3950.Z3950Origin incomingSearchResponse
+FINE: Search Response - Reference ID : 17226426:srch
+21-May-2004 15:55:44 org.jzkit.search.provider.z3950.Z3950Origin incomingSearchResponse
+FINE:   Search Result : true
+21-May-2004 15:55:44 org.jzkit.search.provider.z3950.Z3950Origin incomingSearchResponse
+FINE:   Result Count : 9592
+21-May-2004 15:55:44 org.jzkit.search.provider.z3950.Z3950Origin incomingSearchResponse
+FINE:   Num Records Returned : 0
+21-May-2004 15:55:44 org.jzkit.search.provider.z3950.Z3950Origin incomingSearchResponse
+FINE:   Next RS position : 1
+21-May-2004 15:55:44 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: update.....
+21-May-2004 15:55:44 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: After update, 2303 records available
+21-May-2004 15:55:44 org.jzkit.search.provider.z3950.Z3950Origin incomingSearchResponse
+FINE: No sorting instructions in task. All complete!
+21-May-2004 15:55:44 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: update.....
+21-May-2004 15:55:44 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: Got event 1011
+21-May-2004 15:55:44 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: From result set 17226426
+21-May-2004 15:55:44 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: UPDATE: Record count, status=4, local count=-1, rs count=9592
+21-May-2004 15:55:44 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet update
+FINE: After update, 11895 records available
+21-May-2004 15:55:44 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet$ResultSetThread run
+FINE: Aggregate thread woken
+21-May-2004 15:55:44 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet$ResultSetThread run
+FINE: Start rs loop.. target_hwm=-1, current=-1
+21-May-2004 15:55:44 org.jzkit.search.util.ResultSet.SimpleAggregatingResultSet$ResultSetThread run
+FINE: Aggregate thread sleeping
+Processing.....
+21-May-2004 15:55:49 org.jzkit.search.util.ResultSet.ReadAheadEnumeration <init>
+FINE: ReadAheadEumeration::ReadAheadEumeration(source,10,default_record_syntax:null:default_element_set_name)
+21-May-2004 15:55:49 org.jzkit.search.util.ResultSet.ReadAheadEnumeration hasMoreElements
+FINE: ReadAheadEumeration::hasMoreElements()
+Getting next record.....
+21-May-2004 15:55:49 org.jzkit.search.util.ResultSet.ReadAheadEnumeration nextElement
+FINE: ReadAheadEumeration::nextElement()
+21-May-2004 15:55:49 org.jzkit.search.util.ResultSet.ReadAheadEnumeration nextElement
+FINE: ReadAheadEumeration::nextElement() - check cache
+21-May-2004 15:55:49 org.jzkit.search.util.ResultSet.ReadAheadEnumeration checkCache
+FINE: Checking cache in ReadAheadEnumeration, current_element=0 cache.size()=0 total=11895
+21-May-2004 15:55:49 org.jzkit.search.util.ResultSet.ReadAheadEnumeration checkCache
+FINE: There are still items outstanding....
+21-May-2004 15:55:49 org.jzkit.search.util.ResultSet.ReadAheadEnumeration requestRecords
+FINE: ReadAheadEumeration::fetchRecords()
+21-May-2004 15:55:49 org.jzkit.search.util.ResultSet.ReadAheadEnumeration requestRecords
+FINE: Requesting 10 records, current=0 max=11895 next to request=1
+21-May-2004 15:55:49 org.jzkit.search.util.ResultSet.ReadAheadEnumeration nextElement
+FINE: ReadAheadEumeration::nextElement() - cache empty.. waiting
+21-May-2004 15:55:49 org.jzkit.search.util.ResultSet.ReadAheadEnumeration waitForNextRecord
+FINE: Waiting for up to 100000 ms for next record

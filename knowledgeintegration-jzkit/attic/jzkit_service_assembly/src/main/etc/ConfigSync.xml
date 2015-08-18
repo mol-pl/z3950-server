@@ -1,0 +1,5 @@
+<ConfigSync>
+  <include>http://www.k-int.com/jzkit/3/ApplicationProfiles.xml</include>
+  <include>http://www.k-int.com/jzkit/3/QueryCrosswalks.xml</include>
+  <include>file:./RecordSchemaCrosswalks</include>
+</ConfigSync>

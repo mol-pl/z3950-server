@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+  <bean id="placeholderConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="location"><value>TestContext.properties</value></property>
+  </bean>
+
+  <!-- ========================= GENERAL DEFINITIONS ========================= -->
+
+  <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+    <property name="basename"><value>messages</value></property>
+  </bean>
+
+
+  <!-- ========================= PERSISTENCE DEFINITIONS ========================= -->
+
+  <!-- ========================= BUSINESS DEFINITIONS ========================= -->
+
+</beans>

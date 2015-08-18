@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.jzkit</groupId>
+  <artifactId>jzkit_parent</artifactId>
+  <packaging>pom</packaging>
+  <name>JZKit Package</name>
+  <version>3.0.1-SNAPSHOT</version>
+  <url>http://www.k-int.com</url>
+
+  <ciManagement>
+    <system>continuum</system>
+    <url>http://developer.k-int.com:8081/continuum</url>
+    <notifiers>
+      <notifier>
+        <configuration>
+          <address>ian.ibbotson@k-int.com</address>
+        </configuration>
+      </notifier>
+    </notifiers>
+  </ciManagement>
+
+  <mailingLists>
+    <mailingList>
+      <name>JZKit Announcements List</name>
+      <post>jzkit-announce@k-int.com</post>
+    </mailingList>
+  </mailingLists>
+
+  <developers>
+    <developer>
+      <id>ibbo</id>
+      <name>Ian Ibbotson</name>
+      <email>ian.ibbotson@k-int.com</email>
+      <organization>Knowledge Integration Ltd</organization>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:svn:svn://developer.k-int.com/home/svn/repositories/jzkit/jzkit3/trunk</connection>
+    <developerConnection>scm:svn:svn://developer.k-int.com/home/svn/repositories/jzkit/jzkit3/trunk</developerConnection>
+  </scm>
+
+  <build>
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <scriptSourceDirectory>src/main/scripts</scriptSourceDirectory>
+    <testSourceDirectory>src/test/java</testSourceDirectory>
+    <outputDirectory>target/classes</outputDirectory>
+    <testOutputDirectory>target/test-classes</testOutputDirectory>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
+    <testResources>
+      <testResource>
+        <directory>src/test/resources</directory>
+      </testResource>
+    </testResources>
+    <directory>target</directory>
+    <finalName>${artifactId}-${version}</finalName>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-release-plugin</artifactId>
+        <configuration>
+          <tagBase>svn://developer.k-int.com/home/svn/repositories/jzkit/jzkit3/tags</tagBase>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.doxia</groupId>
+        <artifactId>doxia-maven-plugin</artifactId>
+        <!--
+        <version>doxia-beta-1</version>
+        Don't do this in an assembly project - it tries to run for all subprojects too
+        <executions>
+          <execution>
+            <phase>pre-site</phase>
+            <goals>
+              <goal>render-books</goal>
+            </goals>
+          </execution>
+        </executions>
+        -->
+        <configuration>
+          <books>
+            <book>
+              <directory>src/books/refman</directory>
+              <descriptor>src/books/refman-book.xml</descriptor>
+              <formats>
+                <!--
+                <format> <id>latex</id> </format>
+                <format> <id>xdoc</id> </format>
+                <format> <id>rtf</id> </format>
+                <format> <id>pdf</id> </format>
+                -->
+                <format> <id>xhtml</id> </format>
+              </formats>
+            </book>
+          </books>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <modules>
+    <module>jzkit_core</module>
+<!--    <module>jzkit_srw_plugin</module>-->
+    <module>jzkit_z3950_plugin</module>
+    <!--<module>jzkit_srw_server</module>-->
+<!--    <module>jzkit_solr_plugin</module>-->
+    <module>jzkit_service</module>
+    <module>jzkit_z3950_server</module>
+<!--    <module>jzkit_sdk</module>-->
+  </modules>
+
+  <repositories>
+    <repository>
+      <id>k-int</id>
+      <name>k-int maven2 repository</name>
+      <url>http://nexus.k-int.com/content/repositories/releases</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>
+    <!-- Seem to need this to get the site plugin to download the default site -->
+    <repository>
+      <id>m2snapshot</id>
+      <name>maven2 snapshots repository</name>
+      <url>http://people.apache.org/repo/m2-snapshot-repository/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <!-- Shared/Common project dependencies -->
+  <!--
+  <pluginRepositories>
+    <pluginRepository>
+      <id>central</id>
+      <name>Maven Plugin Repository</name>
+      <url>http://www.ibiblio.org/maven2</url>
+      <layout>default</layout>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </pluginRepository>
+  </pluginRepositories>
+  -->
+
+  <dependencies>
+    <dependency><groupId>org.springframework</groupId><artifactId>spring</artifactId><version>2.5</version><scope>compile</scope></dependency>
+    <dependency> <groupId>junit</groupId> <artifactId>junit</artifactId> <version>3.8.1</version> <scope>test</scope> </dependency>
+    <dependency> <groupId>cql-java</groupId> <artifactId>cql-java</artifactId> <version>0.0.7</version> </dependency>
+    <dependency> <groupId>commons-collections</groupId> <artifactId>commons-collections</artifactId> <version>3.1</version> </dependency>
+    <dependency> <groupId>commons-digester</groupId> <artifactId>commons-digester</artifactId> <version>1.5</version> </dependency>
+    <dependency> <groupId>org.jzkit</groupId> <artifactId>a2j</artifactId> <version>2.0.4</version> </dependency>
+    <dependency> <groupId>jdbm</groupId> <artifactId>jdbm</artifactId> <version>1.0</version> </dependency>
+    <dependency> <groupId>log4j</groupId> <artifactId>log4j</artifactId> <version>1.2.13</version> </dependency>
+    <dependency> <groupId>commons-beanutils</groupId> <artifactId>commons-beanutils</artifactId> <version>1.7.0</version> </dependency>
+    <dependency> <groupId>xerces</groupId> <artifactId>xercesImpl</artifactId> <version>2.8.1</version> </dependency>
+    <dependency> <groupId>xerces</groupId> <artifactId>xmlParserAPIs</artifactId> <version>2.6.2</version> </dependency>
+    <dependency> <groupId>xalan</groupId> <artifactId>xalan</artifactId> <version>2.7.0</version> </dependency>
+    <dependency> <groupId>commons-fileupload</groupId> <artifactId>commons-fileupload</artifactId> <version>1.1</version> </dependency>
+    <dependency> <groupId>commons-logging</groupId> <artifactId>commons-logging</artifactId> <version>1.1</version> </dependency>
+    <dependency> <groupId>commons-discovery</groupId> <artifactId>commons-discovery</artifactId> <version>0.2</version> </dependency>
+    <dependency> <groupId>marc4j</groupId> <artifactId>marc4j</artifactId> <version>2.3.1</version> </dependency>
+    <dependency> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-antrun-plugin</artifactId> <version>1.0</version> </dependency>
+  </dependencies>
+
+  <reporting>
+    <outputDirectory>target/site</outputDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <!--
+        <configuration>
+          <configLocation>config/maven_checks.xml</configLocation>
+        </configuration>
+        -->
+      </plugin>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <links>
+            <link>http://java.sun.com/j2se/1.5/docs/api</link>
+          </links>
+          <aggregate>true</aggregate>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-pmd-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+      </plugin>
+      <!--
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>taglist-maven-plugin</artifactId>
+        <configuration>
+          <tags>TODO,@todo,FIXME</tags>
+        </configuration>
+      </plugin>
+      -->
+    </plugins>
+  </reporting>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.jzkit</groupId>
+        <artifactId>jzkit_core</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jzkit</groupId>
+        <artifactId>jzkit_srw_plugin</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jzkit</groupId>
+        <artifactId>jzkit_z3950_plugin</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jzkit</groupId>
+        <artifactId>jzkit_z3950_server</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jzkit</groupId>
+        <artifactId>jzkit2_jdbc_plugin</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jzkit</groupId>
+        <artifactId>jzkit_solr_plugin</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jzkit</groupId>
+        <artifactId>jzkit_service</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jzkit</groupId>
+        <artifactId>jzkit_srw_server</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jzkit</groupId>
+        <artifactId>jzkit_service</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <distributionManagement>
+    <repository>
+      <id>k-int-releases</id>
+      <name>Knowledge Intergation Maven2 Repository</name>
+      <url>dav:http://nexus.k-int.com/content/repositories/releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>k-int-snapshots</id>
+      <name>Knowledge Intergation Maven2 Snapshot Repository</name>
+      <url>dav:http://nexus.k-int.com/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+</project>

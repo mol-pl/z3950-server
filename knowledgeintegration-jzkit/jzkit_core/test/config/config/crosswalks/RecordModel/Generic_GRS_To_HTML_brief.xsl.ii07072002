@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+ 
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:include href="character_replacement.xsl"/>
+<xsl:param name="hitno">1</xsl:param>
+<xsl:param name="bp">1</xsl:param>
+<xsl:param name="debug">no</xsl:param>
+<xsl:param name="source">no</xsl:param>
+<xsl:output method="html"/>
+
+<xsl:template match="/">
+    <xsl:apply-templates select="grs" />
+</xsl:template>
+
+<xsl:template match="grs">
+    <xsl:apply-templates select="GRSTag[@type=3 and @value='EAD']" />
+</xsl:template>
+
+<xsl:template match="GRSTag[@type=3 and @value='EAD']">
+<tr>
+    <td valign="top" class="documentnames">
+        <a href="processing_summary.jsp?hitno={$hitno}&amp;bp={$bp}">
+        <xsl:choose>
+            <xsl:when test="./GRSTag[@type=3 and @value='ARCHDESC']/GRSTag[@type=3 and @value='DID']/GRSTag[@type=3 and @value='UNITTITLE']/GRSTag[@type=2 and @value='19']">
+                <xsl:apply-templates select="./GRSTag[@type=3 and @value='ARCHDESC']/GRSTag[@type=3 and @value='DID']/GRSTag[@type=3 and @value='UNITTITLE']/GRSTag[@type=2 and @value='19']"/>
+            </xsl:when>
+            <xsl:when test="/GRSTag[@type=3 and @value='EAD']/GRSTag[@type=3 and @value='EADHEADER']/GRSTag[@type=3 and @value='FILEDESC']/GRSTag[@type=3 and @value='TITLESTMT']/GRSTag[@type=3 and @value='TITLEPROPER']/GRSTag[@type=2 and @value='19']"><xsl:apply-templates select="/GRSTag[@type=3 and @value='EAD']/GRSTag[@type=3 and @value='EADHEADER']/GRSTag[@type=3 and @value='FILEDESC']/GRSTag[@type=3 and @value='TITLESTMT']/GRSTag[@type=3 and @value='TITLEPROPER']/GRSTag[@type=2 and @value='19']"/></xsl:when>
+            <xsl:otherwise>
+                No title
+            </xsl:otherwise>
+        </xsl:choose>
+        </a>
+    </td>
+    <td valign="top" class="documentnames">
+        <xsl:choose>
+            <xsl:when test="$source='Z3950/ANG/Default'"> 
+                <img src="images/source_a2a.gif" border="0" alt="Source: A2A" name="A2A"/>
+                <!--A2A--> 
+            </xsl:when>
+            <xsl:otherwise> 
+                <img src="images/source_hub.gif" border="0" alt="Source: Hub" name="Hub"/>
+                <!--Hub-->
+            </xsl:otherwise>
+        </xsl:choose>
+    </td>
+    <td valign="top" nowrap="true">
+        <xsl:apply-templates select="./GRSTag[@type=3 and @value='ARCHDESC']/GRSTag[@type=3 and @value='DID']/GRSTag[@type=3 and @value='UNITDATE']/GRSTag[@type=2 and @value='19']"/>
+    </td>
+  <td valign="top">
+      <a href="processing_summary.jsp?hitno={$hitno}&amp;bp={$bp}"><img src="images/sr_recordsummary.gif" border="0" alt="Document Summary" onMouseOver="document['sum1'].src='images/sr_recordsummary_on.gif'" onMouseOut="document['sum1'].src='images/sr_recordsummary.gif'" name="sum1"/></a>
+      <a href="processing_complete.jsp?hitno={$hitno}&amp;bp={$bp}"> <img src="images/sr_recordfull.gif" border="0" alt="Complete Document"  onMouseOver="document['ful1'].src='images/sr_recordfull_on.gif'" onMouseOut="document['ful1'].src='images/sr_recordfull.gif'" name="ful1"/></a>&#160;
+  </td>
+</tr>
+</xsl:template>
+
+
+<xsl:template match="GRSTag[@type=3 and @value='ARCHDESC']/GRSTag[@type=3 and @value='DID']/GRSTag[@type=3 and @value='UNITTITLE']/GRSTag[@type=2 and @value='19']">
+    <xsl:variable name="the_text" select="." /> 
+    
+    <xsl:call-template name="replace_entity_refs">
+        <xsl:with-param name="the_text" select="$the_text"/>
+    </xsl:call-template>
+        
+</xsl:template>
+
+
+<xsl:template match="/GRSTag[@type=3 and @value='EAD']/GRSTag[@type=3 and @value='EADHEADER']/GRSTag[@type=3 and @value='FILEDESC']/GRSTag[@type=3 and @value='TITLESTMT']/GRSTag[@type=3 and @value='TITLEPROPER']/GRSTag[@type=2 and @value='19']">
+    <xsl:variable name="the_text" select="." />
+    
+    <xsl:call-template name="replace_entity_refs">
+        <xsl:with-param name="the_text" select="$the_text"/>
+    </xsl:call-template>
+   
+</xsl:template>
+
+
+</xsl:stylesheet>

@@ -1,0 +1,47 @@
+<html>
+<head>
+</head>
+<body>
+<h1>JZkit Developer Reference Documentation - Z3950 Server</h1>
+<h2>Introduction</h2>
+<p>
+The JZkit Z3950 server component is a pluggable z39.50 server endpoint with a defined <a href="../apidocs/org/jzkit/z3950/server/Z3950NonBlockingBackend.html">backend API</a> which can be implemented to expose a custom search service as a Z39.50 protocol endpoint. 
+The z39.50 server module also includes a backend implementation which binds the Z3950 server interface to the <a href="service.html#meta">jzkit meta search service</a>. The recommended way to expose a new datasource via Z39.50 is to <a href="jzkit_search_plugins.html">create a new JZKit search plugin</a> implementing the <a href="../apidocs/org/jzkit/search/provider/iface/Searchable.html">Searchable</a> interface. 
+New backend sources can then be simply configured using the standard ZJKit configuration and cross searched along side any
+other defined services. Even if your z39.50 service is only exposing a single backend datasource it's still worth going via the meta search
+service to take advantage of the cacheing, reporting and query / result record transformation services available to the meta search service implementation.
+</p>
+
+<h2>Configuration</h2>
+<p>
+The Z39.50 server is configured in an applications <a href="http://www.springframework.org">Spring</a> Context definition as follows:
+<code>
+<pre>
+  &lt;!-- The standard Z3950 Server Front End -->
+  &lt;bean id="Z3950Server" class="org.jzkit.z3950.server.Z3950Listener" init-method="run">
+    &lt;property name="port">&lt;value>2100&lt;/value>&lt;/property>
+    &lt;property name="backendBeanName">&lt;value>JZKitZ3950Adapter&lt;/value>&lt;/property>
+  &lt;/bean>
+</pre>
+</code>
+<p>
+The backendBeanName property must reference a bean implementing the
+<a href="../apidocs/org/jzkit/z3950/server/Z3950NonBlockingBackend.html">backend API</a>.
+To use the default jzkit meta-search backend, use the followinf bean definition:
+</p>
+<code><pre>
+  &lt;!-- A bridge between the Z3950 frontend server and JZKit backend statless search service -->
+  &lt;bean id="JZKitZ3950Adapter" class="org.jzkit.service.z3950server.JZKitBackend">
+  &lt;/bean>
+</pre></code>
+<p>
+In order to use the meta-search plugin you will need to correctly configure meta-search service as defined <a href="service.html#meta">here</a>.
+</p>
+
+<h2>Z39.50 server sequences within Metasearch service backend</h2>
+<p>
+Once listening to the z3950 socket new sessions are accepted and handed off to running instances of <a href="../apidocs/org/jzkit/z3950/server/ZServerAssociation.html">ZServer Association</a> which extends Thread and listens on the socket input stream. Once established, sessions yield waiting for incoming request messages. On incoming search request the Spring Application context is searched for the backend bean named on the Z3950Server. In this case, an instance of <a href="../apidocs/org/jzkit/service/z3950server/JZKitBackend.html">org.jzkit.service.z3950server.JZKitBackend</a>. The backend search method is called with a BackendSearchDTO containing all the required search parameters. JZKitBackend searches the application context for the registered <a href="../apidocs/org/jzkit/search/impl/StatelessQueryService.html">StatelessQueryService</a> and invokes it's getResultsPageFor method. The search landscape is formed from a simple list of database names and this is passed off to a CachedSearchSession object responsible for parsing and executing the query. The subsequent sequence information can be found here: <a href="service.html#meta">JZKit Meta Search Service</a>.
+</p>
+
+</body>
+</html>

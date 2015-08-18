@@ -1,0 +1,4 @@
+The unit tests require the presence of a local MySQL database with
+account k-int, password k-int database INODE and the correct tables
+RESOURCE, CATEGORY_POSTING and CATEGORY. These can be imported from
+the dump file in this directory.

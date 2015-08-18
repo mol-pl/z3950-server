@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!--
+  CHANGEGLOG:
+    II 07/08/2004 - Now uses variables instead of hard coded property names. You will find the 
+                    values for these variables in the .properties file in the same directory.
+-->
+
+<beans>
+
+  <bean id="placeholderConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="location"><value>jzkit2.properties</value></property>
+  </bean>
+  <!-- <bean id="placeholderConfig" class="org.springframework.web.context.support.ServletContextPropertyPlaceholderConfigurer"> -->
+
+  <!-- ========================= GENERAL DEFINITIONS ========================= -->
+
+  <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+    <property name="basename"><value>messages</value></property>
+  </bean>
+
+  <bean id="GazeteerBean" class="com.k_int.ia.gazeteer.GazeteerImpl">
+  </bean>
+
+
+  <!-- ========================= PERSISTENCE DEFINITIONS ========================= -->
+
+  <bean id="COLWSDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+    <property name="driverClassName"><value>${org.jzkit.jdbcsample.jdbc_driver}</value></property>
+    <property name="url"><value>${org.jzkit.jdbcsample.url}</value></property>
+    <property name="username"><value>${org.jzkit.jdbcsample.username}</value></property>
+    <property name="password"><value>${org.jzkit.jdbcsample.password}</value></property>
+    <property name="defaultAutoCommit"><value>${org.jzkit.jdbcsample.default_auto_commit}</value></property>
+    <!-- See http://jakarta.apache.org/commons/dbcp/apidocs/org/apache/commons/dbcp/BasicDataSource.html -->
+    <property name="maxActive"><value>20</value></property>
+    <property name="maxIdle"><value>3</value></property>
+    <property name="testOnBorrow"><value>true</value></property>
+    <property name="testOnReturn"><value>true</value></property>
+    <property name="testWhileIdle"><value>true</value></property>
+    <property name="validationQuery"><value>Select "test"</value></property>
+  </bean>
+
+  <!-- <bean id="iNodeHibernateInterceptor" class="com.k_int.ia.util.COLWSHibernateInterceptor"/> -->
+
+  <bean id="COLWSSessionFactory" class="org.springframework.orm.hibernate.LocalSessionFactoryBean">
+    <property name="dataSource"><ref local="COLWSDataSource"/></property>
+    <property name="mappingResources">
+      <list>
+        <!-- KI - iNode object -->
+        <!-- JZKit objects -->
+        <!--
+        <value>org/jzkit/configuration/api/RecordTransformerTypeInformationDBO.hbm.xml</value>
+        <value>org/jzkit/search/util/Profile/CrosswalkDBO.hbm.xml</value>
+        <value>org/jzkit/ServiceDirectory/CollectionInstanceDBO.hbm.xml</value>
+        <value>org/jzkit/ServiceDirectory/CollectionDescriptionDBO.hbm.xml</value>
+        <value>org/jzkit/ServiceDirectory/CollectionInfoTypeDBO.hbm.xml</value>
+        <value>org/jzkit/configuration/api/RecordMappingInformationDBO.hbm.xml</value>
+        <value>org/jzkit/configuration/api/AppSettingDBO.hbm.xml</value>
+        <value>org/jzkit/search/provider/iface/SearchServiceDescriptionDBO.hbm.xml</value>
+        <value>org/jzkit/search/util/Profile/RuleNodeDBO.hbm.xml</value>
+        <value>org/jzkit/search/util/Profile/ProfileDBO.hbm.xml</value>
+        <value>org/jzkit/search/util/Profile/AttrMappingDBO.hbm.xml</value>
+        -->
+      </list>
+    </property>
+    <property name="hibernateProperties">
+      <props>
+        <prop key="hibernate.dialect">${org.jzkit.jdbcsample.hiberate_dialect}</prop>
+        <prop key="hibernate.query.substitutions">${org.jzkit.jdbcsample.query_substitutions}</prop>
+        <prop key="hibernate.show_sql">${org.jzkit.jdbcsample.show_sql}</prop>
+        <prop key="hibernate.hbm2ddl.auto">update</prop>
+      </props>
+    </property>
+    <!--
+    <property name="entityInterceptor">
+      <ref bean="iNodeHibernateInterceptor"/>
+    </property>
+    -->
+  </bean>
+
+  <bean id="JZKitTransactionManager" class="org.springframework.orm.hibernate.HibernateTransactionManager">
+    <property name="sessionFactory"><ref local="COLWSSessionFactory"/></property>
+  </bean>
+
+
+  <!-- ========================= BUSINESS DEFINITIONS ========================= -->
+
+  <bean id="OIDRegister" class="org.jzkit.a2j.codec.util.OIDRegister">
+    <constructor-arg index="0"><value>/a2j.properties</value></constructor-arg>
+  </bean>
+
+  <bean id="JZKitConfig" class="org.jzkit.configuration.provider.xml.XMLImpl" singleton="false">
+    <constructor-arg index="0"><value>/JZKitConfig.xml</value></constructor-arg>
+  </bean>
+
+  <!--
+    Use this one when storing config in a database.....
+  <bean id="JZKitConfig" class="org.jzkit.configuration.provider.db.DbConfigurationProvider" singleton="false">
+    <constructor-arg index="0"><ref bean="COLWSSessionFactory"/></constructor-arg>
+  </bean>
+  -->
+  <bean id="ProfileService" class="org.jzkit.search.util.Profile.ProfileServiceImpl">
+  </bean>
+
+  <bean id="TransformationService" class="org.jzkit.search.util.RecordConversion.FragmentTransformerService">
+    <constructor-arg index="0"><ref bean="JZKitConfig"/></constructor-arg>
+  </bean>
+
+  <bean id="iNodeDataDictionary"
+        class="com.k_int.sql.data_dictionary.InMemoryConfig"
+        factory-method="getConfig">
+    <constructor-arg><value>/iNodeDataDictionary.xml</value></constructor-arg>
+  </bean>
+                                                                                                                                          
+  <bean id="iNodeAccessPoints"
+        class="com.k_int.sql.qm_to_sql.QMToSQLInMemoryConfig"
+        factory-method="getConfig">
+    <constructor-arg><value>/iNodeAccessPoints.xml</value></constructor-arg>
+  </bean>
+                                                                                                                                          
+  <bean id="iNodeTemplates"
+        class="org.jzkit.search.provider.jdbc.RecordTemplatesInMemoryConfig"
+        factory-method="getConfig">
+    <constructor-arg><value>/iNodeTemplates.xml</value></constructor-arg>
+  </bean>
+
+</beans>

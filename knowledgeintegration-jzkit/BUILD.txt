@@ -1,0 +1,26 @@
+Jzkit3 is a maven2 project. You will need to download and install maven2 from http://maven.apache.org/ before continuing.
+
+The project has a unit test dependency on a local mysql database called kiunittest which must
+be accessible locally by username k-int password k-int.
+
+Having installed MySQL, the following commands can be used to configure the test database
+
+create database kiunittest default charset 'UTF8';
+grant all on kiunittest.* to 'k-int'@'localhost' identified by 'k-int';
+grant all on kiunittest.* to 'k-int'@'localhost.localdomain' identified by 'k-int';
+grant all on kiunittest.* to 'k-int'@'%' identified by 'k-int';
+
+In the project home directory directory
+
+mvn -N install     # This will install the root pom which is referenced elsewhere
+mvn clean install  # This will build and install all modules in the local repository
+
+Alternatively, if you don't want the hassle of installing MySQL, build and install without
+running the unit tests
+
+mvn --no-tests clean install
+
+Not recommended if you are doing development. If you just need to use the jzkit jars, they can
+be referenced in-place in the k-int maven2 repository at 
+
+mvn -Dmaven.test.skip=true clean install

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context crossContext="true" reloadable="true">
+  <Manager className="org.apache.catalina.session.PersistentManager" saveOnRestart="false"/>
+  <WatchedResource>WEB-INF/web.xml</WatchedResource>
+  <ResourceLink name="jir/IRService" global="jir/globalIRService" type="javax.sql.DataSource"/>
+</Context>

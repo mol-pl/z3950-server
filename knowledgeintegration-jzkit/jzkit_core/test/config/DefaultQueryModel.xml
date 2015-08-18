@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- See http://www.loc.gov/z3950/agency/defns/bib1.html for bib-1 attrs -->
+<!-- Please keep the following documentation up to date -->
+<!-- The query defined by this file:
+
+      Bool (nodeName=FilterJoin, op=And)                                            done
+        Bool (nodeName=KeywordsJoin, op=And)                                        done
+          Bool (nodeName=WhatWhoWhereElements, op=And)                              done
+            Bool (nodeName=WhatWhoElements, op=And)                                 done
+              Bool (nodeName=WhatElements, op=And)                                  done
+                AttrPlusTerm (nodeName=SubjectCriteria, accessPoint=bib-1.1.1099)   done
+                AttrPlusTerm (nodeName=TitleCriteria, accessPoint=bib-1.1.4)        done
+              Bool (nodeName=OuterWho, op=And)                                      done
+                Bool (nodename=Who, op=And)                                         done
+                  AttrPlusTerm (nodeName=CreatorCriteria, accessPoint=bib-1.1.1098) done
+                  AttrPlusTerm (nodeName=RightsHolder, accessPoint=bib-1.1.1111)    done
+                AttrPlusTerm (nodeName=Publisher, accessPoint=bib-1.1.1018)            done
+            Bool (nodeName=PlaceElements, op=And)                                   done
+              AttrPlusTerm (nodeName=PlaceCriteria, accessPoint=bib-1.1.2061)       done
+              AttrPlusTerm (nodeName=URLCriteria, accessPoint=bib-1.1.1032)         done
+          Bool (nodeName=KWTop, op=And)                                             done
+            Bool (nodeName=KW1, op=And)                                             done
+              AttrPlusTerm (nodeName=KeywordCriteria, accessPoint=bib-1.1.1016)     done
+              AttrPlusTerm (nodeName=KeywordCriteria2, accessPoint=bib-1.1.1016)    done
+            Bool (nodeName=KW2, op=And)                                             done
+              AttrPlusTerm (nodeName=KeywordCriteria3, accessPoint=bib-1.1.1016)    done
+              AttrPlusTerm (nodeName=KeywordCriteria4, accessPoint=bib-1.1.1016)    done
+        Bool (nodeName=FilterConditons, op=And)                                     done
+          Bool (nodeName=Filter1, op=And)                                           done
+            Bool (nodeName=Filter11, op=And)                                        done
+              AttrPlusTerm (nodeName=ItemType, accessPoint=bib-1.1.1103)            done
+              AttrPlusTerm (nodeName=EducationalLevel, accessPoint=bib-1.1.1213)    done
+            Bool (nodeName=Filter12, op=And)                                        done
+              AttrPlusTerm (nodeName=Language, accessPoint=bib-1.1.1105)            done
+              AttrPlusTerm (nodeName=PartOf, accessPoint=bib-1.1.2702)              done
+          Bool (nodeName=Filter2, op=And)                                           done
+            AttrPlusTerm (nodeName=Format, accessPoint=bib-1.1.1107)                done
+            AttrPlusTerm (nodeName=Thumnail, accessPoint=bib-1.1.2701)              done
+
+                    <void property="relation"><string></string></void>
+                    <void property="position"><string></string></void>
+                    <void property="structure"><string></string></void>
+                    <void property="truncation"><string></string></void>
+                    <void property="completeness"><string></string></void>
+-->
+<java version="1.4.2" class="java.beans.XMLDecoder">
+  <object class="org.jzkit.search.util.QueryModel.Internal.InternalModelRootNode">
+    <object class="org.jzkit.search.util.QueryModel.Internal.InternalModelNamespaceNode">
+      <string>bib-1</string><!-- Default namespace for this query -->
+      <object class="org.jzkit.search.util.QueryModel.Internal.ComplexNode"><!--TopLevelAnd-->
+        <object class="org.jzkit.search.util.QueryModel.Internal.ComplexNode"><!--KSLink-->
+          <object class="org.jzkit.search.util.QueryModel.Internal.ComplexNode"><!--PlaceWhoAnd-->
+            <object class="org.jzkit.search.util.QueryModel.Internal.ComplexNode"><!--WhoWhatElements-->
+              <object class="org.jzkit.search.util.QueryModel.Internal.ComplexNode"><!--WhatElements-->
+                <object class="org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode">
+                  <void property="accessPoint"><object class="org.jzkit.search.util.QueryModel.Internal.AttrValue"><string>1.1099</string></object></void>
+                  <void property="nodeName"><string>SubjectCriteria</string></void>
+                </object>
+                <object class="org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode">
+                  <void property="accessPoint"><object class="org.jzkit.search.util.QueryModel.Internal.AttrValue"><string>1.4</string></object></void>
+                  <void property="nodeName"><string>TitleCriteria</string></void>
+                </object>
+                <int>1</int>
+                <string>WhatElements</string>
+              </object>
+              <object class="org.jzkit.search.util.QueryModel.Internal.ComplexNode"><!--OuterWho-->
+                <object class="org.jzkit.search.util.QueryModel.Internal.ComplexNode"><!--Who-->
+                  <object class="org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode">
+                    <void property="accessPoint"><object class="org.jzkit.search.util.QueryModel.Internal.AttrValue"><string>1.1098</string></object></void>
+                    <void property="nodeName"><string>CreatorCriteria</string></void>
+                  </object>
+                  <object class="org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode">
+                    <void property="accessPoint"><object class="org.jzkit.search.util.QueryModel.Internal.AttrValue"><string>1.1111</string></object></void>
+                    <void property="nodeName"><string>RightsHolder</string></void>
+                  </object>
+                  <int>1</int>
+                  <string>Who</string>
+                </object>
+                <object class="org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode">
+                  <void property="accessPoint"><object class="org.jzkit.search.util.QueryModel.Internal.AttrValue"><string>1.1018</string></object></void>
+                  <void property="nodeName"><string>Publisher</string></void>
+                </object>
+                <int>1</int>
+                <string>OuterWho</string>
+              </object>
+              <int>1</int>
+              <string>WhoWhatElements</string>
+            </object>
+            <!-- Place elements -->
+            <object class="org.jzkit.search.util.QueryModel.Internal.ComplexNode"><!--PlaceElementsAnd-->
+              <object class="org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode">
+                <void property="accessPoint"><object class="org.jzkit.search.util.QueryModel.Internal.AttrValue"><string>1.2061</string></object></void>
+                <void property="nodeName"><string>PlaceCriteria</string></void>
+              </object>
+              <object class="org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode">
+                <void property="accessPoint"><object class="org.jzkit.search.util.QueryModel.Internal.AttrValue"><string>1.1032</string></object></void>
+                <void property="nodeName"><string>URLCriteria</string></void>
+              </object>
+              <int>1</int>
+              <string>PlaceElementsAnd</string>
+            </object>
+            <int>1</int>
+            <string>PlaceWhoAnd</string>
+          </object>
+          <object class="org.jzkit.search.util.QueryModel.Internal.ComplexNode"><!--KSTop-->
+            <object class="org.jzkit.search.util.QueryModel.Internal.ComplexNode"><!--KW1-->
+              <object class="org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode">
+                <void property="accessPoint"><object class="org.jzkit.search.util.QueryModel.Internal.AttrValue"><string>1.1016</string></object></void>
+                <void property="nodeName"><string>KeywordCriteria</string></void>
+              </object>
+              <object class="org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode">
+                <void property="accessPoint"><object class="org.jzkit.search.util.QueryModel.Internal.AttrValue"><string>1.1016</string></object></void>
+                <void property="nodeName"><string>KeywordCriteria2</string></void>
+              </object>
+              <int>1</int>
+              <string>KW1</string>
+            </object>
+            <object class="org.jzkit.search.util.QueryModel.Internal.ComplexNode"><!--KW2-->
+              <object class="org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode">
+                <void property="accessPoint"><object class="org.jzkit.search.util.QueryModel.Internal.AttrValue"><string>1.1016</string></object></void>
+                <void property="nodeName"><string>KeywordCriteria3</string></void>
+              </object>
+              <object class="org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode">
+                <void property="accessPoint"><object class="org.jzkit.search.util.QueryModel.Internal.AttrValue"><string>1.1016</string></object></void>
+                <void property="nodeName"><string>KeywordCriteria4</string></void>
+              </object>
+              <int>1</int>
+              <string>KW2</string>
+            </object>
+            <int>1</int>
+            <string>KSTop</string>
+          </object>
+          <int>1</int>
+          <string>KSLink</string>
+        </object>
+        <object class="org.jzkit.search.util.QueryModel.Internal.ComplexNode"><!--Filter Conditions-->
+          <object class="org.jzkit.search.util.QueryModel.Internal.ComplexNode"><!-- Filter 1 -->
+            <object class="org.jzkit.search.util.QueryModel.Internal.ComplexNode"><!-- Filter 11 -->
+              <object class="org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode">
+                <void property="accessPoint"><object class="org.jzkit.search.util.QueryModel.Internal.AttrValue"><string>1.1103</string></object></void>
+                <void property="nodeName"><string>ItemType</string></void>
+              </object>
+              <object class="org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode">
+                <void property="accessPoint"><object class="org.jzkit.search.util.QueryModel.Internal.AttrValue"><string>1.1213</string></object></void>
+                <void property="nodeName"><string>EducationalLevel</string></void>
+              </object>
+              <int>1</int>
+              <string>Filter11</string>
+            </object>
+            <object class="org.jzkit.search.util.QueryModel.Internal.ComplexNode"><!-- Filter12 -->
+              <object class="org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode">
+                <void property="accessPoint"><object class="org.jzkit.search.util.QueryModel.Internal.AttrValue"><string>1.1105</string></object></void>
+                <void property="nodeName"><string>Language</string></void>
+              </object>
+              <object class="org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode">
+                <void property="accessPoint"><object class="org.jzkit.search.util.QueryModel.Internal.AttrValue"><string>1.2702</string></object></void>
+                <void property="nodeName"><string>PartOf</string></void>
+              </object>
+              <int>1</int>
+              <string>Filter12</string>
+            </object>
+            <int>1</int>
+            <string>Filter1</string>
+          </object>
+          <object class="org.jzkit.search.util.QueryModel.Internal.ComplexNode"><!--Filter2-->
+            <object class="org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode">
+              <void property="accessPoint"><object class="org.jzkit.search.util.QueryModel.Internal.AttrValue"><string>1.1107</string></object></void>
+              <void property="nodeName"><string>Format</string></void>
+            </object>
+            <object class="org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode">
+              <void property="accessPoint"><object class="org.jzkit.search.util.QueryModel.Internal.AttrValue"><string>1.2701</string></object></void>
+              <void property="nodeName"><string>Thumbnail</string></void>
+            </object>
+            <int>1</int>
+            <string>Filter2</string>
+          </object>
+          <int>1</int>
+          <string>FilterConditions</string>
+        </object>
+        <int>1</int>
+        <string>TopLevelAnd</string>
+      </object><!--End of TopLevelAnd-->
+    </object><!--Namespace Node-->
+  </object><!--RootNode-->
+</java>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!--
+  CHANGEGLOG:
+    II 07/08/2004 - Now uses variables instead of hard coded property names. You will find the 
+                    values for these variables in the .properties file in the same directory.
+-->
+
+<beans>
+
+  <bean id="placeholderConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="location"><value>TestContext.properties</value></property>
+  </bean>
+
+  <!-- ========================= GENERAL DEFINITIONS ========================= -->
+
+  <bean id="GazeteerBean" class="TestGazeteer">
+  </bean>
+
+  <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+    <property name="basename"><value>messages</value></property>
+  </bean>
+
+  <bean id="TestDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+    <property name="driverClassName"><value>${com.k_int.jzkit.jdbc_plugin.jdbc_driver}</value></property>
+    <property name="url"><value>${com.k_int.jzkit.jdbc_plugin.url}</value></property>
+    <property name="username"><value>${com.k_int.jzkit.jdbc_plugin.username}</value></property>
+    <property name="password"><value>${com.k_int.jzkit.jdbc_plugin.password}</value></property>
+    <property name="defaultAutoCommit"><value>${com.k_int.jzkit.jdbc_plugin.default_auto_commit}</value></property>
+  </bean>
+
+  <bean id="TestPersistenceDictionary" 
+        class="com.k_int.sql.data_dictionary.InMemoryConfig"
+        factory-method="getConfig">
+    <constructor-arg><value>/TestDataDictionary.xml</value></constructor-arg>
+  </bean>
+
+  <bean id="TestAccessPointConfig" 
+        class="com.k_int.sql.qm_to_sql.QMToSQLInMemoryConfig"
+        factory-method="getConfig">
+    <constructor-arg><value>/TestAccessPoints.xml</value></constructor-arg>
+  </bean>
+
+  <bean id="TestRecordTemplates"
+        class="org.jzkit.search.provider.jdbc.RecordTemplatesInMemoryConfig"
+        factory-method="getConfig">
+    <constructor-arg><value>/TestRecordTemplates.xml</value></constructor-arg>
+  </bean>
+  
+
+  <!-- ========================= PERSISTENCE DEFINITIONS ========================= -->
+
+  <!-- ========================= BUSINESS DEFINITIONS ========================= -->
+
+</beans>

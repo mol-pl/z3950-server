@@ -1,0 +1,8 @@
+JZKit 2.0
+---------
+
+
+ToDo
+----
+Clean up a2j generation code so that eclipse does not complain endlessly about
+the java it generates.

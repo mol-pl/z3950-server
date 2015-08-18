@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <artifactId>jzkit2_parent</artifactId>
+    <groupId>org.jzkit</groupId>
+    <version>2.2.2-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.jzkit</groupId>
+  <artifactId>jzkit2_user_guide</artifactId>
+  <name>JZKit2 User Guide</name>
+  <version>2.2.2-SNAPSHOT</version>
+  <url>http://www.k-int.com</url>
+  <ciManagement>
+    <system>continuum</system>
+    <url>http://developer.k-int.com:8081/continuum</url>
+    <notifiers>
+      <notifier>
+        <configuration>
+          <address>ian.ibbotson@k-int.com</address>
+        </configuration>
+      </notifier>
+    </notifiers>
+  </ciManagement>
+  <build />
+</project>

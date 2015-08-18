@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+  <bean id="placeholderConfig" class="org.springframework.web.context.support.ServletContextPropertyPlaceholderConfigurer">
+    <property name="contextOverride"><value>true</value></property>
+    <property name="searchContextAttributes"><value>true</value></property>
+  </bean>
+
+  <!--
+  <bean id="placeholderConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="location"><value>/WEB-INF/deployment.properties</value></property>
+  </bean>
+  -->
+
+  <!-- ========================= GENERAL DEFINITIONS ========================= -->
+
+  <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+    <property name="basename"><value>messages</value></property>
+  </bean>
+
+
+  <!-- ========================= PERSISTENCE DEFINITIONS ========================= -->
+
+  <!-- A handle to the registration database -->
+  <bean id="JZKitDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+    <property name="driverClassName"><value>${org.jzkit.jdbc_driver}</value></property>
+    <property name="url"><value>${org.jzkit.url}</value></property>
+    <property name="username"><value>${org.jzkit.username}</value></property>
+    <property name="password"><value>${org.jzkit.password}</value></property>
+    <property name="defaultAutoCommit"><value>${org.jzkit.default_auto_commit}</value></property>
+    <property name="maxActive"><value>20</value></property>
+    <property name="maxIdle"><value>3</value></property>
+  </bean>
+
+  <bean id="JZKitSessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+    <property name="configurationClass"><value>org.hibernate.cfg.AnnotationConfiguration</value></property>
+    <property name="dataSource"><ref local="JZKitDataSource"/></property>
+    <property name="annotatedClasses">
+      <list>
+        <value>com.k_int.svc.identity.datamodel.PartyHDO</value>
+        <value>com.k_int.svc.identity.datamodel.RegisteredUserHDO</value>
+        <value>com.k_int.svc.identity.datamodel.AuthenticationDetailsHDO</value>
+        <value>com.k_int.svc.identity.datamodel.GrantHDO</value>
+        <value>com.k_int.svc.identity.datamodel.PermissionHDO</value>
+        <value>com.k_int.svc.identity.datamodel.RegisteredOrganisationHDO</value>
+        <value>com.k_int.svc.identity.datamodel.RoleHDO</value>
+        <value>com.k_int.svc.messages.datamodel.Message</value>
+        <value>com.k_int.svc.refdata.datamodel.RefdataVocabulary</value>
+        <value>com.k_int.svc.refdata.datamodel.RefdataTerm</value>
+        <!-- Added for config tasks -->
+
+        <value>org.jzkit.configuration.api.RecordTransformerTypeInformationDBO</value>
+        <value>org.jzkit.search.util.Profile.CrosswalkDBO</value>
+        <value>org.jzkit.ServiceDirectory.CollectionDescriptionDBO</value>
+        <value>org.jzkit.ServiceDirectory.CollectionInfoTypeDBO</value>
+        <value>org.jzkit.ServiceDirectory.SearchServiceDescriptionDBO</value>
+        <value>org.jzkit.ServiceDirectory.AttributeSetDBO</value>
+        <value>org.jzkit.configuration.api.RecordMappingInformationDBO</value>
+        <value>org.jzkit.configuration.api.AppSettingDBO</value>
+        <value>org.jzkit.search.util.Profile.RuleNodeDBO</value>
+        <value>org.jzkit.search.util.Profile.BooleanRuleNodeDBO</value>
+        <value>org.jzkit.search.util.Profile.AttrOrRuleDBO</value>
+        <value>org.jzkit.search.util.Profile.AttrAndRuleDBO</value>
+        <value>org.jzkit.search.util.Profile.AttrNotRuleDBO</value>
+        <value>org.jzkit.search.util.Profile.RegexpDBO</value>
+        <value>org.jzkit.search.util.Profile.ProfileDBO</value>
+        <value>org.jzkit.search.util.Profile.AttrMappingDBO</value>
+      </list>
+    </property>
+    <property name="hibernateProperties">
+      <props>
+        <prop key="hibernate.dialect">${org.jzkit.hiberate_dialect}</prop>
+        <prop key="hibernate.query.substitutions">${org.jzkit.query_substitutions}</prop>
+        <prop key="hibernate.show_sql">${org.jzkit.show_sql}</prop>
+        <prop key="hibernate.hbm2ddl.auto">update</prop>
+        <prop key="hibernate.query.factory_class">${hibernate.query.factory_class}</prop>
+      </props>
+    </property>
+  </bean>
+
+  <bean id="IdentityService" class="com.k_int.svc.identity.service.impl.db.IdentityServiceDBImpl" init-method="init">
+    <property name="sessionFactory"><ref local="JZKitSessionFactory"/></property>
+  </bean>
+
+  <bean id="SearchService" class="org.jzkit.service.RMIClientFactory">
+	<property name="serviceURL"><value>rmi://${org.jzkit.rmi.service_host}:${org.jzkit.rmi.service_port}/SearchService</value></property>
+  </bean>
+
+  <bean id="JZKitPluginRegistry" class="java.util.ArrayList">
+    <constructor-arg index="0">
+      <list>
+        <bean name="Z3950PluginMetadata" class="org.jzkit.search.provider.z3950.JZKitZ3950PluginMetadata"/>
+        <bean name="SRWPluginMetadata" class="org.jzkit.search.provider.SRW.JZKitSRWPluginMetadata"/>
+        <bean name="SRUPluginMetadata" class="org.jzkit.search.provider.SRU.JZKitSRUPluginMetadata"/>
+      </list>
+    </constructor-arg>
+  </bean>
+
+</beans>

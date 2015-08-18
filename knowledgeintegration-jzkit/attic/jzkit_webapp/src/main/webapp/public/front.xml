@@ -1,0 +1,6 @@
+<?xml-stylesheet type="text/xsl" href="@/public/xsl/expToHTML_default.xsl" ?>
+
+<fish>
+  <COLWSPage/>
+  <text>Hello World</text>
+</fish>

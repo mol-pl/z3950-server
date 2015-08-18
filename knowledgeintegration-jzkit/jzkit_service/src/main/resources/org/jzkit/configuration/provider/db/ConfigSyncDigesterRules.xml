@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<digester-rules>
+  <pattern value="ConfigSync">
+    <pattern value="include">
+      <call-method-rule methodname="syncUsing" paramcount="1" paramtypes="java.lang.String" />
+      <call-param-rule paramnumber='0'/>
+    </pattern>
+  </pattern>
+</digester-rules>

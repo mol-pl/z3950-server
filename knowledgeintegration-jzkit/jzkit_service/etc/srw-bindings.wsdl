@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ZiNG SRU/SRW WSDL Specification                   -->
+<!-- Version 1.0                                       -->
+<!--                                                   -->
+<!-- Editors:                                          -->
+<!--   Matthew J. Dovey, Oxford University             -->
+<!--   Poul Henrik Jorgensen, Portia                   -->
+<!--   Rob Sanderson, Liverpool University             -->
+<!--                                                   -->
+<!-- Contributors:                                     -->
+<!--  Ray Denenberg, Library of Congress               -->
+<!--  Adam Dickmeiss, IndexData                        -->
+<!--  Larry Dixon, Library of Congress                 -->
+<!--  Janifer Gatenby, PICA                            -->
+<!--  Sebastian Hammer, IndexData                      -->
+<!--  Ian Ibbotson, Knowledge Integration              -->
+<!--  Alan Kent, InQuirion Pty Ltd                     -->
+<!--  Ralph Le Van, OCLC                               -->
+<!--  Pat Stevens, OCLC                                -->
+<!--  Mike Taylor, Independent Consultant              -->
+<!--  Ashley Sanders, Manchester University            -->
+<!--  Ben Soares, Edina                                -->
+<!--  Theo van Veen, Koninlijke Bibliotheek            -->
+<!--                                                   -->
+<!--                                                   -->
+<!--  History:                                         -->
+<!--    2002-07-14  Initial Draft                      -->
+<!--    2002-07-24  Service description modifications  -->
+<!--    2002-09-12  Removed Authentication parameter   -->
+<!--    2002-10-31  Incorporated corrections from PHJ  -->
+<!--    2002-11-15  Release candidate                  -->
+<!--    2002-12-02  Corrected types                    -->
+<!--                                                   -->
+<!--                                                   -->
+<!--                                                   -->
+
+<definitions xmlns:SRW="http://www.loc.gov/zing/srw/v1.0/" 
+             xmlns="http://schemas.xmlsoap.org/wsdl/" 
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+             xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+             xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+             targetNamespace="http://www.loc.gov/zing/srw/v1.0/" 
+             name="SRW">
+	<import namespace="http://www.loc.gov/zing/srw/v1.0/" location="srw-types.xsd"/>
+	<types>
+		<xsd:schema>
+			<xsd:import namespace="http://www.loc.gov/zing/srw/v1.0/" schemaLocation="srw-types.xsd"/>
+		</xsd:schema>
+	</types>
+	<message name="SRWSearchRetrieveRequestMessage">
+		<part name="body" element="SRW:searchRetrieveRequest"/>
+	</message>
+	<message name="SRUSearchRetrieveRequestMessage">
+		<part name="query" type="xsd:string"/>
+		<part name="sortKeys" type="xsd:string"/>
+		<part name="startRecord" type="xsd:integer"/>
+		<part name="maximumRecord" type="xsd:integer"/>
+		<part name="recordSchema" type="xsd:string"/>
+	</message>
+	<message name="SearchRetrieveResponseMessage">
+		<part name="body" element="SRW:searchRetrieveResponse"/>
+	</message>
+	<message name="SRWExplainRequestMessage">
+		<part name="body" element="SRW:explainRequest"/>
+	</message>
+	<message name="ExplainResponseMessage">
+		<part name="body" element="SRW:explainResponse"/>
+	</message>
+	<message name="SRUExplainMessage"/>
+	<portType name="SRWPort">
+		<operation name="SRWSearchRetrieveOperation">
+			<input message="SRW:SRWSearchRetrieveRequestMessage"/>
+			<output message="SRW:SearchRetrieveResponseMessage"/>
+		</operation>
+		<operation name="SRWExplainRequestOperation">
+			<input message="SRW:SRWExplainRequestMessage"/>
+			<output message="SRW:ExplainResponseMessage"/>
+		</operation>
+	</portType>
+	<portType name="SRUPort">
+		<operation name="SRUSearchRetrieveOperation">
+			<input message="SRW:SRUSearchRetrieveRequestMessage"/>
+			<output message="SRW:SearchRetrieveResponseMessage"/>
+		</operation>
+	</portType>
+	<portType name="SRUExplainPort">
+		<operation name="SRUExplainRequestOperation">
+			<input message="SRW:SRUExplainMessage"/>
+			<output message="SRW:ExplainResponseMessage"/>
+		</operation>
+	</portType>
+	<binding name="SRW-SoapBinding" type="SRW:SRWPort">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="SRWSearchRetrieveOperation">
+			<soap:operation soapAction="searchRetrieve" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="SRWExplainRequestOperation">
+			<soap:operation soapAction="explain"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<binding name="SRU-HTTPGetBinding" type="SRW:SRUPort">
+		<http:binding verb="GET"/>
+		<operation name="SRUSearchRetrieveOperation">
+			<http:operation location="/searchRetrieve"/>
+			<input>
+				<http:urlEncoded/>
+			</input>
+			<output>
+				<mime:mimeXml part="body"/>
+			</output>
+		</operation>
+	</binding>
+	<binding name="Explain-HTTPGetBinding" type="SRW:SRUExplainPort">
+		<http:binding verb="GET"/>
+		<operation name="SRUExplainRequestOperation">
+			<http:operation location="/explain"/>
+			<input>
+				<http:urlEncoded/>
+			</input>
+			<output>
+				<mime:mimeXml part="body"/>
+			</output>
+		</operation>
+	</binding>
+        <service name="SRWService">
+                <port name="SRW:SRWPort" binding="SRW:SRW-SoapBinding">
+                        <soap:address location="http://localhost/SRWService"/>
+                </port>
+        </service>
+</definitions>

@@ -1,0 +1,13 @@
+<html>
+<body>
+Every query model must be able to instansiate itself from an internal query, and to create
+an internal query representation of itself. This means that given a query in one model, we
+should always be able to convert (Subject to translation, and possibly a lossy process) from
+one query model into another. For efficiencies sake, when creating a new representation from
+an existing one, it may be beneficial to always check that the base classes are actually *different*
+before going through the possibly losy transformation. However, since each service description
+might have it's own rules for creating queries from internal representations, the rules governing
+transformations may be different from (For example) Z39.50 target to target, and not just, say,
+from CQL to Z39.50 type-1 queries.
+</body>
+</html>

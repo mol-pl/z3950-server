@@ -1,0 +1,71 @@
+//
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of the GNU General Public License
+// as published by the Free Software Foundation; either version 2.1 of
+// the license, or (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place - Suite
+// 330, Boston, MA  02111-1307, USA.
+// 
+
+package org.jzkit.search.provider.SRU;
+
+import org.jzkit.search.provider.iface.JZKitPluginMetadata;
+import org.jzkit.search.provider.iface.PropDef;
+import org.jzkit.search.provider.iface.IRServiceDescriptor;
+import org.jzkit.search.provider.iface.ExplainDTO;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+
+
+public class JZKitSRUPluginMetadata implements JZKitPluginMetadata {
+ 
+  private static Log log = LogFactory.getLog(JZKitSRUPluginMetadata.class);
+  public static final String CODE = "SRU";
+  public static final String CLASS_NAME = "org.jzkit.search.provider.SRU.SRUSearchable";
+  public static final String NAME = "JZKit Standard SRU Plugin";
+  public static final PropDef[] PROPS = new PropDef[] { new PropDef("baseURL") };
+
+  public String getPluginClassName() {
+    return CLASS_NAME;
+  }
+
+  public String getPluginCode() {
+    return CODE;
+  }
+
+  public String getPluginName() {
+    return NAME;
+  }
+
+  public String getPluginDescription() {
+    return NAME;
+  }
+
+  public PropDef[] getProps() {
+    return PROPS;
+  }
+
+  public ExplainDTO explain(java.util.Map connection_properties) {
+    log.debug("Explain");
+    ExplainDTO result = null;
+
+    String base_url = (String) connection_properties.get("baseURL");
+    if ( base_url != null )
+      result = SRUResultSet.explain(base_url);
+    else
+      log.warn("Base URL was NULL. Properties:"+connection_properties);
+
+    return result;
+  }
+
+}

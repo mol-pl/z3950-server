@@ -1,0 +1,6 @@
+Install for JZKit 2.0
+
+
+To install maven xdoclet plugin..
+maven plugin:download -DartifactId=maven-xdoclet-plugin -DgroupId=xdoclet -Dversion=1.2
+

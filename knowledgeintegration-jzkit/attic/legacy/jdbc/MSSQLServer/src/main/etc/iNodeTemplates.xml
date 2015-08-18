@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.4.2" class="java.beans.XMLDecoder">
+  <object class="org.jzkit.search.provider.jdbc.RecordTemplatesInMemoryConfig">
+    <object class="java.util.HashMap">
+      <void method="put">
+        <string>Resource</string>
+        <object class="java.util.HashMap">
+          <void method="put">
+            <string>xml:Resource:F</string>
+            <object class="org.jzkit.search.provider.jdbc.TemplateFragmentFactory">
+              <object class="org.jzkit.search.provider.jdbc.EntityMapping">
+                <string>Resource</string>
+                <void method="addAttribute">
+                  <string>Id</string>
+                  <string>Id</string>
+                </void>
+                <void method="addAttribute">
+                  <string>Description</string>
+                  <string>Description</string>
+                </void>
+                <void method="addAttribute">
+                  <string>Creator</string>
+                  <string>Creator</string>
+                </void>
+                <void method="addAttribute">
+                  <string>Title</string>
+                  <string>Title</string>
+                </void>
+                <void method="addAttribute">
+                  <string>Preview</string>
+                  <string>Preview</string>
+                </void>
+                <void method="addAttribute">
+                  <string>Rights</string>
+                  <string>Rights</string>
+                </void>
+                <void method="addAttribute">
+                  <string>License</string>
+                  <string>License</string>
+                </void>
+                <void method="addAttribute">
+                  <string>DateLastModified</string>
+                  <string>DateLastModified</string>
+                </void>
+                <void method="addAttribute">
+                  <string>Publisher</string>
+                  <string>Publisher</string>
+                </void>
+                <void method="addAttribute">
+                  <string>URL</string>
+                  <string>URL</string>
+                </void>
+                <void method="addAttribute">
+                  <string>IdentityString</string>
+                  <string>IdentityString</string>
+                </void>
+                <!-- Postings for this respource -->
+                <void method="addAttribute">
+                  <string>categoryPosting</string>
+                  <string>Postings</string>
+                  <object class="org.jzkit.search.provider.jdbc.EntityMapping">
+                    <string>CategoryPosting</string>
+                    <void method="addAttribute">
+                      <string>postingType</string>
+                      <string>PostingType</string>
+                    </void>
+                    <void method="addAttribute">
+                      <string>category</string>
+                      <string>Category</string>
+                      <object class="org.jzkit.search.provider.jdbc.EntityMapping">
+                        <string>Category</string>
+                        <void method="addAttribute">
+                          <string>authorityCode</string>
+                          <string>AuthorityCode</string>
+                        </void>
+                      </object>
+                    </void>
+                  </object>
+                </void>
+                <!-- Availability statements for this resource -->
+                <void method="addAttribute">
+                  <string>availability</string>
+                  <string>Availability</string>
+                  <object class="org.jzkit.search.provider.jdbc.EntityMapping">
+                    <string>AvailabilityInstance</string>
+                    <void method="addAttribute"> <string>deliveryPlaceId</string> <string>DeliveryPlaceId</string> </void>
+                    <void method="addAttribute"> <string>availabilityType</string> <string>AvailabilityType</string> </void>
+                    <void method="addAttribute"> <string>availabilityTimes</string> <string>AvailabilityTimes</string> </void>
+                    <void method="addAttribute"> <string>accessRestrictions</string> <string>AccessRestrictions</string> </void>
+                    <void method="addAttribute"> <string>deliveryAddressContactName</string> <string>DeliveryAddressContactName</string> </void>
+                    <void method="addAttribute"> <string>deliveryAddressNumber</string> <string>DeliveryAddressNumber</string> </void>
+                    <void method="addAttribute"> <string>deliveryAddressStreet</string> <string>DeliveryAddressStreet</string> </void>
+                    <void method="addAttribute"> <string>deliveryAddressPostTown</string> <string>DeliveryAddressPostTown</string> </void>
+                    <void method="addAttribute"> <string>deliveryAddressCounty</string> <string>DeliveryAddressCounty</string> </void>
+                    <void method="addAttribute"> <string>deliveryAddressCountry</string> <string>DeliveryAddressCountry</string> </void>
+                    <void method="addAttribute"> <string>deliveryAddressPostcode</string> <string>DeliveryAddressPostcode</string> </void>
+                    <void method="addAttribute"> <string>deliveryAddressTextual</string> <string>DeliveryAddressTextual</string> </void>
+                    <void method="addAttribute"> <string>contactName</string> <string>ContactName</string> </void>
+                    <void method="addAttribute"> <string>contactPhone</string> <string>ContactPhone</string> </void>
+                    <void method="addAttribute"> <string>contactFax</string> <string>ContactFax</string> </void>
+                    <void method="addAttribute"> <string>contactEmail</string> <string>ContactEmail</string> </void>
+                  </object>
+                </void>
+                <void method="addAttribute">
+                  <string>collection</string>
+                  <string>Collection</string>
+                  <object class="org.jzkit.search.provider.jdbc.EntityMapping">
+                    <string>Collection</string>
+                    <void method="addAttribute">
+                      <string>Name</string>
+                      <string>Name</string>
+                    </void>
+                    <void method="addAttribute">
+                      <string>LongName</string>
+                      <string>LongName</string>
+                    </void>
+                    <void method="addAttribute">
+                      <string>Description</string>
+                      <string>Description</string>
+                    </void>
+                  </object>
+                </void>
+              </object>
+            </object>
+          </void>
+          <void method="put">
+            <string>xml:Resource:B</string>
+            <object class="org.jzkit.search.provider.jdbc.TemplateFragmentFactory">
+              <object class="org.jzkit.search.provider.jdbc.EntityMapping">
+                <string>Resource</string>
+                <void method="addAttribute">
+                  <string>Id</string>
+                  <string>Id</string>
+                </void>
+                <void method="addAttribute">
+                  <string>Description</string>
+                  <string>Description</string>
+                </void>
+                <void method="addAttribute">
+                  <string>Title</string>
+                  <string>Title</string>
+                </void>
+                <void method="addAttribute">
+                  <string>URL</string>
+                  <string>URL</string>
+                </void>
+                <void method="addAttribute">
+                  <string>IdentityString</string>
+                  <string>IdentityString</string>
+                </void>
+                <void method="addAttribute">
+                  <string>DateLastModified</string>
+                  <string>DateLastModified</string>
+                </void>
+                <void method="addAttribute">
+                  <string>Publisher</string>
+                  <string>Publisher</string>
+                </void>
+                <void method="addAttribute">
+                  <string>Preview</string>
+                  <string>Preview</string>
+                </void>
+                <void method="addAttribute">
+                  <string>collection</string>
+                  <string>Collection</string>
+                  <object class="org.jzkit.search.provider.jdbc.EntityMapping">
+                    <string>Collection</string>
+                    <void method="addAttribute">
+                      <string>Name</string>
+                      <string>Name</string>
+                    </void>
+                    <void method="addAttribute">
+                      <string>LongName</string>
+                      <string>LongName</string>
+                    </void>
+                    <void method="addAttribute">
+                      <string>Description</string>
+                      <string>Description</string>
+                    </void>
+                  </object>
+                </void>
+              </object>
+            </object>
+          </void>
+        </object>
+      </void>
+    </object>
+  </object>
+</java>

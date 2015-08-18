@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/jee
+           http://www.springframework.org/schema/jee/spring-jee-2.5.xsd">
+
+  <context:annotation-config />
+  <context:component-scan base-package="org.jzkit"/>
+
+  <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+    <property name="basenames">
+        <list>
+            <!--<value>com.myapp.web.my_messages</value>-->
+            <value>org.springframework.security.messages</value>
+        </list>
+    </property>
+  </bean>
+
+  <jee:jndi-lookup id="identDS" jndi-name="java:comp/env/jdbc/identDS"/> 
+
+  <bean id="IdentSessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+    <property name="dataSource"><ref local="identDS"/></property>
+    <property name="configurationClass"><value>org.hibernate.cfg.AnnotationConfiguration</value></property>
+    <property name="packagesToScan">
+      <list>
+        <value>org.jzkit</value>
+        <value>com.k_int.commons.util</value>
+        <value>com.k_int.sql.config</value>
+      </list>
+    </property>
+    <property name="hibernateProperties">
+      <props>
+        <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop> <!--${aggregator.db.hiberate_dialect} -->
+        <prop key="hibernate.query.substitutions">true</prop>
+        <prop key="hibernate.show_sql">false</prop>
+        <prop key="hibernate.hbm2ddl.auto">update</prop>
+        <prop key="hibernate.connection.autocommit">false</prop>
+      </props>
+    </property>
+  </bean>
+
+  <!-- Aggregator session factory comes from parent context -->
+  <bean id="IdentityService" class="com.k_int.svc.identity.service.impl.db.IdentityServiceDBImpl" init-method="init">
+    <property name="sessionFactory"><ref local="IdentSessionFactory"/></property>
+    <property name="configProperties" value="${com.k_int.aggregator.config.properties}" />
+    <property name="useEmailConfirmation" value="true" />
+  </bean>
+
+  <!--
+  <bean id="SessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+    <property name="dataSource"><ref local="AuthDS"/></property>
+    <property name="configurationClass"><value>org.hibernate.cfg.AnnotationConfiguration</value></property>
+    <property name="packagesToScan">
+      <list>
+        <value>com.k_int.svc.identity.datamodel</value>
+      </list>
+    </property>
+    <property name="hibernateProperties">
+      <props>
+        <prop key="hibernate.dialect">${aggregator.db.hiberate_dialect}</prop>
+        <prop key="hibernate.query.substitutions">${aggregator.db.query_substitutions}</prop>
+        <prop key="hibernate.show_sql">${aggregator.db.show_sql}</prop>
+        <prop key="hibernate.hbm2ddl.auto">${aggregator.db.hbm2ddl.auto}</prop>
+      </props>
+    </property>
+  </bean>
+  -->
+
+  <!--
+  <bean id="placeholderConfig" class="org.springframework.web.context.support.ServletContextPropertyPlaceholderConfigurer">
+    <property name="contextOverride"><value>true</value></property>
+    <property name="searchContextAttributes"><value>true</value></property>
+  </bean>
+  -->
+
+</beans>

@@ -1,0 +1,9 @@
+<list name="childElements" table="JZ_JDBC_ENTITY_MAPPING_CHILDREN" lazy="false" cascade="all">
+  <key column="ENTITY_MAPPING_ID" />
+  <index column="IND"/>
+  <composite-element class="org.jzkit.search.provider.jdbc.AttrInfo">
+    <property name="attrName" column="ATTR_NAME" length="128" />
+    <property name="elementName" column="ELEMENT_NAME" length="128" />
+    <many-to-one name="childMapping" column="CHILD_MAPPING" class="org.jzkit.search.provider.jdbc.EntityMapping" cascade="all"/>
+  </composite-element>
+</list>

@@ -1,0 +1,100 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <parent>
+    <artifactId>jzkit_parent</artifactId>
+    <groupId>org.jzkit</groupId>
+    <version>3.0.1-SNAPSHOT</version>
+  </parent>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.2-beta-1</version>
+        <configuration>
+          <descriptors>
+            <descriptor>src/main/assembly/dep.xml</descriptor>
+          </descriptors>
+          <finalName>jzkit_sdk</finalName>
+          <outputDirectory>target</outputDirectory>
+          <workDirectory>target/assembly/work</workDirectory>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>assembly</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.jzkit</groupId>
+  <artifactId>jzkit_sdk</artifactId>
+  <packaging>pom</packaging>
+  <name>JZKit SDK</name>
+  <url>http://www.k-int.com</url>
+
+  <dependencies>
+    <dependency><groupId>org.springframework</groupId><artifactId>spring</artifactId><version>2.5</version><scope>compile</scope></dependency>
+    <dependency><groupId>org.hibernate</groupId><artifactId>hibernate</artifactId><version>3.2.0.ga</version></dependency>
+    <dependency><groupId>org.hibernate</groupId><artifactId>hibernate-annotations</artifactId><version>3.2.0.ga</version></dependency>
+    <dependency><groupId>org.hibernate</groupId><artifactId>hibernate-entitymanager</artifactId><version>3.2.0.ga</version></dependency>
+    <dependency><groupId>mysql</groupId><artifactId>mysql-connector-java</artifactId><version>3.1.13</version></dependency>
+    <dependency> <groupId>junit</groupId> <artifactId>junit</artifactId> <version>3.8.1</version> <scope>test</scope> </dependency>
+    <dependency> <groupId>commons-beanutils</groupId> <artifactId>commons-beanutils</artifactId> <version>1.7.0</version> </dependency>
+    <dependency><groupId>commons-dbcp</groupId><artifactId>commons-dbcp</artifactId> <version>1.2.1</version>
+      <exclusions>
+        <exclusion> <artifactId>xerces</artifactId> <groupId>xerces</groupId> </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency><groupId>com.k-int.svc</groupId><artifactId>identity</artifactId> <version>3.1.4</version></dependency>
+    <dependency><groupId>org.jzkit</groupId><artifactId>a2j</artifactId><version>2.0.4</version></dependency>
+    <dependency><groupId>org.jzkit</groupId><artifactId>jzkit_core</artifactId> <version>3.0.0</version></dependency>
+    <dependency><groupId>org.jzkit</groupId><artifactId>jzkit_service</artifactId> <version>3.0.0</version></dependency>
+    <dependency><groupId>org.jzkit</groupId><artifactId>jzkit_srw_plugin</artifactId><version>3.0.0</version></dependency>
+    <dependency><groupId>org.jzkit</groupId><artifactId>jzkit_z3950_plugin</artifactId><version>3.0.0</version></dependency>
+    <dependency><groupId>marc4j</groupId><artifactId>marc4j</artifactId><version>b8</version></dependency>
+    <dependency><groupId>marcxml</groupId><artifactId>marcxml</artifactId><version>1.0.0</version></dependency>
+    <dependency><groupId>cql-java</groupId><artifactId>cql-java</artifactId><version>0.0.7</version></dependency>
+    <dependency><groupId>cglib</groupId><artifactId>cglib</artifactId> <version>2.1_3</version> </dependency>
+    <dependency><groupId>commons-collections</groupId><artifactId>commons-collections</artifactId> <version>3.1</version> </dependency>
+    <dependency><groupId>commons-logging</groupId><artifactId>commons-logging</artifactId> <version>1.0</version></dependency>
+    <dependency><groupId>log4j</groupId><artifactId>log4j</artifactId> <version>1.2.8</version> </dependency>
+    <dependency><groupId>odmg</groupId><artifactId>odmg</artifactId> <version>3.0</version> </dependency>
+    <dependency><groupId>ehcache</groupId><artifactId>ehcache</artifactId> <version>1.1</version></dependency>
+    <dependency><groupId>jdbm</groupId><artifactId>jdbm</artifactId> <version>0.20-dev</version></dependency>
+    <dependency><groupId>commons-digester</groupId><artifactId>commons-digester</artifactId> <version>1.5</version></dependency>
+    <dependency><groupId>xalan</groupId><artifactId>xalan</artifactId> <version>2.6.0</version></dependency>
+    <dependency><groupId>xerces</groupId><artifactId>xercesImpl</artifactId><version>2.7.1</version></dependency>
+    <dependency><groupId>trmi</groupId><artifactId>trmi</artifactId> <version>0.1.4</version></dependency>
+    <dependency><groupId>com.vividsolutions</groupId><artifactId>jts</artifactId><version>1.6.0</version></dependency>
+    <dependency><groupId>javax.transaction</groupId> <artifactId>jta</artifactId> <version>1.0.1B</version></dependency>
+    <dependency><groupId>dom4j</groupId><artifactId>dom4j</artifactId> <version>1.6</version></dependency>
+    <dependency><groupId>org.tanukisoftware</groupId><artifactId>wrapper</artifactId> <version>3.2.3</version></dependency>
+  </dependencies>
+
+  <distributionManagement>
+    <repository>
+      <id>k-int-repository</id>
+      <name>Knowledge Integration Maven2 Repository</name>
+      <url>scp://developer.k-int.com/home/developer.k-int.com/html/maven2</url>
+    </repository>
+    <site>
+      <id>k-int-repository</id>
+      <url>scp://developer.k-int.com//home/developer.k-int.com/html/pns/service</url>
+    </site>
+  </distributionManagement>
+
+</project>

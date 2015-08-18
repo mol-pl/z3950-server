@@ -1,0 +1,20 @@
+Install for JZKit 2.0
+
+1. JZKit 2.0 can drive itself off both XML and Database driven configuration mechanisms.
+
+
+1.1. For Database Driven Systems
+
+1.1.1. MySql Specifics :
+
+You must first manually create a database as follows (Change the values to appropriate local settings)
+
+// Grant appropriate permissions for  people to access
+                                                                                                                                        
+create database JZKit;
+grant all on JZKit.* to 'k-int'@localhost identified by 'k-int';
+grant all on JZKit.* to 'k-int'@localhost.localdomain identified by 'k-int';
+grant all on JZKit.* to 'k-int'@'%' identified by 'k-int';
+-- grant all on JZKit.* to 'k-int'@'demo.some.where.net' identified by 'k-int';
+FLUSH PRIVILEGES;
+

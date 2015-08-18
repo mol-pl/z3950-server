@@ -1,0 +1,8 @@
+Check record retrieval (USMarc) against local z server (Zebra)
+Make local searchable produce xml records
+Check multiple target search ( local z server, local test searchable )
+Check multiple target search ( remote servers )
+Check SRW Searching
+
+Set max record size to 0, test against latest zebra, do something sensible with the exception.
+Re-test present out of range on top search/result set interface

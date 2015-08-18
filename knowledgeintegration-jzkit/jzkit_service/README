@@ -1,0 +1,5 @@
+JZKit 2.0 Service Layer
+-----------------------
+
+This layer provides a cross searching IR service rather than a simple
+set of API's.

@@ -1,0 +1,57 @@
+<html>
+<head>
+</head>
+<body>
+<h1>JZkit Developer Reference Documentation - Service Interfaces</h1>
+
+<a name="#meta"></a>
+<h2>JZKit Meta Search Service</h2>
+
+<h3>Overview</h3>
+The internal jzkit meta search service is a java service component usually obtained from a spring application context. The service primarily offers
+<ul>
+  <li>Resolution of simple (Service agnostic) collection identifiers into target(and protocol) specific collections</li>
+  <li>Co-ordination of n physical back-end searches into a single virtual query</li>
+  <li>A virtual result set to aggregate the results (And an open interface for implementing different sort, score and deduplication algorithms)</li>
+</ul>
+
+
+<h3>Sequences</h3>
+<p>
+The normal entrt point for web based applications is through the <a href="../apidocs/org/jzkit/search/impl/StatelessQueryService.html">StatelessQueryService</a>.
+A client obtains a reference to this singleton object and then invokes it's getResultsPageFor method. The search landscape is formed from a simple list of database names and this is passed off to a CachedSearchSession object responsible for parsing and executing the query. Queries are indexed and cached on a LRU basis by the StatelessQueryService. Thus, when page 2 of a particular search is requested, the service will most often re-use an open connection. Similarly, a user can bookmark page 14 of a search result and return to the bookmark years later. The service will evaluate the query and return page 14 of the results. Users should not be given the impression that result sets are static over time. Other interfaces (The SearchSesison) allow for stateful session based searching if needed, however infrastructure demands increase with this deployment method.
+</p>
+
+<p>
+Once the StatelessQueryService getResultsPage method is invoked the query string and the landscape definition are hashed together into a cache key. The session cache is checked for a
+currently live session for that query/landscape pair and if one is found that session is reused. Otherwise the StatelessQueryService newSession method is invoked to create a new
+query with the given specification. The object created is an instance of CachedSearchSession and it's search method is invoked with the supplied query, landscape and default deduplication
+and sort models.
+</p>
+
+<p>
+CachedSearchSession is a simple wrapper around an instance of the normal stateful SearchSession (CachedSearchSession handles the construction and destruction of search sessions
+held in a LRU cache). The SearchSession itself is again obtained from the Sprinf Application Context and is normally an instance of org.jzkit.search.impl.SearchSessionImpl. SearchSessionImpl
+search method performs the following actions
+<ul>
+<li>Evaulate the landscape and convert the specification into a list of hard physical collection identifers</li>
+<li>For each identifier
+  <ul>
+    <li>Lookup the service providing that collection &amp; Service (EG Z3950, SRU, jdbc, etc) providing that collection
+    <li>If that service is already in the list of services to be searched, *And* that service supports searching
+        this collection at the same time as others already selected, add the collection to the list of collections to be searched in this query at the given service</li>
+    <li>Otherwise create a new Searchable service to be searched and add the collection</li>
+  </ul>
+  At this point we have a list of searchable objects and a list of the collections to be searched for each object. 
+</li>
+<li>Initialise each searchable object and start the queries in asynchronous mode</li>
+<li>Add each result set object to a virtual aggregating result set object, each component RS will notify the owner when complete</li>
+<li>Return the virtual result set</li>
+</ul>
+</p>
+<a name="#internal"/>
+Internal API - to be writtern
+<a name="#rmi"/>
+RMI/CORBA IIOP API - to be writtern
+</body>
+</html>

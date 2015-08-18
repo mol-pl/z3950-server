@@ -1,0 +1,52 @@
+
+
+
+JZKit2
+
+Framework Documentation
+	Package Dependency Diagram
+	External Dependencies
+
+Plugin API
+	- Simple Search using a plugin directly
+	- Plugin Developer Kit
+
+Service API
+	Components
+		- Directory Service
+		- Transformation Service
+		- Query Rewrite Service
+		- Cross Search Service
+
+	Deployment Options
+
+	Cross Searching
+		- Result Sets
+		- Deduplication / Clustering
+		- Read-Ahead Cache
+		- Result Set Iterators
+		- Format Specifications
+			- Concrete Specifications
+			- Record Archetypes
+
+	Query Rewriting
+
+	Record Transformation
+
+	InformationFragment - Record Decorators
+
+Plugin Documentation
+	- Z3950
+	- SRW
+	- JDBC
+
+
+HowTo
+	- I want to turn my relational database into a Z3950/SRW server
+	- I want to build a web based cross searching application
+
+a1. Advocacy
+	- Open Source In General
+	- JZKit, Java, Z3950/SRW, etc.
+	- Users
+

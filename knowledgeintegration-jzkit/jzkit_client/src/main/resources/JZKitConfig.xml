@@ -1,0 +1,207 @@
+<ServiceDirectory>
+
+  <!-- Test SOLR at dev.k-int.com -->
+  <Repository className="org.jzkit.search.provider.solr.SOLRSearchable"
+              code="kitest" 
+              serviceName="K-int Solr Repo">
+    <Preferences>
+      <Preference name="baseURL">http://dev.k-int.com:8080/solr/select</Preference>
+      <Preference name="queryFormatter">QF-SOLR-STD</Preference>
+      <Preference name="fieldList(Default)">id,name,popularity</Preference>
+      <Preference name="fieldList(F)">id,name,popularity</Preference>
+      <Preference name="fieldList(B)">id,name</Preference>
+    </Preferences>
+
+    <RecordArchetypes>
+      <Archetype name="Default">xml:solr:F</Archetype>
+      <Archetype name="F">xml:solr:F</Archetype>
+      <Archetype name="f">xml:solr:f</Archetype>
+      <Archetype name="B">xml:solr:B</Archetype>
+      <Archetype name="b">xml:solr:b</Archetype>
+    </RecordArchetypes>
+
+    <Collections>
+      <Collection code="Test" name="Default" localId="default" profile="bath" />
+    </Collections>
+
+    <ValidIndexes>
+      <Index type="AccessPoint">name</Index>
+      <Index type="Truncation">none</Index>
+      <Index type="Truncation">right</Index>
+    </ValidIndexes>
+
+    <TargetSpecificTranslations>
+      <Translate qualIndex="bib-1.1.4" toIndex="name"/>
+      <Translate qualIndex="bib-1.5.1" toIndex="right"/>
+      <Translate qualIndex="bib-1.5.100" toIndex="none"/>
+    </TargetSpecificTranslations>
+  </Repository>
+
+  <!-- Phoenix SOLR server, with custom query formatter -->
+  <Repository className="org.jzkit.search.provider.solr.SOLRSearchable"
+              code="phoenix" 
+              serviceName="Phoenix Solr Repo">
+    <Preferences>
+      <Preference name="baseURL">http://192.168.56.218:43760/journals/select</Preference>
+      <Preference name="queryFormatter">QF-SOLR-PHOENIX</Preference>
+      <Preference name="fieldList(Default)">title,description</Preference>
+      <Preference name="fieldList(F)">title,description,creator,idate,issn,issue,jtl,oid,pages,volume,jsubject,articledoi</Preference>
+      <Preference name="fieldList(B)">title,description</Preference>
+    </Preferences>
+
+    <RecordArchetypes>
+      <Archetype name="Default">xml:solr:F</Archetype>
+      <Archetype name="F">xml:solr:F</Archetype>
+      <Archetype name="f">xml:solr:f</Archetype>
+      <Archetype name="B">xml:solr:B</Archetype>
+      <Archetype name="b">xml:solr:b</Archetype>
+    </RecordArchetypes>
+
+    <Collections>
+      <Collection code="journals" name="journals" localId="journals" profile="bath" />
+      <Collection code="default" name="default" localId="journals" profile="bath" />
+      <Collection code="Default" name="default" localId="journals" profile="bath" />
+    </Collections>
+
+    <ValidIndexes>
+      <Index type="AccessPoint">title</Index>
+      <Index type="AccessPoint">description</Index>
+      <Index type="AccessPoint">all-fields</Index>
+      <Index type="AccessPoint">category</Index>
+      <Index type="AccessPoint">volume</Index>
+      <Index type="AccessPoint">issue</Index>
+      <Index type="AccessPoint">issn</Index>
+      <Index type="AccessPoint">jsubject</Index>
+      <Index type="AccessPoint">creator</Index>
+      <Index type="AccessPoint">idate</Index>
+      <Index type="AccessPoint">category</Index>
+      <Index type="Relation">stem</Index>
+      <Index type="Relation">lt</Index>
+      <Index type="Relation">le</Index>
+      <Index type="Relation">equal</Index>
+      <Index type="Relation">ge</Index>
+      <Index type="Relation">gt</Index>
+      <Index type="Position">first</Index>
+      <Index type="Position">any</Index>
+      <Index type="Structure">word</Index>
+      <Index type="Structure">year</Index>
+      <Index type="Structure">normalizeddate</Index>
+      <Index type="Truncation">none</Index>
+      <Index type="Truncation">right</Index>
+      <Index type="Completeness">complete-field</Index>
+    </ValidIndexes>
+
+    <TargetSpecificTranslations>
+      <Translate qualIndex="bib-1.1.1" toIndex="creator"/> <!-- Personal name -->
+      <Translate qualIndex="bib-1.1.2" toIndex="creator"/><!-- Corporate name -->
+      <Translate qualIndex="bib-1.1.3" toIndex="creator"/> <!-- Conference Name -->
+      <Translate qualIndex="bib-1.1.4" toIndex="title"/> <!-- Bath Profile Bib Level 0 Requirement : Title -->
+      <Translate qualIndex="bib-1.1.5" toIndex="title"/> <!-- Title - Series -->
+      <Translate qualIndex="bib-1.1.6" toIndex="title"/> <!-- Title - Uniform -->
+      <Translate qualIndex="bib-1.1.8" toIndex="issn"/>
+      <Translate qualIndex="bib-1.1.13" toIndex="category"/>
+      <Translate qualIndex="bib-1.1.21" toIndex="jsubject"/> <!-- Bath Profile Bib Level 0 Requirement : Subject Heading -->
+      <Translate qualIndex="bib-1.1.31" toIndex="idate"/> <!-- Bath Profile Bib Level 0 Requirement : Date of publication -->
+      <Translate qualIndex="bib-1.1.33" toIndex="title"/> <!-- Title - Key -->
+      <Translate qualIndex="bib-1.1.41" toIndex="title"/> <!-- Title - Variant -->
+      <Translate qualIndex="bib-1.1.42" toIndex="title"/> <!-- Title - Former -->
+      <Translate qualIndex="bib-1.1.43" toIndex="title"/> <!-- Title - Abbreviated -->
+      <Translate qualIndex="bib-1.1.57" toIndex="title"/> <!-- Name and title -->
+      <Translate qualIndex="bib-1.1.62" toIndex="description"/>
+      <Translate qualIndex="bib-1.1.1002" toIndex="creator"/> <!-- Name -->
+      <Translate qualIndex="bib-1.1.1003" toIndex="creator"/> <!-- Bath Profile Bib Level 0 Requirement : Author -->
+      <Translate qualIndex="bib-1.1.1004" toIndex="creator"/> <!-- Author - Personal Name -->
+      <Translate qualIndex="bib-1.1.1005" toIndex="creator"/> <!-- Author - Corporate Name -->
+      <Translate qualIndex="bib-1.1.1007" toIndex="issn"/> <!-- Bath Profile Bib Level 0 Requirement : Identifier Standard -->
+      <Translate qualIndex="bib-1.1.1016" toIndex="all-fields"/> <!-- Bath Profile Bib Level 0 Requirement : Any -->
+      <Translate qualIndex="bib-1.1.1018" toIndex="all-fields"/> <!-- Name of publisher -->
+      <Translate qualIndex="bib-1.1.1097" toIndex="title"/>
+      <Translate qualIndex="bib-1.1.1098" toIndex="creator"/>
+      <Translate qualIndex="bib-1.1.1100" toIndex="description"/>
+      <Translate qualIndex="bib-1.2.1" toIndex="lt"/>
+      <Translate qualIndex="bib-1.2.2" toIndex="le"/>
+      <Translate qualIndex="bib-1.2.3" toIndex="equal"/>
+      <Translate qualIndex="bib-1.2.4" toIndex="ge"/>
+      <Translate qualIndex="bib-1.2.5" toIndex="gt"/>
+      <Translate qualIndex="bib-1.3.1" toIndex="first"/>
+      <Translate qualIndex="bib-1.3.3" toIndex="any"/>
+      <Translate qualIndex="bib-1.4.2" toIndex="word"/>
+      <Translate qualIndex="bib-1.4.4" toIndex="year"/>
+      <Translate qualIndex="bib-1.4.5" toIndex="normalizeddate"/>
+      <Translate qualIndex="bib-1.2.101" toIndex="stem"/>
+      <Translate qualIndex="bib-1.5.1" toIndex="right"/>
+      <Translate qualIndex="bib-1.5.100" toIndex="none"/>
+      <Translate qualIndex="bib-1.6.1" toIndex="complete-field"/>
+    </TargetSpecificTranslations>
+
+  </Repository>
+
+  <!-- Test SOLR at dev.k-int.com -->
+  <Repository className="org.jzkit.search.provider.solr.SOLRSearchable"
+              code="localtest" 
+              serviceName="Local Solr Repo">
+    <Preferences>
+      <Preference name="baseURL">http://localhost:8080/solr/select</Preference>
+      <Preference name="queryFormatter">QF-SOLR-STD</Preference>
+    </Preferences>
+    <RecordArchetypes>
+      <Archetype name="Default">xml:solr:F</Archetype>
+      <Archetype name="F">xml:solr:F</Archetype>
+      <Archetype name="f">xml:solr:f</Archetype>
+      <Archetype name="B">xml:solr:B</Archetype>
+      <Archetype name="b">xml:solr:b</Archetype>
+    </RecordArchetypes>
+    <Collections>
+      <Collection code="LocalTest" name="Default" localId="default" profile="bath" />
+    </Collections>
+
+    <ValidIndexes>
+      <Index type="AccessPoint">name</Index>
+      <Index type="Truncation">right</Index>
+      <Index type="Truncation">none</Index>
+    </ValidIndexes>
+
+    <TargetSpecificTranslations>
+      <Translate qualIndex="bib-1.1.4" toIndex="name"/>
+      <Translate qualIndex="bib-1.5.1" toIndex="right"/>
+      <Translate qualIndex="bib-1.5.100" toIndex="none"/>
+    </TargetSpecificTranslations>
+  </Repository>
+
+
+  <CollectionPosting code="Test" name="InfoType" value="Default"/>
+
+  <!-- Application profiles may be used to indicate what type of query
+       are acceptable to a given collection instance. For example,
+       an OAI resource of learning objects might be made available as a
+       z39.50 database using the lom profile at one repository, and the
+       bath profile at another. Not specifying a profile for a collection
+       instance means that queries will be sent to that collection 
+       with no checking as to suitability. -->
+  <!--
+  <ApplicationProfiles>
+    <ClasspathProfile resource="/config/profiles/bath.xml"/>
+    <ClasspathProfile resource="/config/profiles/lom.xml"/>
+  </ApplicationProfiles>
+
+  <Crosswalks>
+    <ClasspathCrosswalk resource="/config/crosswalks/QueryModel/bib-1.xml"/> 
+  </Crosswalks>
+  -->
+
+  <RecordConversion>
+    <converter type="DOM-XSL-DOM" classname="org.jzkit.search.util.RecordConversion.StandardXSLTTransformer"/>
+    <converter type="DOM-XSL-TXT" classname="org.jzkit.search.util.RecordConversion.StringProducerTransformer"/>
+
+    <mapping fromSpec="solr" toSpec="sutrs" type="DOM-XSL-DOM" resource="/config/base/crosswalks/RecordModel/solr_2_sutrs.xsl"/>
+    <mapping fromSpec="solr" toSpec="F" type="DOM-XSL-DOM" resource="/config/base/crosswalks/RecordModel/identity.xsl"/>
+    <mapping fromSpec="solr" toSpec="f" type="DOM-XSL-DOM" resource="/config/base/crosswalks/RecordModel/identity.xsl"/>
+    <mapping fromSpec="solr" toSpec="B" type="DOM-XSL-DOM" resource="/config/base/crosswalks/RecordModel/identity.xsl"/>
+    <mapping fromSpec="solr" toSpec="b" type="DOM-XSL-DOM" resource="/config/base/crosswalks/RecordModel/identity.xsl"/>
+    <mapping fromSpec="solr" toSpec="usmarc" type="DOM-XSL-DOM" resource="/config/base/crosswalks/RecordModel/solr_2_marc21.xsl"/>
+    <mapping fromSpec="solr" toSpec="ukmarc" type="DOM-XSL-DOM" resource="/config/base/crosswalks/RecordModel/solr_2_marc21.xsl"/>
+    <mapping fromSpec="solr" toSpec="marc21" type="DOM-XSL-DOM" resource="/config/base/crosswalks/RecordModel/solr_2_marc21.xsl"/>
+
+  </RecordConversion>
+
+</ServiceDirectory>

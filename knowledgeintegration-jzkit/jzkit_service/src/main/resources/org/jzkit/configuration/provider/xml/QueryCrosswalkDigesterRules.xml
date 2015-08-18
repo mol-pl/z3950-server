@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<digester-rules>
+  <pattern value="Crosswalk">
+    <object-create-rule classname="org.jzkit.search.util.Profile.CrosswalkDBO" />
+    <set-properties-rule/>
+    <pattern value="SourceAttr">
+       <object-create-rule classname="org.jzkit.search.util.Profile.AttrMappingDBO" />
+       <set-properties-rule/>
+       <pattern value="MapsTo">
+         <call-method-rule methodname="addTarget"
+                           paramcount="2"
+                           paramtypes="java.lang.String,java.lang.String"/>
+          <call-param-rule paramnumber='0' attrname="targetNamespace"/>
+          <call-param-rule paramnumber='1'/>
+       </pattern>
+       <set-next-rule methodname="registerMapping" />
+    </pattern>
+    <set-next-rule methodname="registerCrosswalk" />
+  </pattern>
+</digester-rules>

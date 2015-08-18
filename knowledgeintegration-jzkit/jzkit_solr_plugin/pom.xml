@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <parent>
+    <artifactId>jzkit_parent</artifactId>
+    <groupId>org.jzkit</groupId>
+    <version>3.0.1-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.jzkit</groupId>
+  <artifactId>jzkit_solr_plugin</artifactId>
+  <name>JZKit SOLR Plugin</name>
+  <version>3.0.0</version>
+  <url>http://www.k-int.com</url>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency> <groupId>org.jzkit</groupId> <artifactId>jzkit_core</artifactId> </dependency> 
+  </dependencies>
+</project>

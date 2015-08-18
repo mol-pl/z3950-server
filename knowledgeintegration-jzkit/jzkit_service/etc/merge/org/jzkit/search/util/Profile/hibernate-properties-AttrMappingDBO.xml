@@ -1,0 +1,8 @@
+<list name="targetAttrs" table="JZ_TARGET_ATTRS" lazy="false" cascade="all">
+  <key column="MAPPING_ID" />
+  <index column="MAPPING_INDEX"/>
+  <composite-element class="org.jzkit.search.util.QueryModel.Internal.AttrValue">
+    <property name="namespaceIdentifier" column="NAMESPACE_IDENTIFIER" length="20" />
+    <property name="value" column="ATTR_VALUE" length="60" />
+  </composite-element>
+</list>
