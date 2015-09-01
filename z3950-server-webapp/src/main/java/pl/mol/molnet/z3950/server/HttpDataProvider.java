@@ -100,8 +100,8 @@ public class HttpDataProvider {
 
 		GetMethod method = new GetMethod(url);
 
-		method.getParams().setParameter(HttpMethodParams.RETRY_HANDLER,
-				new DefaultHttpMethodRetryHandler(3, false));
+//		method.getParams().setParameter(HttpMethodParams.RETRY_HANDLER,
+//				new DefaultHttpMethodRetryHandler(3, false));
 
 		try {
 			if (client.executeMethod(method) == HttpStatus.SC_OK) {
@@ -123,8 +123,8 @@ public class HttpDataProvider {
 
 		GetMethod method = new GetMethod(url);
 
-		method.getParams().setParameter(HttpMethodParams.RETRY_HANDLER,
-				new DefaultHttpMethodRetryHandler(3, false));
+//		method.getParams().setParameter(HttpMethodParams.RETRY_HANDLER,
+//				new DefaultHttpMethodRetryHandler(3, false));
 
 		try {
 			if (client.executeMethod(method) == HttpStatus.SC_OK) {
