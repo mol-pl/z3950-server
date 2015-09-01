@@ -1,16 +1,17 @@
 package pl.mol.molnet.z3950.server;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
+import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpStatus;
+import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.httpclient.params.HttpMethodParams;
 import org.jzkit.search.util.QueryModel.Internal.AttrPlusTermNode;
 import org.jzkit.search.util.QueryModel.Internal.AttrValue;
 import org.jzkit.search.util.QueryModel.Internal.ComplexNode;
@@ -32,6 +33,7 @@ public class HttpDataProvider {
 	private final Pattern patternAuthor = Pattern.compile("bib-1\\.1\\.1003");
 	private final Pattern patternIsbn = Pattern.compile("bib-1\\.1\\.7");
 	private final Pattern patternPublDate = Pattern.compile("bib-1\\.1\\.31");
+	private final HttpClient client = new HttpClient();
 
 	private String attrset;
 
@@ -96,43 +98,50 @@ public class HttpDataProvider {
 	public int getCount(HttpQueryParams params) throws UnsupportedEncodingException, MalformedURLException, IOException, Exception {
 		String url = params.getTenantUrl() + "/api/z3950server/count?" + prepareGetParams(params, null, null);
 
-		HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();
+		GetMethod method = new GetMethod(url);
 
-		con.setRequestMethod("GET");
+		method.getParams().setParameter(HttpMethodParams.RETRY_HANDLER,
+				new DefaultHttpMethodRetryHandler(3, false));
 
-		if (con.getResponseCode() == 200) {
-			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-			String inputLine = in.readLine();
-			in.close();
-
-			try {
-				return Integer.parseInt(inputLine);
-			} catch (NumberFormatException ex) {
+		try {
+			if (client.executeMethod(method) == HttpStatus.SC_OK) {
+				try {
+					return Integer.parseInt(method.getResponseBodyAsString(10));
+				} catch (NumberFormatException ex) {
+					throw new Exception("Database not found");
+				}
+			} else {
 				throw new Exception("Database not found");
 			}
-		} else {
-			throw new Exception("Database not found");
+		} finally {
+			method.releaseConnection();
 		}
 	}
 
 	public Record[] getList(HttpQueryParams params, Integer start, Integer limit) throws UnsupportedEncodingException, MalformedURLException, IOException, Exception {
 		String url = params.getTenantUrl() + "/api/z3950server/?" + prepareGetParams(params, start, limit);
 
-		HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();
+		GetMethod method = new GetMethod(url);
 
-		con.setRequestMethod("GET");
+		method.getParams().setParameter(HttpMethodParams.RETRY_HANDLER,
+				new DefaultHttpMethodRetryHandler(3, false));
 
-		if (con.getResponseCode() == 200) {
-			List<Record> list = new ArrayList<>();
-			MarcReader reader = new MarcStreamReader(con.getInputStream(), "UTF8");
-			while (reader.hasNext()) {
-				list.add(reader.next());
+		try {
+			if (client.executeMethod(method) == HttpStatus.SC_OK) {
+				List<Record> list = new ArrayList<>();
+
+				MarcReader reader = new MarcStreamReader(method.getResponseBodyAsStream(), "UTF8");
+				while (reader.hasNext()) {
+					list.add(reader.next());
+				}
+
+				Record[] records = new Record[limit];
+				return (Record[]) list.toArray(records);
+			} else {
+				throw new Exception("Database not found");
 			}
-
-			Record[] records = new Record[limit];
-			return (Record[]) list.toArray(records);
-		} else {
-			throw new Exception("Database not found");
+		} finally {
+			method.releaseConnection();
 		}
 	}
 
