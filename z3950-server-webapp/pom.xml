@@ -21,7 +21,7 @@
 	</properties>
     
 	<repositories>
-<!--		<repository>
+		<!--		<repository>
 			<id>k-int-releases</id>
 			<name>K-int repository</name>
 			<url>http://maven.k-int.com/content/repositories/releases</url>
@@ -29,6 +29,11 @@
 	</repositories>
     
 	<dependencies>
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+		</dependency>
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-web-api</artifactId>

@@ -1,5 +1,6 @@
 
 import static org.junit.Assert.assertNotNull;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.marc4j.marc.Record;
 import pl.mol.molnet.z3950.server.HttpDataProvider;
@@ -9,7 +10,7 @@ import pl.mol.molnet.z3950.server.HttpQueryParams;
  *
  * @author Paweł
  */
-//@Ignore
+@Ignore
 public class TestITCase {
 
 	private String url = "http://test.localhost:8080/api/z3950server/?author=a&start=0&limit=100";
@@ -21,7 +22,7 @@ public class TestITCase {
 
 		HttpDataProvider httpDataProvider = new HttpDataProvider();
 		HttpQueryParams params = new HttpQueryParams();
-		httpDataProvider.parseDbName("localhost:8080", "test", params);
+		httpDataProvider.parseDbName("http", "localhost:8080", "test", params);
 		params.setAuthor("a");
 
 		int count = httpDataProvider.getCount(params);

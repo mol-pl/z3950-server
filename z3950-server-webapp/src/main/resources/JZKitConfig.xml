@@ -3,7 +3,8 @@
                 code="MolNet" 
                 serviceName="MolNet Repository">
         <Preferences>
-            <Preference name="settingsBeanName">serverBaseDomain</Preference>
+            <Preference name="baseDomain">baseDomain</Preference>
+			<Preference name="baseProtocol">baseProtocol</Preference>
         </Preferences>
         <RecordArchetypes>
             <Archetype name="F">xml:oai_dc:F</Archetype>

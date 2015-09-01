@@ -148,14 +148,19 @@ public class HttpDataProvider {
 	/**
 	 * Wydziela z nazwy kolekcji nazw� tenanta i id bazy
 	 *
-	 * @param molnetUrlDomain
+	 * @param molnetBaseProtocol
+	 * @param molnetBaseDomain
 	 * @param collection
 	 * @param params
 	 * @throws java.lang.Exception
 	 */
-	public void parseDbName(String molnetUrlDomain, String collection, HttpQueryParams params) throws Exception {
-		if (molnetUrlDomain == null || collection == null) {
+	public void parseDbName(String molnetBaseProtocol, String molnetBaseDomain, String collection, HttpQueryParams params) throws Exception {
+		if (molnetBaseDomain == null || collection == null) {
 			throw new Exception("Cannot create tenant url");
+		}
+
+		if (molnetBaseProtocol == null) {
+			molnetBaseProtocol = "http";
 		}
 
 		String tenantName = collection;
@@ -166,7 +171,7 @@ public class HttpDataProvider {
 		}
 
 		//tworzenie urla tenenta
-		params.setTenantUrl(String.format("http://%s.%s", tenantName, molnetUrlDomain));
+		params.setTenantUrl(String.format("%s://%s.%s", molnetBaseProtocol, tenantName, molnetBaseDomain));
 	}
 
 	//TODO doda� sprawdzanie and or

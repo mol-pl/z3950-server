@@ -24,9 +24,15 @@
 		</property>
 	</bean>
   
-	<bean id="serverBaseDomain" class="java.lang.String">
+	<bean id="baseDomain" class="java.lang.String">
 		<constructor-arg index="0">
-			<value>${z3950.server.base.domain}</value>
+			<value>${molnetUri.base.domain}</value>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="baseProtocol" class="java.lang.String">
+		<constructor-arg index="0">
+			<value>${molnetUri.base.protocol}</value>
 		</constructor-arg>
 	</bean>
 
