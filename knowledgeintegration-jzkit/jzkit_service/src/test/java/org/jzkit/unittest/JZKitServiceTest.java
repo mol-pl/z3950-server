@@ -30,42 +30,42 @@ import org.apache.commons.logging.LogFactory;
  * Unit test for simple App.
  */
 public class JZKitServiceTest extends TestCase {
-
-  public static Log log = LogFactory.getLog(JZKitServiceTest.class);
-    
-  public static void main(String[] args) {
-  }
-    
-  public JZKitServiceTest(String name) {
-    super (name);
-  } 
-
-  protected void setUp() {
-    log.debug("Setup");
-  } 
-    
-  protected void tearDown() {
-    log.debug("Shutdown");
-  } 
-  
-
-  /**
-   * @return the suite of tests being tested
-   */
-  public static Test suite() {
-    return new TestSuite( JZKitServiceTest.class );
-  }
-
-  /**
-   *
-   */
-  public void testApp() throws SearchException, 
-                               org.jzkit.search.util.ResultSet.IRResultSetException, 
-                               org.jzkit.search.util.QueryModel.InvalidQueryException {
-
-    log.debug("testApp - testing JZKitService");
-
-    try {
+//
+//  public static Log log = LogFactory.getLog(JZKitServiceTest.class);
+//    
+//  public static void main(String[] args) {
+//  }
+//    
+//  public JZKitServiceTest(String name) {
+//    super (name);
+//  } 
+//
+//  protected void setUp() {
+//    log.debug("Setup");
+//  } 
+//    
+//  protected void tearDown() {
+//    log.debug("Shutdown");
+//  } 
+//  
+//
+//  /**
+//   * @return the suite of tests being tested
+//   */
+//  public static Test suite() {
+//    return new TestSuite( JZKitServiceTest.class );
+//  }
+//
+//  /**
+//   *
+//   */
+//  public void testApp() throws SearchException, 
+//                               org.jzkit.search.util.ResultSet.IRResultSetException, 
+//                               org.jzkit.search.util.QueryModel.InvalidQueryException {
+//
+//    log.debug("testApp - testing JZKitService");
+//
+//    try {
 //      String jzkit_home_prop = java.lang.System.getProperty("org.jzkit.home");
 //      log.debug("*** JZkitHome: "+jzkit_home_prop);
 //
@@ -102,9 +102,9 @@ public class JZKitServiceTest extends TestCase {
 //      Map additional_properties = null;
 //
 //      // StatelessSearchResultsPageDTO rp = sqs.getResultsPageFor(result_set_id,model,landscape,first_hit,num_hits,rfs,display_spec,additional_properties);
-    }
-    finally { 
-      log.debug("Done");
-    }
-  }
+//    }
+//    finally { 
+//      log.debug("Done");
+//    }
+//  }
 }
