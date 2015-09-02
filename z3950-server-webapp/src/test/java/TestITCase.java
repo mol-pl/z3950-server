@@ -22,8 +22,9 @@ public class TestITCase {
 
 		HttpDataProvider httpDataProvider = new HttpDataProvider();
 		HttpQueryParams params = new HttpQueryParams();
-		httpDataProvider.parseDbName("https", "molnet.mol.pl", "mol-prod--beta", params);
-		params.setAuthor("a");
+		httpDataProvider.parseDbName("http", "dev.mol.com.pl", "ztesta", params);
+		params.setTitle("Harry");
+		params.setBibliographicDbAlias("Bazabibliograficzna");
 
 		int count = httpDataProvider.getCount(params);
 
