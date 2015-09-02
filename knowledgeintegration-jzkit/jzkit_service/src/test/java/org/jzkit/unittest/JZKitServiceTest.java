@@ -66,42 +66,42 @@ public class JZKitServiceTest extends TestCase {
     log.debug("testApp - testing JZKitService");
 
     try {
-      String jzkit_home_prop = java.lang.System.getProperty("org.jzkit.home");
-      log.debug("*** JZkitHome: "+jzkit_home_prop);
-
-      // Get the service
-      org.jzkit.service.JZKitService svc = org.jzkit.service.JZKitService.create(jzkit_home_prop);
-      svc.init();
-
-      // Obtain configuration interface
-      org.jzkit.configuration.api.Configuration jzkit_config = svc.getConfig();
-      log.debug("Got config object: "+jzkit_config);
-      assert(jzkit_config != null);
-
-      // Import JZKitConfig
-      //
-
-
-      // Export config - should match imported config
-      org.w3c.dom.Document config_as_doc = org.jzkit.configuration.api.ConfigDumper.output(jzkit_config);
-
-
-      Vector collection_ids = new Vector();
-      collection_ids.add("Test");
-
-      // Do a search 
-      org.jzkit.search.impl.StatelessQueryService sqs = svc.getStatelessQueryService();
-
-      String result_set_id = null;
-      QueryModel model = new org.jzkit.search.util.QueryModel.PrefixString.PrefixString("@attrset bib-1 @attr 1=4 Science");
-      LandscapeSpecification landscape = new org.jzkit.search.landscape.SimpleLandscapeSpecification(collection_ids);
-      int first_hit = 1;
-      int num_hits = 10;
-      RecordFormatSpecification rfs = null;
-      ExplicitRecordFormatSpecification display_spec = null;
-      Map additional_properties = null;
-
-      // StatelessSearchResultsPageDTO rp = sqs.getResultsPageFor(result_set_id,model,landscape,first_hit,num_hits,rfs,display_spec,additional_properties);
+//      String jzkit_home_prop = java.lang.System.getProperty("org.jzkit.home");
+//      log.debug("*** JZkitHome: "+jzkit_home_prop);
+//
+//      // Get the service
+//      org.jzkit.service.JZKitService svc = org.jzkit.service.JZKitService.create(jzkit_home_prop);
+//      svc.init();
+//
+//      // Obtain configuration interface
+//      org.jzkit.configuration.api.Configuration jzkit_config = svc.getConfig();
+//      log.debug("Got config object: "+jzkit_config);
+//      assert(jzkit_config != null);
+//
+//      // Import JZKitConfig
+//      //
+//
+//
+//      // Export config - should match imported config
+//      org.w3c.dom.Document config_as_doc = org.jzkit.configuration.api.ConfigDumper.output(jzkit_config);
+//
+//
+//      Vector collection_ids = new Vector();
+//      collection_ids.add("Test");
+//
+//      // Do a search 
+//      org.jzkit.search.impl.StatelessQueryService sqs = svc.getStatelessQueryService();
+//
+//      String result_set_id = null;
+//      QueryModel model = new org.jzkit.search.util.QueryModel.PrefixString.PrefixString("@attrset bib-1 @attr 1=4 Science");
+//      LandscapeSpecification landscape = new org.jzkit.search.landscape.SimpleLandscapeSpecification(collection_ids);
+//      int first_hit = 1;
+//      int num_hits = 10;
+//      RecordFormatSpecification rfs = null;
+//      ExplicitRecordFormatSpecification display_spec = null;
+//      Map additional_properties = null;
+//
+//      // StatelessSearchResultsPageDTO rp = sqs.getResultsPageFor(result_set_id,model,landscape,first_hit,num_hits,rfs,display_spec,additional_properties);
     }
     finally { 
       log.debug("Done");
