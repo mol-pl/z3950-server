@@ -44,6 +44,12 @@
 			<groupId>org.jzkit</groupId>
 			<artifactId>jzkit_z3950_server</artifactId>
 			<version>3.0.1-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<groupId>marc4j</groupId> 
+					<artifactId>marc4j</artifactId> 
+				</exclusion>
+			</exclusions>
 		</dependency>   
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -74,6 +80,11 @@
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>info.freelibrary</groupId>
+			<artifactId>freelib-marc4j</artifactId>
+			<version>2.6.7</version>
 		</dependency>
 	</dependencies>
 

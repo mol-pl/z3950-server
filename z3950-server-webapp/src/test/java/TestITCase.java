@@ -13,7 +13,7 @@ import pl.mol.molnet.z3950.server.HttpQueryParams;
 @Ignore
 public class TestITCase {
 
-	private String url = "http://test.localhost:8080/api/z3950server/?author=a&start=0&limit=100";
+	//private String url = "http://test.localhost:8080/api/z3950server/?author=a&start=0&limit=100";
 	//private String url = "https://mol-prod--beta.molnet.mol.pl/api/z3950server/?author=arctowa&start=0&limit=1";
 	//private String url = "http://dev.mol.com.pl/api/z3950server/?author=a&start=0&limit=10";
 
@@ -22,7 +22,7 @@ public class TestITCase {
 
 		HttpDataProvider httpDataProvider = new HttpDataProvider();
 		HttpQueryParams params = new HttpQueryParams();
-		httpDataProvider.parseDbName("http", "localhost:8080", "test", params);
+		httpDataProvider.parseDbName("https", "molnet.mol.pl", "mol-prod--beta", params);
 		params.setAuthor("a");
 
 		int count = httpDataProvider.getCount(params);

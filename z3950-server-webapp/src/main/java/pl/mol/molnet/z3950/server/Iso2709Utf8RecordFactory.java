@@ -4,6 +4,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import java.io.*;
 import org.apache.xml.serialize.XMLSerializer;
+import org.jzkit.search.util.RecordBuilder.RecordBuilder;
 import org.marc4j.*;
 import org.w3c.dom.Document;
 import org.jzkit.search.util.RecordBuilder.RecordBuilderException;
@@ -20,7 +21,7 @@ import org.marc4j.marc.Record;
  *
  * @author Pawel
  */
-public class Iso2709Utf8RecordFactory extends org.jzkit.search.util.RecordBuilder.iso2709RecordFactory {
+public class Iso2709Utf8RecordFactory implements RecordBuilder {
 
 	private static Log log = LogFactory.getLog(Iso2709Utf8RecordFactory.class);
 
