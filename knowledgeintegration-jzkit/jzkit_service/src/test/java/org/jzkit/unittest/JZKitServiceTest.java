@@ -1,35 +1,35 @@
-package org.jzkit.unittest;
-
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.framework.*;
-import junit.extensions.*;
-import java.util.*;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.context.*;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.jzkit.configuration.api.Configuration;
-import org.jzkit.configuration.api.*;
-import org.jzkit.ServiceDirectory.*;
-import org.jzkit.search.util.Profile.*;
-import org.jzkit.search.util.QueryModel.*;
-import org.jzkit.search.util.ResultSet.*;
-import org.jzkit.search.util.RecordModel.*;
-import org.jzkit.search.provider.iface.*;
-import org.jzkit.search.util.RecordConversion.*;
-import org.jzkit.search.*;
-import org.jzkit.search.landscape.*;
-import org.springframework.context.*;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-    
-/**
- * Unit test for simple App.
- */
-public class JZKitServiceTest extends TestCase {
+//package org.jzkit.unittest;
+//
+//import junit.framework.Test;
+//import junit.framework.TestCase;
+//import junit.framework.TestSuite;
+//import junit.framework.*;
+//import junit.extensions.*;
+//import java.util.*;
+//import org.springframework.context.support.ClassPathXmlApplicationContext;
+//import org.springframework.context.*;
+//import org.apache.commons.logging.Log;
+//import org.apache.commons.logging.LogFactory;
+//import org.jzkit.configuration.api.Configuration;
+//import org.jzkit.configuration.api.*;
+//import org.jzkit.ServiceDirectory.*;
+//import org.jzkit.search.util.Profile.*;
+//import org.jzkit.search.util.QueryModel.*;
+//import org.jzkit.search.util.ResultSet.*;
+//import org.jzkit.search.util.RecordModel.*;
+//import org.jzkit.search.provider.iface.*;
+//import org.jzkit.search.util.RecordConversion.*;
+//import org.jzkit.search.*;
+//import org.jzkit.search.landscape.*;
+//import org.springframework.context.*;
+//import org.apache.commons.logging.Log;
+//import org.apache.commons.logging.LogFactory;
+//
+//    
+///**
+// * Unit test for simple App.
+// */
+//public class JZKitServiceTest extends TestCase {
 //
 //  public static Log log = LogFactory.getLog(JZKitServiceTest.class);
 //    
@@ -107,4 +107,4 @@ public class JZKitServiceTest extends TestCase {
 //      log.debug("Done");
 //    }
 //  }
-}
+//}

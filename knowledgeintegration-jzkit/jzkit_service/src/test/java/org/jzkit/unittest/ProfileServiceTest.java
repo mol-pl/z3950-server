@@ -1,28 +1,28 @@
-package org.jzkit.unittest;
-
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.framework.*;
-import junit.extensions.*;
-import java.util.*;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.context.*;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.jzkit.search.util.QueryModel.*;
-import org.jzkit.search.util.QueryModel.Internal.*;
-import org.jzkit.configuration.api.Configuration;
-import org.jzkit.search.util.QueryModel.PrefixString.PrefixString;
-import org.jzkit.search.util.QueryModel.CQLString.CQLString;
-import org.jzkit.ServiceDirectory.AttributeSetDBO;
-
-    
-/**
- * Unit test for simple App.
- */
-public class ProfileServiceTest extends TestCase {
-
+//package org.jzkit.unittest;
+//
+//import junit.framework.Test;
+//import junit.framework.TestCase;
+//import junit.framework.TestSuite;
+//import junit.framework.*;
+//import junit.extensions.*;
+//import java.util.*;
+//import org.springframework.context.support.ClassPathXmlApplicationContext;
+//import org.springframework.context.*;
+//import org.apache.commons.logging.Log;
+//import org.apache.commons.logging.LogFactory;
+//import org.jzkit.search.util.QueryModel.*;
+//import org.jzkit.search.util.QueryModel.Internal.*;
+//import org.jzkit.configuration.api.Configuration;
+//import org.jzkit.search.util.QueryModel.PrefixString.PrefixString;
+//import org.jzkit.search.util.QueryModel.CQLString.CQLString;
+//import org.jzkit.ServiceDirectory.AttributeSetDBO;
+//
+//    
+///**
+// * Unit test for simple App.
+// */
+//public class ProfileServiceTest extends TestCase {
+//
 //  private static ApplicationContext app_context = null;
 //  public static Log log = LogFactory.getLog(ServiceTest.class);
 //    
@@ -124,5 +124,5 @@ public class ProfileServiceTest extends TestCase {
 //    result = cql_str.toString();
 //    return result;
 //  }
-
-}
+//
+//}

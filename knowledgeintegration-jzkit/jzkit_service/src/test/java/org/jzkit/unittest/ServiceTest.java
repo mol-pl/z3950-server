@@ -1,21 +1,21 @@
-package org.jzkit.unittest;
-
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.framework.*;
-import junit.extensions.*;
-import java.util.*;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.context.*;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.jzkit.configuration.api.Configuration;
-    
-/**
- * Unit test for simple App.
- */
-public class ServiceTest extends TestCase {
+//package org.jzkit.unittest;
+//
+//import junit.framework.Test;
+//import junit.framework.TestCase;
+//import junit.framework.TestSuite;
+//import junit.framework.*;
+//import junit.extensions.*;
+//import java.util.*;
+//import org.springframework.context.support.ClassPathXmlApplicationContext;
+//import org.springframework.context.*;
+//import org.apache.commons.logging.Log;
+//import org.apache.commons.logging.LogFactory;
+//import org.jzkit.configuration.api.Configuration;
+//    
+///**
+// * Unit test for simple App.
+// */
+//public class ServiceTest extends TestCase {
 //
 //  private static ApplicationContext app_context = null;
 //  public static Log log = LogFactory.getLog(ServiceTest.class);
@@ -72,4 +72,4 @@ public class ServiceTest extends TestCase {
 //  //     }
 //  //   }
 //  }
-}
+//}
