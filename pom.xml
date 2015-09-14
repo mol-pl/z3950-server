@@ -13,5 +13,6 @@
 	<modules>
 		<module>knowledgeintegration-jzkit</module>
 		<module>z3950-server-webapp</module>
+		<module>example-http-record-source</module>
 	</modules>
 </project>
