@@ -15,9 +15,9 @@ import org.jzkit.search.util.ResultSet.IRResultSetStatus;
 import org.jzkit.search.util.ResultSet.TransformingIRResultSet;
 
 /**
- * Nadpisuje funkcj� wyszukuj�c�, zbiera b��dy i zamienia na diag.
+ * Nadpisuje funkcję wyszukującą, zbiera błędy i zamienia na diag.
  *
- * @author Pawe�
+ * @author Paweł
  */
 public class SearchSessionDynamicCollectionImpl extends SearchSessionImpl {
 
@@ -27,6 +27,17 @@ public class SearchSessionDynamicCollectionImpl extends SearchSessionImpl {
         super(profile_service, fts, rbs);
     }
 
+	/**
+	 * Punkt pośredni w search, odczytuje błędy z resultset i rzuca odpowiednie wyjątki
+	 * 
+	 * @param landscape
+	 * @param model
+	 * @param deduplication_model
+	 * @param sort_model
+	 * @param rfs
+	 * @return
+	 * @throws SearchException 
+	 */
     @Override
     public TransformingIRResultSet search(LandscapeSpecification landscape,
             QueryModel model,

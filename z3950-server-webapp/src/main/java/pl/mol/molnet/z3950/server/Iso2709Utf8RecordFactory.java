@@ -16,7 +16,7 @@ import org.marc4j.MarcXmlReader;
 import org.marc4j.marc.Record;
 
 /**
- * Nadpisuje org.jzkit.search.util.RecordBuilder.Iso2709Utf8RecordFactory
+ * Implementuje RecordBuilder, Podobne do org.jzkit.search.util.RecordBuilder.Iso2709Utf8RecordFactory
  dodaje obsługę utf-8
  *
  * @author Pawel

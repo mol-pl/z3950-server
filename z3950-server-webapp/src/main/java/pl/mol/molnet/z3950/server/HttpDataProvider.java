@@ -35,6 +35,15 @@ public class HttpDataProvider {
 
 	private String attrset;
 
+	/**
+	 * Tworzy parametry zapytania get
+	 * 
+	 * @param params kryteria zapytania
+	 * @param start początek pobierania rekordów
+	 * @param limit liczba pobranych rekordów
+	 * @return parametry get
+	 * @throws UnsupportedEncodingException nie ma wskazanego kodowania (utf-8)
+	 */
 	private String prepareGetParams(HttpQueryParams params, Integer start, Integer limit) throws UnsupportedEncodingException {
 		String urlParameters = null;
 
@@ -93,6 +102,16 @@ public class HttpDataProvider {
 		return urlParameters;
 	}
 
+	/**
+	 * Pobiera liczbę rekordów z bazy tenenta
+	 * 
+	 * @param params kryteria pobierania
+	 * @return tablica rekordów
+	 * @throws UnsupportedEncodingException nieprawidłowe kodowanie
+	 * @throws MalformedURLException nieprawidłowy url
+	 * @throws IOException nie udało się odpytać tenanta
+	 * @throws Exception baza nie istnieje
+	 */
 	public int getCount(HttpQueryParams params) throws UnsupportedEncodingException, MalformedURLException, IOException, Exception {
 		String url = params.getTenantUrl() + "/api/z3950server/count?" + prepareGetParams(params, null, null);
 
@@ -116,6 +135,18 @@ public class HttpDataProvider {
 		}
 	}
 
+	/**
+	 * Pobiera listę rekordów z bazy tenenta
+	 * 
+	 * @param params kryteria pobierania
+	 * @param start pierwszy rekord
+	 * @param limit liczba rekordów
+	 * @return tablica rekordów
+	 * @throws UnsupportedEncodingException nieprawidłowe kodowanie
+	 * @throws MalformedURLException nieprawidłowy url
+	 * @throws IOException nie udało się odpytać tenanta
+	 * @throws Exception baza nie istnieje
+	 */
 	public Record[] getList(HttpQueryParams params, Integer start, Integer limit) throws UnsupportedEncodingException, MalformedURLException, IOException, Exception {
 		String url = params.getTenantUrl() + "/api/z3950server/?" + prepareGetParams(params, start, limit);
 
@@ -144,13 +175,13 @@ public class HttpDataProvider {
 	}
 
 	/**
-	 * Wydziela z nazwy kolekcji nazw� tenanta i id bazy
+	 * Wydziela z nazwy kolekcji nazwę tenanta i id bazy
 	 *
-	 * @param molnetBaseProtocol
-	 * @param molnetBaseDomain
-	 * @param collection
-	 * @param params
-	 * @throws java.lang.Exception
+	 * @param molnetBaseProtocol protokół wykorzystywany we wdrożeniu
+	 * @param molnetBaseDomain domena aplikacji
+	 * @param collection nazwa bazy (nazwa tenenta)
+	 * @param params parametry zapytania
+	 * @throws java.lang.Exception nie udało się utworzyć urla do tenanta
 	 */
 	public void parseDbName(String molnetBaseProtocol, String molnetBaseDomain, String collection, HttpQueryParams params) throws Exception {
 		if (molnetBaseDomain == null || collection == null) {
@@ -172,7 +203,14 @@ public class HttpDataProvider {
 		params.setTenantUrl(String.format("%s://%s.%s", molnetBaseProtocol, tenantName, molnetBaseDomain));
 	}
 
-	//TODO doda� sprawdzanie and or
+	/**
+	 * Przetwarza zapytanie z bib-1 na queryParams
+	 * 
+	 * @param qn zapytanie bib-1
+	 * @param params parametry queryParams
+	 * @throws Exception nie udało się przetworzyć zapytania
+	 */
+	//TODO dodać sprawdzanie and or
 	public void parseQuery(QueryNode qn, HttpQueryParams params) throws Exception {
 
 		if (qn instanceof InternalModelRootNode) {

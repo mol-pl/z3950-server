@@ -13,9 +13,9 @@ import org.marc4j.MarcXmlReader;
 import org.marc4j.marc.Record;
 
 /**
- * Pobiera liczb� wynik�w i konkretne wyniki z kontrolera tenanta.
+ * Pobiera liczbę wyników i konkretne wyniki z kontrolera tenanta.
  *
- * @author Pawe�
+ * @author Paweł
  */
 public class MolNetResultSet extends AbstractIRResultSet implements IRResultSet {
 
@@ -33,20 +33,26 @@ public class MolNetResultSet extends AbstractIRResultSet implements IRResultSet 
 	}
 
 	/**
-	 * Domy�lny tylko na wypadek b��du, bo searchable musi co� zwr�ci�.
+	 * Domyślny tylko na wypadek błędu, bo searchable musi coś zwrócić.
 	 */
 	public MolNetResultSet() {
 	}
 
+	/**
+	 * Konstruktor
+	 * 
+	 * @param params parametry zapytania
+	 * @throws Exception nie znaleziono bazy
+	 */
 	public MolNetResultSet(HttpQueryParams params) throws Exception {
 		this.httpQueryParams = params;
 		this.httpDataProvider = new HttpDataProvider();
 
 		try {
-			//wy�lij req o count
+			//wyślij req o count
 			this.num_hits = httpDataProvider.getCount(httpQueryParams);
 
-			//tworzy pusty rekord, kt�ry b�dzie wstawiany gdy wyst�pi� problemy z pobraniem rekordu
+			//tworzy pusty rekord, który będzie wstawiany gdy wystąpił problemy z pobraniem rekordu
 			prepareDummyRecord();
 		} catch (Exception ex) {
 			throw new Exception("Database not found");
@@ -55,6 +61,12 @@ public class MolNetResultSet extends AbstractIRResultSet implements IRResultSet 
 		log.debug("num_hits=" + num_hits);
 	}
 
+	/**
+	 * Tworzy pusty rekord, za wypadek gdyby serwer zwrócił łędny rekord
+	 * baz tego sypie się napełnianie cache i serwer się zapętla
+	 * 
+	 * @throws Exception nie udało się sparsować przykładowego rekordu
+	 */
 	private void prepareDummyRecord() throws Exception {
 		try {
 			String doc = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
@@ -82,6 +94,13 @@ public class MolNetResultSet extends AbstractIRResultSet implements IRResultSet 
 		}
 	}
 
+	/**
+	 * Tworzy obiekt informacji o rekordzie
+	 * 
+	 * @param hit_no numer rekordu w zbiorze (potrzeban dla cache)
+	 * @param data rekord w formacie iso2709
+	 * @return obiekt informacji
+	 */
 	private InformationFragment prepareInformationFragment(int hit_no, byte[] data) {
 		return new org.jzkit.search.util.RecordModel.InformationFragmentImpl(hit_no,
 				"REPO",
@@ -90,7 +109,16 @@ public class MolNetResultSet extends AbstractIRResultSet implements IRResultSet 
 				data, new ExplicitRecordFormatSpecification("iso2709", "usmarc", "F"));
 	}
 
-	// Fragment Source methods
+	/**
+	 * Pobiera rekordy w postaci obiektów informacji o rekordach
+	 * 
+	 * @param starting_fragment numer pierwszego obiektu
+	 * @param count liczba obiektów
+	 * @param spec zalecany format rekordu
+	 * @return InformationFragment[]
+	 * @throws IRResultSetException wyszukwiwanie nieudane, zastąpione zwracaniem pustej tablicy
+	 * bo się zapętlał cache
+	 */
 	@Override
 	public InformationFragment[] getFragment(int starting_fragment,
 			int count,

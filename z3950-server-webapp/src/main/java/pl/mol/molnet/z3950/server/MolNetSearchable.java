@@ -8,9 +8,9 @@ import org.jzkit.search.util.QueryModel.InvalidQueryException;
 import org.springframework.context.*;
 
 /**
- * Zarz�dza wyszukiwaniem danych.
+ * Zarządza wyszukiwaniem danych.
  *
- * @author Pawe�
+ * @author Paweł
  */
 public class MolNetSearchable implements Searchable {
 
@@ -60,6 +60,14 @@ public class MolNetSearchable implements Searchable {
 		return evaluate(q, user_info, null);
 	}
 
+	/**
+	 * PRzetwarza zapytanie i inicjuje wyszukiwanie danych.
+	 * 
+	 * @param q zapytanie
+	 * @param user_info informacje o użytkowniku
+	 * @param observers wątki kontrolujące wykoanie zapytania
+	 * @return resultset
+	 */
 	@Override
 	public IRResultSet evaluate(IRQuery q, Object user_info, Observer[] observers) {
 		String molnetBaseDomain = (String) ctx.getBean(this.baseDomain);
@@ -70,20 +78,20 @@ public class MolNetSearchable implements Searchable {
 		try {
 			httpDataProvider.parseQuery(q.getQueryModel().toInternalQueryModel(ctx), params);
 		} catch (InvalidQueryException ex) {
-			//nie uda�o si� przetworzy� zapytania, zwracaj pusty resultset z b��dem
+			//nie udało się przetworzyć zapytania, zwracaj pusty resultset z błędem
 			return notifyError("Syntax error while parsing CQL query");
 		} catch (Exception ex) {
 			return notifyError(ex.getMessage());
 		}
 
-		//pobierz nazw� tenanta i id bazy
+		//pobierz nazwę tenanta i id bazy
 		try {
 			httpDataProvider.parseDbName(molnetBaseProtocol, molnetBaseDomain, (String) q.getCollections().get(0), params);
 		} catch (Exception ex) {
 			return notifyError(ex.getMessage());
 		}
 
-		//przygotowane parametry, mo�na szuka�
+		//przygotowane parametry, można szukać
 		try {
 			MolNetResultSet result = new MolNetResultSet(params);
 			result.setStatus(IRResultSetStatus.COMPLETE);
@@ -93,6 +101,13 @@ public class MolNetSearchable implements Searchable {
 		}
 	}
 
+	/**
+	 * Konstruuje informację o błędzie
+	 * Kod błędu jest wrzucany w nazwę zbioru danych, potem jest stamtąd wyciągany
+	 * 
+	 * @param message kod/wiadomość błędu
+	 * @return resultset
+	 */
 	private IRResultSet notifyError(String message) {
 		MolNetResultSet result = new MolNetResultSet();
 		result.setStatus(IRResultSetStatus.FAILURE);
