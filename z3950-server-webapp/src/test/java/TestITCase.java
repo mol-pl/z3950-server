@@ -10,7 +10,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  *
  * @author Paweł
  */
-//@Ignore
+@Ignore
 public class TestITCase {
 
 	@Test
