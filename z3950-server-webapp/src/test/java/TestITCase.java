@@ -8,7 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * Do testów ręcznych
  *
- * @author Paweł
+ * @author Paweł 
  */
 @Ignore
 public class TestITCase {
