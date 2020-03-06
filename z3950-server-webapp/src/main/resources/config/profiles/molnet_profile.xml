@@ -3,6 +3,6 @@
         <Regexp type="AccessPoint">bib-1\.1\.1003</Regexp>
         <Regexp type="AccessPoint">bib-1\.1\.4</Regexp> 
         <Regexp type="AccessPoint">bib-1\.1\.31</Regexp> 
-        <Regexp type="AccessPoint">bib-1\.1\.7</Regexp> 
+        <Regexp type="AccessPoint">bib-1\.1\.(7|1007)</Regexp> 
     </Or>
 </profile>

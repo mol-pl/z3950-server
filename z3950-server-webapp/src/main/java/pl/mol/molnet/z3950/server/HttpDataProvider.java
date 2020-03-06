@@ -29,7 +29,7 @@ public class HttpDataProvider {
 
 	private final Pattern patternTitle = Pattern.compile("bib-1\\.1\\.4");
 	private final Pattern patternAuthor = Pattern.compile("bib-1\\.1\\.1003");
-	private final Pattern patternIsbn = Pattern.compile("bib-1\\.1\\.7");
+	private final Pattern patternIsbn = Pattern.compile("bib-1\\.1\\.(7|1007)");
 	private final Pattern patternPublDate = Pattern.compile("bib-1\\.1\\.31");
 	private final HttpClient client = new HttpClient();
 
