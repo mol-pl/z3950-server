@@ -1,6 +1,0 @@
-<ConfigSync>
-  <include url="http://www.k-int.com/jzkit/config/profiles.xml"/>
-  <include url="http://www.k-int.com/jzkit/config/schema_crosswalks.xml"/>
-  <include url="file:../etc/transformers.xml"/>
-  <include url="file:../etc/mappings.xml"/>
-</ConfigSync>

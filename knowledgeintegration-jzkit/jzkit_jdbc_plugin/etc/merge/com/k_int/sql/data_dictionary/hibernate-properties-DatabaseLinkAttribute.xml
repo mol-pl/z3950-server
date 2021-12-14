@@ -1,8 +1,0 @@
-<list name="keyPairs" table="JZ_JDBC_KEY_PAIRS" lazy="false" cascade="all">
-  <key column="ATTR_ID" />
-  <index column="IND"/>
-  <composite-element class="com.k_int.sql.data_dictionary.CorrespondingKeyPair">
-    <property name="localAttrName" column="LOCAL_ATTR_NAME" length="128" />
-    <property name="relatedAttrName" column="REL_ATTR_NAME" length="128" />
-  </composite-element>
-</list>
