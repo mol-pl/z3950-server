@@ -116,11 +116,11 @@
 	<modules>
 		<module>jzkit_core</module>
 		<!--    <module>jzkit_srw_plugin</module>-->
-		<module>jzkit_z3950_plugin</module>
+		<!--<module>jzkit_z3950_plugin</module>-->
 		<!--<module>jzkit_srw_server</module>-->
 		<!--    <module>jzkit_solr_plugin</module>-->
 		<module>jzkit_service</module>
-		<module>jzkit_z3950_server</module>
+		<!--<module>jzkit_z3950_server</module>-->
 		<!--    <module>jzkit_sdk</module>-->
 	</modules>
 
