@@ -47,6 +47,11 @@
                  toSpec="usmarc" 
                  type="DOM-XSL-DOM" 
                  resource="/config/crosswalks/RecordModel/identity.xsl"/>
+		
+		<mapping fromSpec="usmarc" 
+                 toSpec="marc21" 
+                 type="DOM-XSL-DOM" 
+                 resource="/config/crosswalks/RecordModel/identity.xsl"/>
 
     </RecordConversion>
 
