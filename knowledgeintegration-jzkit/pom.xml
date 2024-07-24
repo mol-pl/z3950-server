@@ -133,7 +133,7 @@
 		<repository>
 			<id>k-int</id>
 			<name>k-int maven2 repository</name>
-			<url>http://nexus.k-int.com/content/repositories/releases</url>
+			<url>https://maven.k-int.com/content/repositories/releases/</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
@@ -373,12 +373,12 @@
 		<repository>
 			<id>k-int-releases</id>
 			<name>Knowledge Intergation Maven2 Repository</name>
-			<url>dav:http://nexus.k-int.com/content/repositories/releases/</url>
+			<url>dav:https://maven.k-int.com/content/repositories/releases/</url>
 		</repository>
 		<snapshotRepository>
 			<id>k-int-snapshots</id>
 			<name>Knowledge Intergation Maven2 Snapshot Repository</name>
-			<url>dav:http://nexus.k-int.com/content/repositories/snapshots</url>
+			<url>dav:https://maven.k-int.com/content/repositories/snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 
