@@ -17,7 +17,7 @@ Of course our customers' requests are our top priority, but we will consider req
 
 Note, however, that we do NOT support request for changing [JZKit](http://www.k-int.com/jzkit) itself. We support  only the requests regarding our fork.
 
-* Non-security issues - use [Github issues](https://github.com/mol-pl/z3950-server/issues/).
+* Non-security issues - use [GitHub issues](https://github.com/mol-pl/z3950-server/issues/).
 * Security issues - report by e-mail: pawel-at-mol.com.pl.
 
 Note that if you are our customer, we prefer that you use our [Customer zone](http://www.mol.pl/?mol=strefa) (Polish). Our customer zone is for any kind of issues (including security issues).
