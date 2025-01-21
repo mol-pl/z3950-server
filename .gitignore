@@ -1,3 +1,4 @@
 /z3950-server-webapp/target/
 /example-http-record-source/target/
 /knowledgeintegration-jzkit/*/target/
+/__setup_env.bat
