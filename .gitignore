@@ -2,3 +2,5 @@
 /example-http-record-source/target/
 /knowledgeintegration-jzkit/*/target/
 /__setup_env.bat
+*.priv
+*.priv.*
